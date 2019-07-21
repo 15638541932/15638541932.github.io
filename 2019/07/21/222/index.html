@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>
-    222 |
+    nginx文件解析漏洞 |
     
     Hexo</title>
   
@@ -33,7 +33,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      222
+      nginx文件解析漏洞
     </h1>
   
 
@@ -56,12 +56,15 @@
 
       
         <h1 id="nginx文件解析漏洞"><a href="#nginx文件解析漏洞" class="headerlink" title="nginx文件解析漏洞"></a>nginx文件解析漏洞</h1><hr>
-<h2 id="呵呵呵"><a href="#呵呵呵" class="headerlink" title="呵呵呵"></a>呵呵呵</h2><p><img src="https://note.youdao.com/yws/public/resource/83dd5e6893bb3bfc7640aa6487e76beb/xmlnote/WEBRESOURCEb0f9f970638546e98e701cf8c4244ef6/2705" alt></p>
+<p><img src="https://note.youdao.com/yws/public/resource/83dd5e6893bb3bfc7640aa6487e76beb/xmlnote/WEBRESOURCEb0f9f970638546e98e701cf8c4244ef6/2705" alt></p>
+<p>##在nginx.php后面加上/.php，发现被解析成了PHP文件：<a href="http://192.168.199.217/uploadfiles/nginx.png/.php" target="_blank" rel="noopener">http://192.168.199.217/uploadfiles/nginx.png/.php</a><br><img src="https://note.youdao.com/yws/public/resource/83dd5e6893bb3bfc7640aa6487e76beb/xmlnote/WEBRESOURCE566d277afede7b6047be0886ac5bc98b/2709" alt></p>
+<p>###那么可以利用这个漏洞上传木马图片。<br>生成一个一句话木马和一个png结尾的图片<br>在windows生成一个木马图片<br><img src="https://note.youdao.com/yws/public/resource/83dd5e6893bb3bfc7640aa6487e76beb/xmlnote/WEBRESOURCEc16e8a48c6dfd97fca0373fd5c4a0fc5/2715" alt><br><img src="https://note.youdao.com/yws/public/resource/83dd5e6893bb3bfc7640aa6487e76beb/xmlnote/WEBRESOURCEe980dbc62e7fb223ce508f3f7fa19d1a/2718" alt><br>然后上传，路径被爆了出来。然后上传，路径被爆了出来。<br><img src="https://note.youdao.com/yws/public/resource/83dd5e6893bb3bfc7640aa6487e76beb/xmlnote/WEBRESOURCE4f3049ed48701c40c2bf1ebe1490a22c/2722" alt><br>然后在后面加上 .php 看木马是否解析，可以看到已经解析，然后用蚁剑连接。<br><img src="https://note.youdao.com/yws/public/resource/83dd5e6893bb3bfc7640aa6487e76beb/xmlnote/WEBRESOURCE3b4e038141a70f1d4c069c7a35637499/2728" alt><br><img src="https://note.youdao.com/yws/public/resource/83dd5e6893bb3bfc7640aa6487e76beb/xmlnote/WEBRESOURCE53f0be04e233d5c79cc628b30e37309f/2733" alt></p>
+<p>####进入虚拟终端，看命令能不能正常执行。<br><img src="https://note.youdao.com/yws/public/resource/83dd5e6893bb3bfc7640aa6487e76beb/xmlnote/WEBRESOURCE715d2282e113a978e7255968da23d0c0/2737" alt><br>OK👌</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/21/222/" data-id="cjycz5att0000t0v67hnbrdz8"
+      <a data-url="http://yoursite.com/2019/07/21/222/" data-id="cjyd3fr3k0002lwv6okeer277"
          class="article-share-link">分享</a>
       
     </footer>
@@ -76,7 +79,7 @@
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            333
+            nginx文件解析漏洞
           
         </div>
       </a>
