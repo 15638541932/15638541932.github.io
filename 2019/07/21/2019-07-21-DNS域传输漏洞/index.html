@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    DNS域传输漏洞 |
+    
+    Hexo</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/technology.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <section class="outer">
+  <article id="post-2019-07-21-DNS域传输漏洞" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DNS域传输漏洞
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/07/21/2019-07-21-DNS域传输漏洞/" class="article-date">
+  <time datetime="2019-07-21T01:09:19.000Z" itemprop="datePublished">2019-07-21</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h1 id="2-用dig命令发送dns请求，dig-192-168-199-174-www-vulhub-org获得域名，www-vulhub-org是在目标dns服务器上的A记录"><a href="#2-用dig命令发送dns请求，dig-192-168-199-174-www-vulhub-org获得域名，www-vulhub-org是在目标dns服务器上的A记录" class="headerlink" title="2.用dig命令发送dns请求，dig @192.168.199.174 www.vulhub.org获得域名，www.vulhub.org是在目标dns服务器上的A记录"></a>2.用dig命令发送dns请求，dig @192.168.199.174 <a href="http://www.vulhub.org获得域名，www.vulhub.org是在目标dns服务器上的A记录" target="_blank" rel="noopener">www.vulhub.org获得域名，www.vulhub.org是在目标dns服务器上的A记录</a></h1><p>3.发送axfr类型的dns请求。       dig @192.168.199.174 -t axfr vnlhub.org</p>
+<p>4.可见，我获取到了vulhub.org的所有子域名记录，这里存在DNS域传送漏洞。<br>我们也可以用nmap script来扫描该漏洞：nmap –script dns-zone-transfer.nse –script-args “dns-zone-transfer.domain=vulhub.org” -Pn -p 53 192.168.199.174</p>
+<p><img src="https://note.youdao.com/yws/public/resource/43f20d7ae9acdd8273958f79fcfb964b/xmlnote/EED1181610564A08B4DF83E74A575708/2625" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/21/2019-07-21-DNS域传输漏洞/" data-id="cjycx78rf0000ngv6u6qof6yc"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/07/21/ax/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            (no title)
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/07/20/hello-world/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Hello World</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+    </div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/technology.js"></script>
+
+  </div>
+</body>
+</html>
