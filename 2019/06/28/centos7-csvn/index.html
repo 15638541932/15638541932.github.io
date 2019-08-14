@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    centos7中csvn的安装及脚本一键安装 |
+    
+    Hexo</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/technology.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <section class="outer">
+  <article id="post-centos7-csvn" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      centos7中csvn的安装及脚本一键安装
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/06/28/centos7-csvn/" class="article-date">
+  <time datetime="2019-06-28T07:05:18.000Z" itemprop="datePublished">2019-06-28</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/搭建服务/">搭建服务</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <hr>
+<h1 id="centos7中csvn的安装及脚本一键安装"><a href="#centos7中csvn的安装及脚本一键安装" class="headerlink" title="centos7中csvn的安装及脚本一键安装"></a>centos7中csvn的安装及脚本一键安装</h1><p>在centos7中安装csvn。<br>1.安装依赖环境<br>csvn的搭建是要依赖Java环境的，可以直接安装jdk包即可<br>在Java官方网站找到jdk包进行安装<br><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a><br>选择自己对应的版本和系统<br>mkdir -p /data/server/java/<br>tar -zxvf jdk-8u171-linux-x64.tar.gz -C /usr/local/java/<br>&emsp;<br>&emsp;<br>设置环境变量<br>vim /etc/profile<br>在末尾添加<br>export JAVA_HOME=/data/server/java/jdk1.8.0_171<br>export JRE_HOME=${JAVA_HOME}/jre<br>export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib<br>export PATH=${JAVA_HOME}/bin:$PATH<br>&emsp;<br>&emsp;<br>使环境变量生效<br>source /etc/profile<br>&emsp;<br>&emsp;<br>添加软链接<br>ln -s /data/server/java/jdk1.8.0_171/bin/java /usr/bin/java<br>java -version</p>
+<p>2.找到csvn下载源，weget  <a href="https://downloads-guests.open.collab.net/files/documents/61/17071/CollabNetSubversionEdge-5.2.0_linux-x86_64.tar.gz" target="_blank" rel="noopener">https://downloads-guests.open.collab.net/files/documents/61/17071/CollabNetSubversionEdge-5.2.0_linux-x86_64.tar.gz</a><br>把csvn下载到/usr/local/src/<br>&emsp;<br>tar -xzvf  CollabNetSubversionEdge-5.2.0_linux-x86_64.tar.gz<br>mv  /usr/local/src/csvn  /data/server/<br>&emsp;<br>&emsp;<br>3.添加用户，因为csvn服务要求不能用root用户执行<br>useradd csvn<br>echo 123456|passwd –stdin csvn<br>&emsp;<br>&amp;emsp<br>4.修改属主属组权限<br>chown -R csvn:csvn /data/server/csvn<br>chown  csvn. /data/server/csvn/data/conf/httpd.conf<br>chown root:csvn /data/server/csvn/lib/httpd_bind/httpd_bind<br>chmod u+s /data/server/csvn/lib/httpd_bind/httpd_bind<br>&emsp;<br>&emsp;<br>5.在/etc/sudoers添加下面一行使csvn可以使用sudo<br>csvn ALL=(ALL) ALL<br>&emsp;<br>&emsp;<br>6.关闭防火墙和SELINUX<br>systemctl  stop  firewalld<br>setenforce 0<br>&emsp;<br>&emsp;<br>7.启动csvn服务<br>/data/server/csvn/bin/csvn-httpd install<br>/data/server/csvn/bin/csvn start<br>&emsp;<br>&emsp;<br>8.查看csvn是否开启<br>netstat  -pantu |grep 3343  (csvn的端口是3343)<br>ps  aux |grep csvn<br>&emsp;<br>&emsp;<br>9.在浏览器上直接访问出来的一个网址，把localhost换成自己的IP地址即可。<br>用户和密码都是admin<br>&emsp;<br>&emsp;<br>脚本一键安装csvn并开启<br>&emsp;<br>&emsp;</p>
+<p>#!/bin/bash</p>
+<p>#判断Java环境是否存在，不存在进行安装<br>java -version<br>if [ $? -eq 0 ];then<br>echo “java存在”<br>else<br>cd /usr/local/src/ &amp;&amp; tar -xzvf jdk-8u201-linux-x64.tar.gz<br>mkdir /data/server<br>mv /usr/local/src/jdk1.8.0_201 /data/server/jdk1.8<br>&emsp;<br>&emsp;<br>cat &gt;&gt; /etc/profile &lt;&lt;EOF<br>export JAVA_HOME=/data/server/jdk1.8<br>export CLASSPATH=.:JAVA_HOME/lib/dt.jar:/data/server/jdk1.8/jib/tools.jar<br>export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/data/server/jdk1.8/bin:/root/bin:/data/server/jdk1.8/bin<br>EOF<br>source /etc/profile<br>fi<br>&emsp;<br>&emsp;</p>
+<p>#关闭防火墙<br>systemctl stop firewalld<br>&emsp;<br>&emsp;</p>
+<p>#安装csvn<br>useradd -m csvn<br>echo 123 |passwd –stdin csvn<br>&emsp;<br>&emsp;<br>cat &gt;&gt; /etc/sudoers &lt;&lt;EOF<br>csvn   ALL=(ALL)   ALL<br>EOF<br>&emsp;<br>&emsp;</p>
+<p>#sudo -E /data/csvn/bin/csvn install<br>mkdir /data/server/csvn<br>cd /usr/local/src/ &amp;&amp; tar -xzvf CollabNetSubversionEdge-5.2.0_linux-x86_64.tar.gz &amp;&amp; mv /usr/local/src/csvn /data/server/<br>&emsp;<br>&emsp;<br><a href="https://imgchr.com/i/mkq5LR" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkq5LR.png" alt="mkq5LR.png"></a><br>执行脚本即出现上图所表示的页面。<br>&emsp;<br>&emsp;<br>在网页上输入上图最后一行，把localhost换为自己的IP，即出现登录页面<br><a href="https://imgchr.com/i/mkqLWD" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkqLWD.png" alt="mkqLWD.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mkOauj" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkOauj.png" alt="mkOauj.png"></a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/28/centos7-csvn/" data-id="cjzbcm82e000220v6yrjhvyje"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos7中csvn的安装及脚本一键安装/">centos7中csvn的安装及脚本一键安装</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/06/28/centos7-PHP-nginx/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            centos7中安装PHP和nginx
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/06/28/centos7-dhcp/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">centos7中安装dhcp服务</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+    </div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/technology.js"></script>
+
+  </div>
+</body>
+</html>
