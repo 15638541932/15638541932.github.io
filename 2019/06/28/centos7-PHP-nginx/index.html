@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    centos7中安装PHP和nginx |
+    
+    Hexo</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/technology.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <section class="outer">
+  <article id="post-centos7-PHP-nginx" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      centos7中安装PHP和nginx
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/06/28/centos7-PHP-nginx/" class="article-date">
+  <time datetime="2019-06-28T07:05:18.000Z" itemprop="datePublished">2019-06-28</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/搭建服务/">搭建服务</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <hr>
+<h1 id="centos7中安装PHP和nginx"><a href="#centos7中安装PHP和nginx" class="headerlink" title="centos7中安装PHP和nginx"></a>centos7中安装PHP和nginx</h1><p>在centos7中安装nginx，有许多依赖的环境<br>gcc，gcc-c++安装，安装 nginx 需要先将官网下载的源码进行编译，编译依赖 gcc 环境，如果没有 gcc 环境，则需要安装：<br>yum  -y  install  gcc  gcc-c++<br>pcre，pcre-devel的安装，PCRE(Perl Compatible Regular Expressions) 是一个Perl库，包括 perl 兼容的正则表达式库。nginx 的 http 模块使用 pcre 来解析正则表达式，所以需要在 linux 上安装 pcre 库，pcre-devel 是使用 pcre 开发的一个二次开发库。nginx也需要此库。<br>yum  -y  install  pcre  pcre-devel<br>zlib，zlib-devel的安装，zlib库提供了很多种压缩和解压缩的方式，nginx使用zlib对http包的内容进行gzip，所以需要在linux上安装zlib库。<br>yum  -y  install  zlib  zlib-devel<br>openssl，OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。nginx不仅支持http协议，还支持https（即在ssl协议上传输http），所以需要在linux安装openssl库。<br>yum  -y install  openssl  openssl-devel<br>&emsp;<br>在centos7中源码安装nginx<br>1，在网上把nginx源码包复制链接，下载下来<br>wget  链接（在/usr/local/src/）<br>tar  -xzvf  nginx-1.12.2.tar.gz<br>&emsp;<br>2，建立nginx用户及用户组<br>useradd  nginx  -s  /sbin/nologin  -M<br>&emsp;<br>3，cd  /usr/local/src/nginx-1.12.2<br>mkdir  -p  /data/server  (用来装服务的目录)<br>&emsp;<br>&emsp;<br>./configure <br>  –prefix=/data/server/nginx <br>  –sbin-path=/data/server/nginx/sbin/nginx <br>  –conf-path=/etc/nginx/nginx.conf <br>  –error-log-path=/var/log/nginx/error.log <br>  –http-log-path=/var/log/nginx/access.log <br>  –pid-path=/var/run/nginx/nginx.pid  <br>  –lock-path=/var/lock/nginx.lock <br>  –user=nginx <br>  –group=nginx <br>  –with-http_ssl_module <br>  –with-http_flv_module <br>  –with-http_stub_status_module <br>  –with-http_gzip_static_module <br>  –http-client-body-temp-path=/var/tmp/nginx/client/ <br>  –http-proxy-temp-path=/var/tmp/nginx/proxy/ <br>  –http-fastcgi-temp-path=/var/tmp/nginx/fcgi/ <br>  –http-uwsgi-temp-path=/var/tmp/nginx/uwsgi <br>  –http-scgi-temp-path=/var/tmp/nginx/scgi <br>  –with-pcre<br>&emsp;<br>make<br>make  install<br>&emsp;<br>&emsp;<br>4，关闭防火墙，selinux<br>systemctl  stop  firewalld<br>setenforce  0</p>
+<p>5，启动nginx服务<br>/data/server/nginx/sbin/nginx<br>但这时并不能成功启动nginx，会报一下错误<br>[emerg] open() “/var/run/nginx/nginx.pid” failed (2: No such file or directory)<br>说的是没有这个文件或者目录<br>找到nginx的配置文件可  find  /  -name  nginx.conf查找到后对nginx的配置文件进行编辑<br>error_log logs/error.log;<br>error_log logs/error.log notice;<br>error_log logs/error.log info;<br>pid logs/nginx.pid;（把#删除）<br>这时还是重启nginx服务还是不会成功，说/data/server/nginx/logs/error.log文件不存在<br>mkdir  -p  /data/server/nginx/logs/<br>touch  /data/server/nginx/logs/error.log<br>&emsp;<br>&emsp;<br>6，查看nginx服务<br>ps  aux |grep nginx<br>netstat  -pantu |grep nginx/80<br>&emsp;<br>以上安装nginx即成功<br><a href="https://imgchr.com/i/mkIBsP" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkIBsP.png" alt="mkIBsP.png"></a><br>访问页面即出现如上图所示页面</p>
+<p>++++++++++++++++++++++++++++++++++</p>
+<p>centos7中安装源码安装PHP<br>&emsp;<br>&emsp;<br>1，首先在安装PHP前需要很多依赖包<br>gcc，gcc-c++，bison，bison-devel，zlib-devel，libmcrypt-devel，mcrypt，mhash-devel， openssl-devel ，libxml2-devel， libcurl-devel， bzip2-devel ，readline-devel ，libedit-devel，sqlite-devel ，gd，gd-devel<br>yum install gcc bison bison-devel zlib-devel libmcrypt-devel mcrypt mhash-devel openssl-devel libxml2-devel libcurl-devel bzip2-devel readline-devel libedit-devel sqlite-devel  gd  gd-devel<br>&emsp;<br>2，在网上找到PHP包的网址复制下来<br>wget  <a href="http://cn2.php.net/distributions/php-5.6.0.tar.xz" target="_blank" rel="noopener">http://cn2.php.net/distributions/php-5.6.0.tar.xz</a><br>tar  -xvf  php-5.6.0.tar<br>&emsp;<br>3，创建用户及用户组<br>groupadd  www<br>useradd  -g  www  -s  /sbin/nologin  -M  www<br>&emsp;<br>4，对PHP进行编译安装<br>cd  /usr/local/src/php-5.6.0<br>&emsp;&emsp;<br> ./configure –prefix=/data/server/php5.6.0 –with-mysqli –with-pdo-mysql –with-iconv-dir –with-freetype-dir –with-jpeg-dir –with-png-dir –with-zlib –with-libxml-dir –enable-simplexml –enable-xml –disable-rpath –enable-bcmath –enable-soap –enable-zip –with-curl –enable-fpm –with-fpm-user=www –with-fpm-group=www –enable-mbstring –enable-sockets –with-gd –with-openssl –with-mhash –enable-opcache –disable-fileinfo<br>&emsp;<br>make<br>make  install<br>5，编辑nginx配置文件<br>cd  /data/server/php5.6.0/etc<br>cp -r /data/server/php5.6.0/etc/php-fpm.conf.default   php-fpm.conf<br>&emsp;<br>cd  /usr/local/src/nginx-1.12.2/conf/  &amp;&amp;  cp  -r  nginx-1.12.2  /etc/nginx/nginx.conf<br>vim  nginx.conf<br>修改以下几点<br><a href="https://imgchr.com/i/mkI5LV" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkI5LV.png" alt="mkI5LV.png"></a><br>把第一行注释去掉 ，nobody改为www<br>表示nginx服务器的权限为www<br>&emsp;<br><a href="https://imgchr.com/i/mkIbi4" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkIbi4.png" alt="mkIbi4.png"></a><br>把45行改为 index       index.html    index.htm     index.php<br>目的是为了追加index.php让nginx服务器默认支持index.php为首页<br>&emsp;<br><a href="https://imgchr.com/i/mkIOzR" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkIOzR.png" alt="mkIOzR.png"></a><br>把注释去掉，改为<br> server {<br>         listen       80;<br>          server_name  localhost;<br>          location ~ .php$ {<br>                  root    html;<br>                  fastcgi_pass    127.0.0.1:9000<br>                  fastcgi_index   index.php;<br>                  fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;<br>                  include         fastcgi_params;<br>   }</p>
+<p>这里面很多都是默认的，root是配置php程序放置的根目录，主要修改的就是fastcgi_param中的/scripts为$document_root<br>&emsp;<br>&emsp;<br>6，重启nginx服务<br>/data/server/nginx/sbin/nginx  -s  stop(关闭nginx)<br>/data/server/nginx/sbin/nginx  (启动nginx)<br>&emsp;<br>7，在/data/server/nginx/html下创建一个  pan.html  (其中pan可以改为其他)<br>vim  pan.php<br><?php
+    phpinfo();
+?><br> &emsp;<br>8，关闭防火墙和SELINUX<br>systemctl  stop  firewalld<br>setenforce  0<br>&emsp;<br>9，打开浏览器，编辑自己IP/pan.php<br>即会出现下面的页面。<br><a href="https://imgchr.com/i/mkoWkD" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkoWkD.png" alt="mkoWkD.png"></a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/28/centos7-PHP-nginx/" data-id="cjzbaqite0006qgv6sk0qm964"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos7中安装PHP和nginx/">centos7中安装PHP和nginx</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/06/28/centos7-dhcp/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            centos7中安装dhcp服务
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/06/21/centos7 -tomcat8/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">centos7下安装tomcat8</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+    </div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/technology.js"></script>
+
+  </div>
+</body>
+</html>
