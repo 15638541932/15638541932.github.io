@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    centos7下安装tomcat8 |
+    
+    Hexo</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/technology.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <section class="outer">
+  <article id="post-centos7 -tomcat8" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      centos7下安装tomcat8
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/06/21/centos7 -tomcat8/" class="article-date">
+  <time datetime="2019-06-21T07:05:18.000Z" itemprop="datePublished">2019-06-21</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/搭建服务/">搭建服务</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <hr>
+<h1 id="centos7下安装tomcat8"><a href="#centos7下安装tomcat8" class="headerlink" title="centos7下安装tomcat8"></a>centos7下安装tomcat8</h1><p>#对jdk,tomcat进行解压<br>mkdir -p /data/server<br>cd /usr/local/src/<br>tar -xzvf apache-tomcat-8.5.40.tar.gz<br>tar -xzvf jdk-8u201-linux-x64.tar.gz<br>mv /usr/local/src/apache-tomcat-8.5.40 /data/server/tomcat8<br>mv /usr/local/src/jdk1.8.0_201 /data/server/jdk1.8</p>
+<p>#对/etc/profile改变环境变量<br>cat &gt;&gt;/etc/profile&lt;&lt;EOF<br>export JAVA_HOME=/data/server/jdk1.8<br>export CLASSPATH=.:JAVA_HOME/lib/dt.jar:$JAVA_HOME/jib/tools.jar<br>export PATH=$PATH:$JAVA_HOME/bin<br>EOF</p>
+<p>#启动tomcat<br>java -version<br>source /etc/profile<br>systemctl stop firewalld.service<br>/data/server/tomcat8/bin/startup.sh<br>i=<code>netstat -pantu |grep 8080|wc -l</code><br>if [ $i -ge 1 ];then<br>echo “tomcat启动成功”<br>else<br>echo “tomcat启动失败”<br>fi<br>&emsp;<br>&emsp;<br>开机自动安装tomcat：<br>1，首先将Tomcat配置为系统服务。vi /usr/lib/systemd/system/tomcat8.service<br>修改脚本中的内容为<br><a href="https://imgchr.com/i/mkfWDS" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkfWDS.png" alt="mkfWDS.png"></a><br>[Unit]<br>Description=Tomcat8<br>After=syslog.target network.target remote-fs.target nss-lookup.target</p>
+<p>[Service]<br>Type=forking<br>Environment=’JAVA_HOME=/data/server/jdk1.8’<br>Environment=’CATALINA_PID=/data/server/tomcat8/bin/tomcat.pid’<br>Environment=’CATALINA_HOME=/data/server/tomcat8/‘<br>Environment=’CATALINA_BASE=/data/server/tomcat8/‘<br>Environment=’CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC’</p>
+<p>ExecStart=/data/server/tomcat8/bin/startup.sh<br>ExecReload=/bin/kill -s HUP $MAINPID<br>ExecStop=/bin/kill -s QUIT $MAINPID<br>PrivateTmp=true</p>
+<p>[Install]<br>WantedBy=multi-user.target<br>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++<br>&emsp;<br>2，将tomcat服务配置开机<br>systemctl  enable  tomcat8：设置tomcat8开机启动<br>systemctl  start  tomcat8：启动tomcat8服务<br>&emsp;<br>&emsp;<br>3，reboot重启虚拟机<br>开机后netstat  -pantu |grep 8080<br>或者ps aux |grep tomcat<br>如果存在即代表tomcat开机自启成功</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/21/centos7 -tomcat8/" data-id="cjzb9edgk00019gv698p5jgzs"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos7下安装tomcat8/">centos7下安装tomcat8</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/06/28/centos7-dhcp/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            centos7中安装dhcp服务
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/06/21/centows7---ELK/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">centows7搭建ELK</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+    </div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/technology.js"></script>
+
+  </div>
+</body>
+</html>
