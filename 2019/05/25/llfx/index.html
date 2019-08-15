@@ -16,10 +16,9 @@
   
   
   
-    <meta name="description" content="根目录下主要目录bin -&gt; usr/bin   binary 二进制sbin -&gt; usr/sbin  管理员才可以执行其中的命令
-l： 链接文件存放可执行文件echo $PATH&emsp;/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/nautilus/.local/bin:/home/n...">
+    <meta name="description" content="流量分析要从哪些方面入手？？？1、被攻击者的IP，攻击者的IP等信息2、都用到了哪些协议3、攻击了什么4、把文件溯源，查看到攻击者在电脑中都做了什么。&emsp;被攻击地址IP：10.0.90.175可以直接使用科莱的矩阵，看到那个图，那个最初发射的点，即是被攻击的IP，双击点进去就可以看到IP地址等详细信息。&emsp;mac地址：DELL_b1:53:faDNS域名解析协议中有MAC地址...">
   
-  <title>根目录下主要目录 [ Hexo ]</title>
+  <title>流量分析（被攻击IP，Mac，用户名 [ Hexo ]</title>
   
   
     <link rel="shortcut icon" href="/hollow.ico">
@@ -39,21 +38,21 @@ l： 链接文件存放可执行文件echo $PATH&emsp;/usr/local/bin:/usr/local/
 <div class="side-navigate hide-area">
   
     <div class="item prev">
-      <a href="/2019/03/26/gml/">
+      <a href="/2019/05/26/ngx_lua——waf/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
-        文件查找类命令
+        搭建ngx_lua_waf
       </div>
     </div>
   
   
     <div class="item next">
-      <a href="/2019/03/25/linux (2)/">
+      <a href="/2019/05/20/centos7-dokuwiki/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
-        shell脚本
+        centos7中安装dokuwiki
       </div>
     </div>
   
@@ -130,9 +129,9 @@ l： 链接文件存放可执行文件echo $PATH&emsp;/usr/local/bin:/usr/local/
   
 
   <article id="post">
-    <h1>根目录下主要目录</h1>
+    <h1>流量分析（被攻击IP，Mac，用户名</h1>
     <p class="page-title-sub">
-      <span id="post-title-date">Created at 2019-03-25</span>
+      <span id="post-title-date">Created at 2019-05-25</span>
       
         <span id="post-title-updated">Updated at 2019-08-15</span>
       
@@ -142,7 +141,7 @@ l： 链接文件存放可执行文件echo $PATH&emsp;/usr/local/bin:/usr/local/
       
         
         
-        <a href="/categories/Linux基础/">Linux基础</a>
+        <a href="/categories/流量分析/">流量分析</a>
       
       </span>
       
@@ -153,23 +152,14 @@ l： 链接文件存放可执行文件echo $PATH&emsp;/usr/local/bin:/usr/local/
       
         
         
-        <a href="/tags/根目录下主要目录/">根目录下主要目录</a>
+        <a href="/tags/流量分析（被攻击IP，Mac，用户名/">流量分析（被攻击IP，Mac，用户名</a>
       
       </span>
       
     </p>
     
     <hr>
-<h1 id="根目录下主要目录"><a href="#根目录下主要目录" class="headerlink" title="根目录下主要目录"></a>根目录下主要目录</h1><p>bin -&gt; usr/bin   binary 二进制<br>sbin -&gt; usr/sbin  管理员才可以执行其中的命令</p>
-<p>l： 链接文件<br>存放可执行文件<br>echo $PATH<br>&emsp;<br>/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/nautilus/.local/bin:/home/nautilus/bin<br>&emsp;<br>终端敲入命令的时候，操作系统去哪些目录去找这些可执行文件<br>&emsp;<br>环境变量 ：  以键值对形式存在<br>HISTSIZE=1000  history可以存储的条数<br>&emsp;<br>/boot ：  与操作系统内核启动相关的文件<br>    grub grub2<br>    vmlinuz-3.10.0-957.el7.x86_64<br>&emsp;<br>&emsp;<br>/dev：  device  存放设备文件的目录<br>&emsp;<br>    c ： character ： 字符设备文件<br>    b  ：  block   ： 块设备文件<br>&emsp;<br>/etc  ： 配置文件<br>&emsp;<br>cat /etc/passwd<br>nautilus:x:1000:1000:nautilus:/home/nautilus:/bin/bash<br>用户名：密码：uid（用户id）：gid（组id）：描述信息：家目录：shell类型<br>普通用户uid默认从1000开始<br>&emsp;<br>/etc/shadow : 密码经过加密处理<br>/etc/fstab  ： file system  分区相关<br>&emsp;<br>家目录：<br>    root  ： /root<br>    普通用户 ：  /home/用户名<br>        cd ~<br>        cd<br>&emsp;<br>lib -&gt; usr/lib<br>lib64 -&gt; usr/lib64<br>存放库文件 ：<br>    可执行程序运行的时候，调用的程序<br>    库也是可执行文件，但是没有程序启动的入口，需要被调用<br>&emsp;<br>    shared object ： 共享对象  .so<br>    windows :   .dll :动态链接库<br>&emsp;<br>media： 媒体<br>mnt ： mount  挂载<br>    u盘  CD 挂载相关<br>&emsp;<br>opt  ： options  ： 选项 可选的<br>        软件<br>&emsp;<br>proc  ： 进程相关的信息   process<br>    程序运行起来叫进程<br>    以数字命名的目录，数字是进程号<br>&emsp;<br>    top ： 动态查看进程信息<br>    ps  ： 静态<br>        ps aux  : 查看全部进程详细信息（BSD）<br>        ps -ef  ：  全部  （标准风格）<br>&emsp;<br>&emsp;<br>    top：<br>      PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+<br>&emsp;<br>      进程号  用户名   priority：优先级<br>      nice ： 调整优先级<br>      virt ： 虚拟内存<br>      res  ： 常驻内存<br>      cpu  mem ： 占用率<br>      Time+ ： 运行总时间<br>      Command  ： 运行的命令/程序<br>&emsp;<br>&emsp;<br>      时间片： timeslice<br>      100ms<br>&emsp;<br>      调度器： 决定下一个被调度的进程<br>      完全公平调度器<br>&emsp;<br>      priority ： 优先级<br>      进程抢占 ：<br>      nice  ： 让步<br>&emsp;<br>      进程类型 调度策略<br>&emsp;<br>      交互进程 ：<br>&emsp;<br>&emsp;<br>     pstree  ： 查看进程树<br>     每个进程都有一个父进程<br>     pid ： 进程id    process<br>     ppid ： 父进程id   parent<br>&emsp;<br>     systemd ： centos7  起始进程<br>&emsp;<br>     centos6  ：  init 起始进程<br>&emsp;<br>     free -m： 查看物理内存使用情况<br>     free -h：<br>     total        used        free      shared  buff/cache   available<br>&emsp;<br>     swap：  交换空间<br>         物理内存不够用的时候，会将不常用的内存内容复制到swap中<br>&emsp;<br>         不紧张的时候，再换回来<br>&emsp;<br>         swap大小： 物理内存1-2倍<br>&emsp;<br>    vmstat ： 虚拟内存情况<br>            virtual memory  statistics</p>
-<p>&emsp;<br>z7emsp;<br>    查看命令帮助文档： man    info<br>    man  ls<br>    info  vmstat<br>&emsp;<br>    –help<br>&emsp;</p>
-<pre><code>proc  ： 虚拟的文件系统 
-    cat /proc/meminfo </code></pre><p>&emsp;<br>        不实实在在存在<br>        没有在磁盘当中<br>&emsp;<br>run ： 存放系统运行时相关文件<br>&emsp;<br>srv  ： service  服务程序<br>s<br>&emsp;<br>sys  ： 存放硬件相关的信息，与proc类似<br>        虚拟文件系统  驱动程序相关 </p>
-<p>&emsp;<br>tmp  ： 存放临时文件    </p>
-<p>usr  ： 安装软件的目录<br>    /usr/bin<br>    /usr/include : 存放头文件<br>    /usr/lib     : 库文件<br>    /usr/local   :   以后经常使用<br>                    安装软件<br>&emsp;<br>    /usr/local/src  : 存放源码的目录</p>
-<p>&emsp;<br>    .h  : 头文件   header<br>    .c  : c源码文件  </p>
-<pre><code>c  </code></pre><p>&emsp;<br>    java        python<br>    perl    ruby    shell  </p>
-<p>/var  ： 存放系统中经常改变的文件<br>        /var/log<br>&emsp;<br>        dmesg ： 查看启动信息</p>
+<p>流量分析要从哪些方面入手？？？<br>1、被攻击者的IP，攻击者的IP等信息<br>2、都用到了哪些协议<br>3、攻击了什么<br>4、把文件溯源，查看到攻击者在电脑中都做了什么。<br>&emsp;<br>被攻击地址IP：10.0.90.175<br>可以直接使用科莱的矩阵，看到那个图，那个最初发射的点，即是被攻击的IP，双击点进去就可以看到IP地址等详细信息。<br><a href="https://imgchr.com/i/mEdhbq" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEdhbq.png" alt="mEdhbq.png"></a><br>&emsp;<br>mac地址：DELL_b1:53:fa<br>DNS域名解析协议中有MAC地址，所以在搜索栏中搜索dns，即可找到mac地址，选址source即可，这个就是被攻击的Mac地址。<br><a href="https://imgchr.com/i/mEd7PU" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEd7PU.png" alt="mEd7PU.png"></a><br>&emsp;<br>主机名：在搜索栏搜索kerberos，点开下面的<br>kerberos选项，找到cname点开即可找到主机名。<br>被攻击的主机名是：seoul-4a67-pc<br><a href="https://imgchr.com/i/mEwPRe" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEwPRe.png" alt="mEwPRe.png"></a><br>后面有PC$就是被攻击的用户名<br>&emsp;<br>&emsp;<br>被攻击的Windows用户帐户名：<br>在搜索栏中搜索kerberos.CNameString<br>而后面是REP的，是回复的包，里面有Windows用户账户名（多换几个就可以了）<br><a href="https://imgchr.com/i/mEwEqI" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEwEqI.png" alt="mEwEqI.png"></a><br>&emsp;<br>&emsp;<br>想要查看一个文件有没有病毒，可以用Wireshark工具点击文件，选择导出并且要求是http格式，然后存储为以.pcap结尾的，再在网页中打开VirusTotal<br><a href="https://www.virustotal.com/#/home/upload" target="_blank" rel="noopener">https://www.virustotal.com/#/home/upload</a><br>把导出文件拖进去即可。查看问价的哈希可在导出的文件中的属性中查看。<br>&emsp;<br>&emsp;<br>1、首先在分析一个包时，需要先看一下包中用到的协议<br>可以使用科莱，查看协议，如下图<br><a href="https://imgchr.com/i/mE0ltK" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mE0ltK.png" alt="mE0ltK.png"></a><br>由图可知，经过物理层和数据链路层以及TCP层，而重点是在TCP层，TCP层是传输控制协议，是传输层的通信协议。<br>&emsp;<br>&emsp;<br>2、查看被侵入的主机的IP以及攻击者的IP地址<br>可以利用科莱工具中的矩阵<br><a href="https://imgchr.com/i/mE0U0I" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mE0U0I.png" alt="mE0U0I.png"></a><br>可点开原点，可查看到下图页面<br>&emsp;<br>&emsp;<br><a href="https://imgchr.com/i/mE06Xj" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mE06Xj.png" alt="mE06Xj.png"></a><br>其中源端口后面对应的就是被攻击者的IP地址。<br>然后分析TCP流量包，以及HTTP，看到被攻击者和攻击者联系频繁，可以判断这个是攻击者的IP地址，攻击者的IP地址为204.2.193.137<br><a href="https://imgchr.com/i/mE02Bn" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mE02Bn.png" alt="mE02Bn.png"></a><br>&emsp;<br>&emsp;<br><a href="https://imgchr.com/i/mE04hT" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mE04hT.png" alt="mE04hT.png"></a><br>&emsp;<br>&emsp;<br>3、因为FTP在此包中占据的比例较大，所以可以分析一下FTP，<br>在搜索栏中搜索ftp，出现下图可视图<br><a href="https://imgchr.com/i/mEBS3D" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEBS3D.png" alt="mEBS3D.png"></a><br>可看到攻击者在被攻击者的电脑上的操作，访问了/目录，并且返回码是250（表示成功访问）。<br><a href="https://imgchr.com/i/mEBFHI" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEBFHI.png" alt="mEBFHI.png"></a><br>在其中有一条是访问jpeg也就是照片，跟踪一下TCP流<br><a href="https://imgchr.com/i/mEBMuj" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEBMuj.png" alt="mEBMuj.png"></a><br>可看到攻击者的一系列操作，我们可以看到他的一系列操作。<br>&emsp;<br>&emsp;<br>4、使用的是FTP文件传输协议，可以查看一下ftp-data（ftp-data就是传输的内容）<br><a href="https://imgchr.com/i/mEBlbn" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEBlbn.png" alt="mEBlbn.png"></a><br>可以从中看到攻击者有图片的下载<br>我们点数据，进行追踪流，出现了下图页面<br><a href="https://imgchr.com/i/mEBdKJ" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEBdKJ.png" alt="mEBdKJ.png"></a><br>把下面的显示保存数据的方式有ASCII换为原始数据，并save as（保存）即可。【注：保存的图片名一定是 .png结尾的】<br>&emsp;<br>&emsp;<br>5、打开刚才保存的原始数据，打开就是一张图片，给溯源回来了。<br><a href="https://imgchr.com/i/mEBWKH" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEBWKH.png" alt="mEBWKH.png"></a></p>
 
   </article>
   <div class="random-toc-area">
@@ -177,20 +167,20 @@ l： 链接文件存放可执行文件echo $PATH&emsp;/usr/local/bin:/usr/local/
   <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
   <div class="random-toc">
     <h2>Table of Content</h2>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#根目录下主要目录"><span class="toc-text">根目录下主要目录</span></a></li></ol>
+    
   </div>
 </div>
 
   
 <nav id="pagination">
   
-    <a href="/2019/03/26/gml/" class="prev">&larr; Prev post 文件查找类命令</a>
+    <a href="/2019/05/26/ngx_lua——waf/" class="prev">&larr; Prev post 搭建ngx_lua_waf</a>
   
 
   
 
   
-    <a href="/2019/03/25/linux (2)/" class="next">Next post shell脚本 &rarr;</a>
+    <a href="/2019/05/20/centos7-dokuwiki/" class="next">Next post centos7中安装dokuwiki &rarr;</a>
   
 </nav>
 

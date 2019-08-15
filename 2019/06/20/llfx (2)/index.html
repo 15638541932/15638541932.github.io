@@ -16,10 +16,9 @@
   
   
   
-    <meta name="description" content="根目录下主要目录bin -&gt; usr/bin   binary 二进制sbin -&gt; usr/sbin  管理员才可以执行其中的命令
-l： 链接文件存放可执行文件echo $PATH&emsp;/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/nautilus/.local/bin:/home/n...">
+    <meta name="description" content="在分析之前，先用Wireshark工具进行统计，统计结果如下图所示&emsp;&emsp;由以上统计可知，一共有7791个流量，而协议重要的就是TCP协议，以及DATA数据的传输。&emsp;分析流量包：2018-02-13-traffic-analysis-exercise.pcap，                                                     ...">
   
-  <title>根目录下主要目录 [ Hexo ]</title>
+  <title>日常流量分析 [ Hexo ]</title>
   
   
     <link rel="shortcut icon" href="/hollow.ico">
@@ -39,21 +38,21 @@ l： 链接文件存放可执行文件echo $PATH&emsp;/usr/local/bin:/usr/local/
 <div class="side-navigate hide-area">
   
     <div class="item prev">
-      <a href="/2019/03/26/gml/">
+      <a href="/2019/06/21/centos7 -tomcat8/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
-        文件查找类命令
+        centos7下安装tomcat8
       </div>
     </div>
   
   
     <div class="item next">
-      <a href="/2019/03/25/linux (2)/">
+      <a href="/2019/06/14/centos7-dhcp/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
-        shell脚本
+        centos7中安装dhcp服务
       </div>
     </div>
   
@@ -130,9 +129,9 @@ l： 链接文件存放可执行文件echo $PATH&emsp;/usr/local/bin:/usr/local/
   
 
   <article id="post">
-    <h1>根目录下主要目录</h1>
+    <h1>日常流量分析</h1>
     <p class="page-title-sub">
-      <span id="post-title-date">Created at 2019-03-25</span>
+      <span id="post-title-date">Created at 2019-06-20</span>
       
         <span id="post-title-updated">Updated at 2019-08-15</span>
       
@@ -142,7 +141,7 @@ l： 链接文件存放可执行文件echo $PATH&emsp;/usr/local/bin:/usr/local/
       
         
         
-        <a href="/categories/Linux基础/">Linux基础</a>
+        <a href="/categories/流量分析/">流量分析</a>
       
       </span>
       
@@ -153,23 +152,14 @@ l： 链接文件存放可执行文件echo $PATH&emsp;/usr/local/bin:/usr/local/
       
         
         
-        <a href="/tags/根目录下主要目录/">根目录下主要目录</a>
+        <a href="/tags/日常流量分析/">日常流量分析</a>
       
       </span>
       
     </p>
     
     <hr>
-<h1 id="根目录下主要目录"><a href="#根目录下主要目录" class="headerlink" title="根目录下主要目录"></a>根目录下主要目录</h1><p>bin -&gt; usr/bin   binary 二进制<br>sbin -&gt; usr/sbin  管理员才可以执行其中的命令</p>
-<p>l： 链接文件<br>存放可执行文件<br>echo $PATH<br>&emsp;<br>/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/nautilus/.local/bin:/home/nautilus/bin<br>&emsp;<br>终端敲入命令的时候，操作系统去哪些目录去找这些可执行文件<br>&emsp;<br>环境变量 ：  以键值对形式存在<br>HISTSIZE=1000  history可以存储的条数<br>&emsp;<br>/boot ：  与操作系统内核启动相关的文件<br>    grub grub2<br>    vmlinuz-3.10.0-957.el7.x86_64<br>&emsp;<br>&emsp;<br>/dev：  device  存放设备文件的目录<br>&emsp;<br>    c ： character ： 字符设备文件<br>    b  ：  block   ： 块设备文件<br>&emsp;<br>/etc  ： 配置文件<br>&emsp;<br>cat /etc/passwd<br>nautilus:x:1000:1000:nautilus:/home/nautilus:/bin/bash<br>用户名：密码：uid（用户id）：gid（组id）：描述信息：家目录：shell类型<br>普通用户uid默认从1000开始<br>&emsp;<br>/etc/shadow : 密码经过加密处理<br>/etc/fstab  ： file system  分区相关<br>&emsp;<br>家目录：<br>    root  ： /root<br>    普通用户 ：  /home/用户名<br>        cd ~<br>        cd<br>&emsp;<br>lib -&gt; usr/lib<br>lib64 -&gt; usr/lib64<br>存放库文件 ：<br>    可执行程序运行的时候，调用的程序<br>    库也是可执行文件，但是没有程序启动的入口，需要被调用<br>&emsp;<br>    shared object ： 共享对象  .so<br>    windows :   .dll :动态链接库<br>&emsp;<br>media： 媒体<br>mnt ： mount  挂载<br>    u盘  CD 挂载相关<br>&emsp;<br>opt  ： options  ： 选项 可选的<br>        软件<br>&emsp;<br>proc  ： 进程相关的信息   process<br>    程序运行起来叫进程<br>    以数字命名的目录，数字是进程号<br>&emsp;<br>    top ： 动态查看进程信息<br>    ps  ： 静态<br>        ps aux  : 查看全部进程详细信息（BSD）<br>        ps -ef  ：  全部  （标准风格）<br>&emsp;<br>&emsp;<br>    top：<br>      PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+<br>&emsp;<br>      进程号  用户名   priority：优先级<br>      nice ： 调整优先级<br>      virt ： 虚拟内存<br>      res  ： 常驻内存<br>      cpu  mem ： 占用率<br>      Time+ ： 运行总时间<br>      Command  ： 运行的命令/程序<br>&emsp;<br>&emsp;<br>      时间片： timeslice<br>      100ms<br>&emsp;<br>      调度器： 决定下一个被调度的进程<br>      完全公平调度器<br>&emsp;<br>      priority ： 优先级<br>      进程抢占 ：<br>      nice  ： 让步<br>&emsp;<br>      进程类型 调度策略<br>&emsp;<br>      交互进程 ：<br>&emsp;<br>&emsp;<br>     pstree  ： 查看进程树<br>     每个进程都有一个父进程<br>     pid ： 进程id    process<br>     ppid ： 父进程id   parent<br>&emsp;<br>     systemd ： centos7  起始进程<br>&emsp;<br>     centos6  ：  init 起始进程<br>&emsp;<br>     free -m： 查看物理内存使用情况<br>     free -h：<br>     total        used        free      shared  buff/cache   available<br>&emsp;<br>     swap：  交换空间<br>         物理内存不够用的时候，会将不常用的内存内容复制到swap中<br>&emsp;<br>         不紧张的时候，再换回来<br>&emsp;<br>         swap大小： 物理内存1-2倍<br>&emsp;<br>    vmstat ： 虚拟内存情况<br>            virtual memory  statistics</p>
-<p>&emsp;<br>z7emsp;<br>    查看命令帮助文档： man    info<br>    man  ls<br>    info  vmstat<br>&emsp;<br>    –help<br>&emsp;</p>
-<pre><code>proc  ： 虚拟的文件系统 
-    cat /proc/meminfo </code></pre><p>&emsp;<br>        不实实在在存在<br>        没有在磁盘当中<br>&emsp;<br>run ： 存放系统运行时相关文件<br>&emsp;<br>srv  ： service  服务程序<br>s<br>&emsp;<br>sys  ： 存放硬件相关的信息，与proc类似<br>        虚拟文件系统  驱动程序相关 </p>
-<p>&emsp;<br>tmp  ： 存放临时文件    </p>
-<p>usr  ： 安装软件的目录<br>    /usr/bin<br>    /usr/include : 存放头文件<br>    /usr/lib     : 库文件<br>    /usr/local   :   以后经常使用<br>                    安装软件<br>&emsp;<br>    /usr/local/src  : 存放源码的目录</p>
-<p>&emsp;<br>    .h  : 头文件   header<br>    .c  : c源码文件  </p>
-<pre><code>c  </code></pre><p>&emsp;<br>    java        python<br>    perl    ruby    shell  </p>
-<p>/var  ： 存放系统中经常改变的文件<br>        /var/log<br>&emsp;<br>        dmesg ： 查看启动信息</p>
+<p>在分析之前，先用Wireshark工具进行统计，统计结果如下图所示<br><a href="https://imgchr.com/i/mEDqFx" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEDqFx.png" alt="mEDqFx.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mEDx6e" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEDx6e.png" alt="mEDx6e.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mErFtP" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mErFtP.png" alt="mErFtP.png"></a><br>由以上统计可知，一共有7791个流量，而协议重要的就是TCP协议，以及DATA数据的传输。<br>&emsp;<br>分析流量包：2018-02-13-traffic-analysis-exercise.pcap，                                                                                                  问题：以UTC（GMT）表示的恶意活动的日期和时间。<br>在Wireshark中搜索ntp，可查看到时间和日期<br><a href="https://imgchr.com/i/mEru0s" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEru0s.png" alt="mEru0s.png"></a><br>所以时间就是最后一行的传输时间，<br>&emsp;<br>受影响的Windows主机的IP地址。<br>&emsp;<br><a href="https://imgchr.com/i/mErUB9" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mErUB9.png" alt="mErUB9.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mErBh6" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mErBh6.png" alt="mErBh6.png"></a><br>通过使用Wireshark查看流量以及科来上的HTTP流量分析，可看到基本上都是和10.23.1.205有关的。一般收发最多的IP就是受影响的IP地址。<br>故受影响的Windows主机的IP地址为10.23.1.205<br>&emsp;<br>受影响的Windows主机的Mac地址。<br>有上面已分析出受影响的Windows主机的IP地址，在科来中的诊断中可看到对应IP地址与MAC地址相对应的关系<br><a href="https://imgchr.com/i/mErI9f" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mErI9f.png" alt="mErI9f.png"></a><br>因此，受影响的Windows主机的Mac地址是00:16:17:F9:42:E5<br>&emsp;<br>受影响的Windows主机的主机名。<br>在Wireshark中搜索kerberos.CNameString<br><a href="https://imgchr.com/i/mErTgS" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mErTgS.png" alt="mErTgS.png"></a><br>所以受影响的Windows主机的用户名就是reginald-pc<br>&emsp;<br>受影响的Windows主机上的用户帐户名称。<br>还是在Wireshark中搜索kerberos.CNameString，多找几个<br><a href="https://imgchr.com/i/mErqBj" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mErqBj.png" alt="mErqBj.png"></a><br>Windows主机的用户名和Windows主机上的用户名的名称的区别就是在于：Windows主机的用户名在用户名后有$。<br>故Windows主机上的用户名的名称是reginald.farnsworth<br>&emsp;<br>可能涉及哪些恶意软件。<br><a href="https://imgchr.com/i/mEsPu4" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEsPu4.png" alt="mEsPu4.png"></a><br>在Wireshark中搜索tcp可看出，基本上都是ACK，可以初步判断为是恶意扫描</p>
 
   </article>
   <div class="random-toc-area">
@@ -177,20 +167,20 @@ l： 链接文件存放可执行文件echo $PATH&emsp;/usr/local/bin:/usr/local/
   <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
   <div class="random-toc">
     <h2>Table of Content</h2>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#根目录下主要目录"><span class="toc-text">根目录下主要目录</span></a></li></ol>
+    
   </div>
 </div>
 
   
 <nav id="pagination">
   
-    <a href="/2019/03/26/gml/" class="prev">&larr; Prev post 文件查找类命令</a>
+    <a href="/2019/06/21/centos7 -tomcat8/" class="prev">&larr; Prev post centos7下安装tomcat8</a>
   
 
   
 
   
-    <a href="/2019/03/25/linux (2)/" class="next">Next post shell脚本 &rarr;</a>
+    <a href="/2019/06/14/centos7-dhcp/" class="next">Next post centos7中安装dhcp服务 &rarr;</a>
   
 </nav>
 
