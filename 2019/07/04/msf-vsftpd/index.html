@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    msf远程溢出(21,139,445端口)vsftpd漏洞 |
+    
+    Hexo</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/technology.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <section class="outer">
+  <article id="post-msf-vsftpd" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      msf远程溢出(21,139,445端口)vsftpd漏洞
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/07/04/msf-vsftpd/" class="article-date">
+  <time datetime="2019-07-04T10:05:18.000Z" itemprop="datePublished">2019-07-04</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/漏洞渗透/">漏洞渗透</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <hr>
+<h1 id="msf远程溢出-21端口-vsftpd漏洞"><a href="#msf远程溢出-21端口-vsftpd漏洞" class="headerlink" title="msf远程溢出(21端口)vsftpd漏洞"></a>msf远程溢出(21端口)vsftpd漏洞</h1><p>vsftpd version 2到2.3.4存在后门漏洞，攻击者可以通过该漏洞获取root权限<br>search vsftpd<br><a href="https://imgchr.com/i/mEmC8S" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEmC8S.png" alt="mEmC8S.png"></a><br>然后添加攻击模块<br>&emsp;<br><a href="https://imgchr.com/i/mEmEbn" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEmEbn.png" alt="mEmEbn.png"></a><br>开始执行<br><a href="https://imgchr.com/i/mEmM2F" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEmM2F.png" alt="mEmM2F.png"></a><br>可以看到已经攻击成功，以及拿到了root权限<br>&emsp;<br>&emsp;<br>Samba服务 139，445<br>添加查询模块<br><a href="https://imgchr.com/i/mEmWRS" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEmWRS.png" alt="mEmWRS.png"></a><br>添加攻击ip<br><a href="https://imgchr.com/i/mEmLGT" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEmLGT.png" alt="mEmLGT.png"></a><br>运行<br><a href="https://imgchr.com/i/mEmzL9" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEmzL9.png" alt="mEmzL9.png"></a><br>添加攻击模块<br><a href="https://imgchr.com/i/mEnNes" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEnNes.png" alt="mEnNes.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mEn2wR" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEn2wR.png" alt="mEn2wR.png"></a><br>添加攻击IP<br><a href="https://imgchr.com/i/mEup6g" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEup6g.png" alt="mEup6g.png"></a><br>添加payload<br><a href="https://imgchr.com/i/mEuncF" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEuncF.png" alt="mEuncF.png"></a><br>添加自己ip<br><a href="https://imgchr.com/i/mEuNcD" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEuNcD.png" alt="mEuNcD.png"></a><br>开始攻击<br><a href="https://imgchr.com/i/mEurNt" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEurNt.png" alt="mEurNt.png"></a><br>可以看出以及拿到root权限<br><a href="https://imgchr.com/i/mEuc38" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEuc38.png" alt="mEuc38.png"></a><br>端口改为445，还用上面的模块<br><a href="https://imgchr.com/i/mEuH3T" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEuH3T.png" alt="mEuH3T.png"></a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/04/msf-vsftpd/" data-id="cjzcd8t9h000ky0v6xgusob4m"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/msf远程溢出-21端口-vsftpd漏洞/">msf远程溢出(21端口)vsftpd漏洞</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/07/04/stlx/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            渗透测试练习
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/07/03/appweb/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Appweb(CVE-2018-8715)漏洞复现</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+    </div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/technology.js"></script>
+
+  </div>
+</body>
+</html>
