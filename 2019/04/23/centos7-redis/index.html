@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    在centos7中安装redis  HA（2个主2个从） |
+    
+    Hexo</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/technology.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <section class="outer">
+  <article id="post-centos7-redis" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      在centos7中安装redis  HA（2个主2个从）
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/04/23/centos7-redis/" class="article-date">
+  <time datetime="2019-04-23T07:05:18.000Z" itemprop="datePublished">2019-04-23</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/搭建服务/">搭建服务</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <hr>
+<h1 id="在centos7中安装redis-HA（2个主2个从）"><a href="#在centos7中安装redis-HA（2个主2个从）" class="headerlink" title="在centos7中安装redis  HA（2个主2个从）"></a>在centos7中安装redis  HA（2个主2个从）</h1><p>1，首先下载redis的依赖包 gcc，gcc-c++，<br>&emsp;<br>2，下载redis的包<br>cd  /usr/local/src/<br>wget  ….<br>tar  -xzvf  redis-5.0.5.tar.gz<br>cd  redis-5.0.5  &amp;&amp;  make  &amp;&amp;  make PREFIX=/data/server/redis install  (把redis安装到/data/server/下)[注：必须是大写的PREFIX]<br>&emsp;<br>3，cd  /data/server/redis<br>redis-server（启动redis）或者  /data/server/redis/bin/redis-server<br><a href="https://imgchr.com/i/mAGs2t" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAGs2t.png" alt="mAGs2t.png"></a><br>&emsp;<br>出现这个页面，但是需要按ctrl  C  退出，所以可以选择把这个redis放到后台运行。<br>&emsp;<br>&emsp;<br>4，安装过后的redis目录下只有bin目录，很多文件都在/usr/local/src/redis-5.0.5下，需要手动拷贝过来。<br>为了方便管理，将redis文件中的conf配置文件和一些常用的命令移动到/data/server/redis下<br>先创建mkdir  -p  /data/server/redis/etc<br>再 cp  -r  /usr/local/src/redis-5.0.5/redis.conf  /data/server/redis/etc/   （把redis的配置文件拷贝过来）<br>&emsp;<br>5，修改redis的配置文件<br>vim  /data/server/redis/etc/redis.conf:q<br><a href="https://imgchr.com/i/mAGfaQ" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAGfaQ.png" alt="mAGfaQ.png"></a><br>把no改为yes<br>目的是为了让redis在后台运行<br>&emsp;<br>6，启动redis服务<br>redis-cli -h 127.0.0.1 -p 6379 shutdown(关闭redis)也可通过杀进程的方式pkill  -9  redis-server<br>/data/server/redis/bin/redis-server /data/server/redis/etc/redis.conf<br><a href="https://imgchr.com/i/mAGo2q" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAGo2q.png" alt="mAGo2q.png"></a><br>&emsp;<br>开启成功，可通过netstat -pantu |grep 6379(6379是redis服务的默认端口号)<br>&emsp;<br>&emsp;<br>7，以上的操作已经成功开启redis服务，下面就是设置redis集群HA模式，两主两从<br>（当主挂掉的时候，哨兵会通过选举来选出老大；只有两个主才可以被选举作为老大。主有所有权限，从只有读的权限）<br>vim  /data/server/redis/etc/redis.conf<br>把daemonize no 改为daemonize  yes<br>监听的端口  port  6379<br>绑定监听的IP地址 bind 127.0.0.1(主需要把ip换为想要监听的从的IP，从不用改)<br>在文件中加上 slaveof 192.168.199.191 6379   （即选认那个IP和端口作为主，若此机将作为主即可不添加这一项）  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/23/centos7-redis/" data-id="cjzc0mi7p0000mkv6lym8ic6r"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/在centos7中安装redis-HA（2个主2个从）/">在centos7中安装redis  HA（2个主2个从）</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/05/20/ngx_lua——waf/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            搭建ngx_lua_waf
+          
+        </div>
+      </a>
+    
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+    </div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/technology.js"></script>
+
+  </div>
+</body>
+</html>
