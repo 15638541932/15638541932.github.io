@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    shell脚本 |
+    
+    Hexo</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/technology.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <section class="outer">
+  <article id="post-linux (2)" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      shell脚本
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/03/25/linux (2)/" class="article-date">
+  <time datetime="2019-03-25T10:05:18.000Z" itemprop="datePublished">2019-03-25</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux基础/">Linux基础</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <hr>
+<h1 id="shell脚本"><a href="#shell脚本" class="headerlink" title="shell脚本"></a>shell脚本</h1><p>1.shell特性 ： </p>
+<pre><code>shell ： GUI  graphical user interface  图形用户界面
+         CLI  command line interface  命令行界面 
+
+shell 类型： bash  sh  csh tcsh zsh</code></pre><p>bash特点： </p>
+<pre><code>1.命令补全 ： tab 
+        命令补全： PATH 
+        路径补全:  
+
+2. 命令别名： 
+        alias  
+        alias mm=&apos;命令&apos;
+
+    取消别名： unalias 
+
+3. 光标的快速移动
+    ctrl + A  ： 快速移到行首
+    ctrl + E  ： 快速移到行尾
+    ctrl + U  ： 光标前面内容删除
+    ctrl + K  ： 光标后面内容删除
+
+    ctrl + 左右键  ： 按单词去跳 </code></pre><p>shell脚本：   .sh</p>
+<p>#!/bin/bash   (第一行)<br>脚本默认解释器 /bin/bash</p>
+<p>执行方式：<br>    bash + 脚本名字<br>    ./test.sh    (加上执行权限)<br>            chmod  +x  test.sh</p>
+<p>静态编译型语言：  c<br>            编译器  二进制可执行文件<br>            看不到源码<br>脚本语言 ： python perl   解释器 能看到源码</p>
+<p>shell传参 ：<br>$0 :  程序名<br>$1 :  第一个参数<br>$2 :  第二个参数 </p>
+<p>shell变量的命名： </p>
+<p>a=100 </p>
+<pre><code>1. 数字字母下划线组成，不能以数字开头
+    123a=100（X）
+    ？abc=100 （X）
+
+    ab_123 对的示范
+
+2. 变量名和等号之间不能有空格 
+    abc = 100(X)
+
+    abc=100
+
+3. 不能用bash的特殊字 
+    help  </code></pre><p>使用变量：  $变量名</p>
+<p>let  ： 数学运算 </p>
+<p>let result=a+b</p>
+<p>test  : 判断<br>        -eq  ： 相等  equal<br>        -lt  ： 小于  less than<br>        -le  :  小于等于  less equal<br>        -gt  ：  大于    greater than<br>        -ge  :  大于等于  greater equal<br>        -ne  ：  不等于   not equal</p>
+<p>if   条件; then<br>执行命令<br>else<br>执行其他命令<br>fi</p>
+<p>if  条件<br>then<br>执行命令<br>elif  条件<br>执行<br>else<br>执行<br>fi</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/25/linux (2)/" data-id="cjzcf4msj000r3ov6zw812004"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell脚本/">shell脚本</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/03/25/linux/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            根目录下主要目录
+          
+        </div>
+      </a>
+    
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+    </div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/technology.js"></script>
+
+  </div>
+</body>
+</html>
