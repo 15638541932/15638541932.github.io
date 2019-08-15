@@ -1,8 +1,6 @@
 
 
 
-  
-
 
 
 
@@ -18,9 +16,21 @@
   
   
   
-    <meta name="description" content>
+    <meta name="description" content="1.正则表达式  
+grep   
+    -o  :   只输出匹配到的内容
+    -i  ：  忽略大小写
+    -n  ：  输出行号  
+
+    -v   ： 取反 显示匹配不到的内容
+
+
+cat /etc/passwd | grep root -n
+
+ls | grep -n test正则表达式：  regular expression            regex  
+...">
   
-  <title>Tag: 日常流量分析3 [ Hexo ]</title>
+  <title>good good stary [ Hexo ]</title>
   
   
     <link rel="shortcut icon" href="/hollow.ico">
@@ -39,6 +49,24 @@
 <body>
 <div class="side-navigate hide-area">
   
+    <div class="item prev">
+      <a href="/2019/08/15/linux (4)/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/2019/07/05/DD/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        Drupal Drupalgeddon 2 远程代码执行漏洞
+      </div>
+    </div>
   
 </div>
 <div id="outer-container" class="hide-area">
@@ -71,7 +99,7 @@
           </li>
         
           
-            <li class="active">
+            <li>
           
             <a href="/tags">Tags</a>
             
@@ -110,229 +138,127 @@
     <div id="content-inner">
       
       
-  <div id="tag">
-    <h1>日常流量分析3</h1>
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-          
-        
-      
-      
-      <div class="post-title-item">
   
-  <a href="/2019/06/30/llfx (4)/">
-  
-    日常流量分析3
-  
-  </a>
-  <p class="page-title-sub">
-    <span id="post-title-date">6-30</span>
+
+  <article id="post">
+    <h1>No Title</h1>
+    <p class="page-title-sub">
+      <span id="post-title-date">Created at 2019-08-15</span>
+      
+        <span id="post-title-updated">Updated at 2019-08-15</span>
+      
+      
+      
+    </p>
     
-    <span id="post-title-categories">Category
-    
-    
-      
-      
-      <a href="/categories/流量分析/">流量分析</a>
-    
-    </span>
-    
-    
-    <span id="post-title-tags">
-    Tag
-    
-    
-      
-      
-      <a href="/tags/日常流量分析3/">日常流量分析3</a>
-    
-    </span>
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
+    <p>1.正则表达式  </p>
+<pre><code>grep   
+    -o  :   只输出匹配到的内容
+    -i  ：  忽略大小写
+    -n  ：  输出行号  
+
+    -v   ： 取反 显示匹配不到的内容
+
+
+cat /etc/passwd | grep root -n
+
+ls | grep -n test</code></pre><p>正则表达式：  regular expression<br>            regex  </p>
+<pre><code>匹配文本   
+
+    .    : 指代任一字符
+    cat /etc/passwd | grep &quot;r..t&quot;
+
+
+    cat /etc/passwd | grep &quot;r.*t&quot;
+    * : 前面的字符任意次 
+
+    []     : 中括号 或者的关系 
+                匹配到任意一个就行
+
+    [abc]  :  a或b或c
+    [a-z]  : 
+    [0-9]  :
+    [A-Z]  : 
+
+    cat /etc/passwd | grep &quot;[0-9]&quot;
+
+    [:digit:] : 匹配数字
+    [:alpha:] : 匹配字母
+    [:alnum:] :  字母数字 
+    [:space:] : 空格
+    [:punct:] :  标点符号 
+    [:lower:] :  小写字母
+    [:upper:] :  大写字母 
+
+cat /etc/passwd | grep &quot;[[:upper:]]&quot;
+
+cat /etc/passwd | grep &quot;[[:alpha:]]\+&quot;
+
+匹配次数 : 
+    *:   匹配前面的字符任意次 
+    .*:   任意字符任意次  
+
+    \+  :  匹配前面字符一次或多次
+    \?  :  匹配前面字符0次或1次 
+
+位置 ： 
+    ^   :   锚定行首 
+    cat /etc/passwd | grep &quot;^root&quot;
+    cat /etc/passwd | grep &quot;^r&quot;
+
+    ls -l | grep ^d
+
+    $   : 锚定行尾  
+
+    cat /etc/passwd | grep &quot;bash$&quot;
+
+
+    cat /etc/passwd | grep &quot;nologin$&quot;
+
+    空行：  ^$   
+
+
+    cat /etc/fstab | grep &quot;^$&quot; -n
+
+
+词首词尾： 
+    \&lt;    \&gt;   </code></pre><p>cat    reg.txt<br>chroot is a command<br>root is a user<br>myrooter is nothing<br>user is rooter</p>
+<p>cat reg.txt | grep “&lt;root”<br>cat reg.txt | grep “root&gt;“<br>cat reg.txt | grep “&lt;root&gt;“</p>
+<pre><code>分组 ： \(  \)</code></pre><p>cat fenzu.txt</p>
+<p>he likes his liker<br>she loves her lover<br>he likes his lover<br>she loves her liker</p>
+<pre><code>\(abc\)    \1    
+cat fenzu.txt  | grep &quot;l..e&quot;
+cat fenzu.txt  | grep &quot;l..e.*l..er&quot;
+
+
+cat fenzu.txt  | grep &quot;\(l..e\).*\1r&quot;</code></pre>
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
     
   </div>
+</div>
 
   
+<nav id="pagination">
+  
+    <a href="/2019/08/15/linux (4)/" class="prev">&larr; Prev post </a>
+  
+
+  
+
+  
+    <a href="/2019/07/05/DD/" class="next">Next post Drupal Drupalgeddon 2 远程代码执行漏洞 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
 
       
       
