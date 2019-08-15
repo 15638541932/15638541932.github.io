@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    渗透测试练习 |
+    
+    Hexo</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/technology.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <section class="outer">
+  <article id="post-stlx" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      渗透测试练习
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/07/04/stlx/" class="article-date">
+  <time datetime="2019-07-04T10:05:18.000Z" itemprop="datePublished">2019-07-04</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/漏洞渗透/">漏洞渗透</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <hr>
+<h1 id="渗透测试练习"><a href="#渗透测试练习" class="headerlink" title="渗透测试练习"></a>渗透测试练习</h1><p>1.<a href="http://192.168.199.110/dbadmin" target="_blank" rel="noopener">http://192.168.199.110/dbadmin</a><br>通过扫描目录扫描出来这个目录，通过访问进入后台管理系统，通过尝试密码为admin<br><a href="https://imgchr.com/i/mEkO2j" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEkO2j.png" alt="mEkO2j.png"></a><br>在这里创建一个一句话木马文件，上传菜刀<br>先用菜刀连接<br>&emsp;<br><a href="https://imgchr.com/i/mEA9aT" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEA9aT.png" alt="mEA9aT.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mEAudK" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEAudK.png" alt="mEAudK.png"></a><br>&emsp;<br>可以看到已经进入到目录接下来在创建一个elf文件，传到菜刀的tmp目录下<br><a href="https://imgchr.com/i/mEANeP" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEANeP.png" alt="mEANeP.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mEA2wV" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEA2wV.png" alt="mEA2wV.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mEEp6A" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEEp6A.png" alt="mEEp6A.png"></a><br>在菜刀终端中看到一句进去了，然后用kali开启监听端口，然后执行文件<br>添加监听模块，和IP<br><a href="https://imgchr.com/i/mEEepQ" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEEepQ.png" alt="mEEepQ.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mEEuXn" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEEuXn.png" alt="mEEuXn.png"></a><br>在菜刀上给文件添加x权限，然后执行，kali上开启监听<br><a href="https://imgchr.com/i/mEENc9" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEENc9.png" alt="mEENc9.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mEE2jA" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEE2jA.png" alt="mEE2jA.png"></a><br>可以看出已经进去了<br>溢出shell，拿到www-data权限<br><a href="https://imgchr.com/i/mEE79g" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEE79g.png" alt="mEE79g.png"></a><br>进入到/home/zico/wordpress/wp-config.php(windows配置文件)<br>python -c ‘import pty; pty.spawn(“/bin/bash”)’<br><a href="https://imgchr.com/i/mEEOun" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEEOun.png" alt="mEEOun.png"></a><br>查看文件版本，可以看出是Linux Zico 3.2.0版本<br><a href="https://imgchr.com/i/mEV8bt" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEV8bt.png" alt="mEV8bt.png"></a><br>然后上<a href="https://www.exploit-db.com/这个网站上搜索漏洞。" target="_blank" rel="noopener">https://www.exploit-db.com/这个网站上搜索漏洞。</a><br><a href="https://imgchr.com/i/mEVUPS" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEVUPS.png" alt="mEVUPS.png"></a><br>找到下载下来，用菜刀传到tmp目录下<br>然后开始提权，发现报错。<br><a href="https://imgchr.com/i/mEVrbq" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEVrbq.png" alt="mEVrbq.png"></a><br>接下来用自zico提权，上面已经得到zico密码<br>&emsp;<br><a href="https://imgchr.com/i/mEVTVx" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEVTVx.png" alt="mEVTVx.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mEZeLn" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEZeLn.png" alt="mEZeLn.png"></a><br>然后继续提权到root权限，就成功了。<br><a href="https://imgchr.com/i/mEZQiT" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEZQiT.png" alt="mEZQiT.png"></a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/04/stlx/" data-id="cjzcc796s000qm0v6ghwajmbb"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/渗透测试练习/">渗透测试练习</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/07/05/DD/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Drupal Drupalgeddon 2 远程代码执行漏洞
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/07/03/appweb/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Appweb(CVE-2018-8715)漏洞复现</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+    </div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/technology.js"></script>
+
+  </div>
+</body>
+</html>
