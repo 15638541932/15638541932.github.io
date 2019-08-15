@@ -1,65 +1,164 @@
-<!DOCTYPE html>
-<html lang="en">
+
+
+
+
+
+
+
+<!doctype html>
+<html lang>
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="csy">
   
   
   
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>
-    centos7中csvn的安装及脚本一键安装 |
-    
-    Hexo</title>
   
-    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="description" content="centos7中csvn的安装及脚本一键安装在centos7中安装csvn。1.安装依赖环境csvn的搭建是要依赖Java环境的，可以直接安装jdk包即可在Java官方网站找到jdk包进行安装https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html选择自己对应的版本和系统mkdir...">
   
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/technology.css">
+  <title>centos7中csvn的安装及脚本一键安装 [ Hexo ]</title>
   
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
   
-  <script src="/js/pace.min.js"></script>
+    <link rel="shortcut icon" href="/hollow.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
 </head>
-</html>
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <section class="outer">
-  <article id="post-centos7-csvn" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<div class="side-navigate hide-area">
   
-    <h1 class="article-title" itemprop="name">
-      centos7中csvn的安装及脚本一键安装
-    </h1>
+    <div class="item prev">
+      <a href="/2019/07/01/nginx/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        nginx文件解析漏洞
+      </div>
+    </div>
   
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/06/28/centos7-csvn/" class="article-date">
-  <time datetime="2019-06-28T07:05:18.000Z" itemprop="datePublished">2019-06-28</time>
-</a>
+  
+    <div class="item next">
+      <a href="/2019/06/25/xxsj/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        渗透-信息收集
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
         
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/搭建服务/">搭建服务</a>
+        <a onclick="openUserCard()">
+          <img id="avatar" src="https://avatars3.githubusercontent.com/u/13285397?s=460&v=4">
+          <div id="homelink">Hexo</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">About</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/Baileyswu">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
   </div>
 
-      </div>
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  
+
+  <article id="post">
+    <h1>centos7中csvn的安装及脚本一键安装</h1>
+    <p class="page-title-sub">
+      <span id="post-title-date">Created at 2019-06-28</span>
+      
+        <span id="post-title-updated">Updated at 2019-08-14</span>
+      
+      
+      <span id="post-title-categories">Category
+      
+      
+        
+        
+        <a href="/categories/搭建服务/">搭建服务</a>
+      
+      </span>
+      
+      
+      <span id="post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/tags/centos7中csvn的安装及脚本一键安装/">centos7中csvn的安装及脚本一键安装</a>
+      
+      </span>
+      
+    </p>
     
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <hr>
+    <hr>
 <h1 id="centos7中csvn的安装及脚本一键安装"><a href="#centos7中csvn的安装及脚本一键安装" class="headerlink" title="centos7中csvn的安装及脚本一键安装"></a>centos7中csvn的安装及脚本一键安装</h1><p>在centos7中安装csvn。<br>1.安装依赖环境<br>csvn的搭建是要依赖Java环境的，可以直接安装jdk包即可<br>在Java官方网站找到jdk包进行安装<br><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a><br>选择自己对应的版本和系统<br>mkdir -p /data/server/java/<br>tar -zxvf jdk-8u171-linux-x64.tar.gz -C /usr/local/java/<br>&emsp;<br>&emsp;<br>设置环境变量<br>vim /etc/profile<br>在末尾添加<br>export JAVA_HOME=/data/server/java/jdk1.8.0_171<br>export JRE_HOME=${JAVA_HOME}/jre<br>export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib<br>export PATH=${JAVA_HOME}/bin:$PATH<br>&emsp;<br>&emsp;<br>使环境变量生效<br>source /etc/profile<br>&emsp;<br>&emsp;<br>添加软链接<br>ln -s /data/server/java/jdk1.8.0_171/bin/java /usr/bin/java<br>java -version</p>
 <p>2.找到csvn下载源，weget  <a href="https://downloads-guests.open.collab.net/files/documents/61/17071/CollabNetSubversionEdge-5.2.0_linux-x86_64.tar.gz" target="_blank" rel="noopener">https://downloads-guests.open.collab.net/files/documents/61/17071/CollabNetSubversionEdge-5.2.0_linux-x86_64.tar.gz</a><br>把csvn下载到/usr/local/src/<br>&emsp;<br>tar -xzvf  CollabNetSubversionEdge-5.2.0_linux-x86_64.tar.gz<br>mv  /usr/local/src/csvn  /data/server/<br>&emsp;<br>&emsp;<br>3.添加用户，因为csvn服务要求不能用root用户执行<br>useradd csvn<br>echo 123456|passwd –stdin csvn<br>&emsp;<br>&amp;emsp<br>4.修改属主属组权限<br>chown -R csvn:csvn /data/server/csvn<br>chown  csvn. /data/server/csvn/data/conf/httpd.conf<br>chown root:csvn /data/server/csvn/lib/httpd_bind/httpd_bind<br>chmod u+s /data/server/csvn/lib/httpd_bind/httpd_bind<br>&emsp;<br>&emsp;<br>5.在/etc/sudoers添加下面一行使csvn可以使用sudo<br>csvn ALL=(ALL) ALL<br>&emsp;<br>&emsp;<br>6.关闭防火墙和SELINUX<br>systemctl  stop  firewalld<br>setenforce 0<br>&emsp;<br>&emsp;<br>7.启动csvn服务<br>/data/server/csvn/bin/csvn-httpd install<br>/data/server/csvn/bin/csvn start<br>&emsp;<br>&emsp;<br>8.查看csvn是否开启<br>netstat  -pantu |grep 3343  (csvn的端口是3343)<br>ps  aux |grep csvn<br>&emsp;<br>&emsp;<br>9.在浏览器上直接访问出来的一个网址，把localhost换成自己的IP地址即可。<br>用户和密码都是admin<br>&emsp;<br>&emsp;<br>脚本一键安装csvn并开启<br>&emsp;<br>&emsp;</p>
 <p>#!/bin/bash</p>
@@ -68,64 +167,191 @@
 <p>#安装csvn<br>useradd -m csvn<br>echo 123 |passwd –stdin csvn<br>&emsp;<br>&emsp;<br>cat &gt;&gt; /etc/sudoers &lt;&lt;EOF<br>csvn   ALL=(ALL)   ALL<br>EOF<br>&emsp;<br>&emsp;</p>
 <p>#sudo -E /data/csvn/bin/csvn install<br>mkdir /data/server/csvn<br>cd /usr/local/src/ &amp;&amp; tar -xzvf CollabNetSubversionEdge-5.2.0_linux-x86_64.tar.gz &amp;&amp; mv /usr/local/src/csvn /data/server/<br>&emsp;<br>&emsp;<br><a href="https://imgchr.com/i/mkq5LR" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkq5LR.png" alt="mkq5LR.png"></a><br>执行脚本即出现上图所表示的页面。<br>&emsp;<br>&emsp;<br>在网页上输入上图最后一行，把localhost换为自己的IP，即出现登录页面<br><a href="https://imgchr.com/i/mkqLWD" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkqLWD.png" alt="mkqLWD.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mkOauj" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkOauj.png" alt="mkOauj.png"></a></p>
 
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#centos7中csvn的安装及脚本一键安装"><span class="toc-text">centos7中csvn的安装及脚本一键安装</span></a></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/2019/07/01/nginx/" class="prev">&larr; Prev post nginx文件解析漏洞</a>
+  
+
+  
+
+  
+    <a href="/2019/06/25/xxsj/" class="next">Next post 渗透-信息收集 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/28/centos7-csvn/" data-id="cjzcf4msn000x3ov66iinx1cd"
-         class="article-share-link">分享</a>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by csy using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos7中csvn的安装及脚本一键安装/">centos7中csvn的安装及脚本一键安装</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-    
-  <nav class="article-nav">
-    
-      <a href="/2019/07/01/nginx/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            nginx文件解析漏洞
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2019/06/25/xxsj/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">渗透-信息收集</div>
-      </a>
-    
-  </nav>
-
-
-  
-
-  
-    
-  
-
-</article>
-
-
-
-</section>
     </div>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/technology.js"></script>
-
   </div>
+</div>
+
+</div>
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="https://avatars3.githubusercontent.com/u/13285397?s=460&v=4">
+    <p id="description"></p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/Baileyswu">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://weibo.com/Danliwoo">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="mailto:wulidan0530@live.com">
+        
+          M
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["flash"],"timer":true,"delay":1500000,"shuffle":true,"count":12};
+var unsplashConfig = {"gravity":"center"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+
+var backgroundColor = "34495E";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
 </body>
 </html>
+

@@ -1,125 +1,351 @@
-<!DOCTYPE html>
-<html lang="en">
+
+
+
+
+
+
+
+<!doctype html>
+<html lang>
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="csy">
   
   
   
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>
-    搭建ngx_lua_waf |
-    
-    Hexo</title>
   
-    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="description" content="搭建ngx_lua_waf工作环境：centos7&emsp;1.下载nginx源文件下载地址 ： http://nginx.org/en/download.htmlcd /usr/local/srcwget http://nginx.org/download/nginx-1.12.2.tar.gztar -xvf nginx-1.12.2.tar.gz&emsp;&emsp;2.下载安装L...">
   
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/technology.css">
+  <title>搭建ngx_lua_waf [ Hexo ]</title>
   
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
   
-  <script src="/js/pace.min.js"></script>
+    <link rel="shortcut icon" href="/hollow.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
 </head>
-</html>
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <section class="outer">
-  <article id="post-ngx_lua——waf" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<div class="side-navigate hide-area">
   
-    <h1 class="article-title" itemprop="name">
-      搭建ngx_lua_waf
-    </h1>
+    <div class="item prev">
+      <a href="/2019/05/27/linux-Wordpress/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        linux上搭建Wordpress及目录级别
+      </div>
+    </div>
   
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/05/26/ngx_lua——waf/" class="article-date">
-  <time datetime="2019-05-25T21:05:18.000Z" itemprop="datePublished">2019-05-26</time>
-</a>
+  
+    <div class="item next">
+      <a href="/2019/05/20/centos7-dokuwiki/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        centos7中安装dokuwiki
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
         
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/搭建服务/">搭建服务</a>
+        <a onclick="openUserCard()">
+          <img id="avatar" src="https://avatars3.githubusercontent.com/u/13285397?s=460&v=4">
+          <div id="homelink">Hexo</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">About</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/Baileyswu">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
   </div>
 
-      </div>
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  
+
+  <article id="post">
+    <h1>搭建ngx_lua_waf</h1>
+    <p class="page-title-sub">
+      <span id="post-title-date">Created at 2019-05-26</span>
+      
+        <span id="post-title-updated">Updated at 2019-08-15</span>
+      
+      
+      <span id="post-title-categories">Category
+      
+      
+        
+        
+        <a href="/categories/搭建服务/">搭建服务</a>
+      
+      </span>
+      
+      
+      <span id="post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/tags/搭建ngx-lua-waf/">搭建ngx_lua_waf</a>
+      
+      </span>
+      
+    </p>
     
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <hr>
+    <hr>
 <h1 id="搭建ngx-lua-waf"><a href="#搭建ngx-lua-waf" class="headerlink" title="搭建ngx_lua_waf"></a>搭建ngx_lua_waf</h1><p>工作环境：centos7<br>&emsp;<br>1.下载nginx源文件<br>下载地址 ： <a href="http://nginx.org/en/download.html" target="_blank" rel="noopener">http://nginx.org/en/download.html</a><br>cd /usr/local/src<br>wget <a href="http://nginx.org/download/nginx-1.12.2.tar.gz" target="_blank" rel="noopener">http://nginx.org/download/nginx-1.12.2.tar.gz</a><br>tar -xvf nginx-1.12.2.tar.gz<br>&emsp;<br>&emsp;<br>2.下载安装LuaJIT<br>下载地址：<a href="http://luajit.org/download.html" target="_blank" rel="noopener">http://luajit.org/download.html</a><br>cd /usr/local/src<br>wget <a href="http://luajit.org/download/LuaJIT-2.1.0-beta3.tar.gz" target="_blank" rel="noopener">http://luajit.org/download/LuaJIT-2.1.0-beta3.tar.gz</a><br>tar -zxf LuaJIT-2.1.0-beta3.tar.gz<br>cd LuaJIT-2.1.0-beta3<br>make PREFIX=/usr/local/src/luajit<br>make install PREFIX=/usr/local/src/luajit<br>&emsp;<br>&emsp;<br>3.下载ngx_devel_kit（NDK）模块<br>下载地址：<a href="https://github.com/simplresty/ngx_devel_kit/tags" target="_blank" rel="noopener">https://github.com/simplresty/ngx_devel_kit/tags</a><br>cd /usr/local/src<br>wget <a href="https://github.com/simplresty/ngx_devel_kit/archive/v0.3.0.tar.gz" target="_blank" rel="noopener">https://github.com/simplresty/ngx_devel_kit/archive/v0.3.0.tar.gz</a><br>tar -xvf v0.3.0.tar.gz<br>&emsp;<br>&emsp;<br>4.下载lua-nginx-module模块<br>下载地址：<a href="https://github.com/openresty/lua-nginx-module/tags" target="_blank" rel="noopener">https://github.com/openresty/lua-nginx-module/tags</a><br>cd /usr/local/src<br>wget <a href="https://github.com/openresty/lua-nginx-module/archive/v0.10.11.tar.gz" target="_blank" rel="noopener">https://github.com/openresty/lua-nginx-module/archive/v0.10.11.tar.gz</a><br>tar -xvf v0.10.11.tar.gz<br>&emsp;<br>&emsp;<br>5.编译安装Nginx<br>cd /usr/local/src/nginx-1.12.2<br>1.切换到Nginx源文件目录，设置环境变量<br>export LUAJIT_LIB=/usr/local/src/luajit/lib<br>export LUAJIT_INC=/usr/local/src/luajit/include/luajit-2.1<br>&emsp;<br>&emsp;<br>2.编译<br>./configure <br>–prefix=/data/server/nginx <br>–error-log-path=/data/server/nginx/error.log <br>–http-log-path=/data/server/nginx/access.log <br>–with-http_ssl_module <br>–with-http_v2_module <br>–with-http_realip_module <br>–with-http_addition_module <br>–with-http_image_filter_module <br>–with-http_geoip_module <br>–with-http_sub_module <br>–with-http_dav_module <br>–with-http_flv_module <br>–with-http_mp4_module <br>–with-http_gunzip_module <br>–with-http_gzip_static_module <br>–with-http_random_index_module <br>–with-http_secure_link_module <br>–with-http_degradation_module <br>–with-http_slice_module <br>–with-http_stub_status_module <br>–with-pcre <br>–with-pcre-jit <br>–with-stream <br>–with-stream_ssl_module <br>–with-debug <br>–add-module=/usr/local/src/ngx_devel_kit-0.3.0 <br>–add-module=/usr/local/src/lua-nginx-module-0.10.11 <br>–with-ld-opt=”-Wl,-rpath,$LUAJIT_LIB” ;<br>make &amp;&amp; make install<br>&emsp;<br>&emsp;<br>6.安装ngx_lua_waf模块<br>下载地址：<a href="https://github.com/loveshell/ngx_lua_waf/tree/master" target="_blank" rel="noopener">https://github.com/loveshell/ngx_lua_waf/tree/master</a><br><a href="https://imgchr.com/i/mkNvrV" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkNvrV.png" alt="mkNvrV.png"></a><br>克隆<br>cd /usr/local/src/<br>git clone <a href="https://github.com/loveshell/ngx_lua_waf.git" target="_blank" rel="noopener">https://github.com/loveshell/ngx_lua_waf.git</a><br>mv ngx_lua_waf waf<br>mv waf /data/server/nginx/conf/<br>修改waf的模块的规则配置路径<br>vi /data/server/nginx/conf/waf/config.lua<br>修改为下图所示页面(主要修改路径)<br><a href="https://imgchr.com/i/mkUkx1" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkUkx1.png" alt="mkUkx1.png"></a><br>7.修改nginx的配置文件，使其加载waf功能模块<br>vi /data/server/nginx/conf/nginx.conf<br>添加以下内容<br>    lua_package_path “/data/server/nginx/conf/waf/?.lua”;<br>    lua_shared_dict limit 10m;<br>    init_by_lua_file  /data/server/nginx/conf/waf/init.lua;<br>    access_by_lua_file /data/server/nginx/conf/waf/waf.lua;<br>&emsp;<br>&emsp;<br><a href="https://imgchr.com/i/mkUosx" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkUosx.png" alt="mkUosx.png"></a><br>&emsp;<br>&emsp;<br>8、关闭防火墙、SELINUX，启动<br>systemctl stop firewalld<br>setenforce 0<br>/data/server/nginx/sbin/nginx<br>访问：192.168.43.198出现nginx页面<br>&emsp;<br>&emsp;<br><a href="https://imgchr.com/i/mkUOFe" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkUOFe.png" alt="mkUOFe.png"></a><br>访问：<a href="http://192.168.43.198/test.php?id=../etc/passwd" target="_blank" rel="noopener">http://192.168.43.198/test.php?id=../etc/passwd</a><br>&emsp;<br>&emsp;<br><a href="https://imgchr.com/i/mkwtZ6" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkwtZ6.png" alt="mkwtZ6.png"></a></p>
 
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#搭建ngx-lua-waf"><span class="toc-text">搭建ngx_lua_waf</span></a></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/2019/05/27/linux-Wordpress/" class="prev">&larr; Prev post linux上搭建Wordpress及目录级别</a>
+  
+
+  
+
+  
+    <a href="/2019/05/20/centos7-dokuwiki/" class="next">Next post centos7中安装dokuwiki &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/26/ngx_lua——waf/" data-id="cjzcf4mss00163ov6cybvkjdd"
-         class="article-share-link">分享</a>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by csy using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搭建ngx-lua-waf/">搭建ngx_lua_waf</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-    
-  <nav class="article-nav">
-    
-      <a href="/2019/05/27/linux-Wordpress/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            linux上搭建Wordpress及目录级别
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2019/05/20/centos7-dokuwiki/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">centos7中安装dokuwiki</div>
-      </a>
-    
-  </nav>
-
-
-  
-
-  
-    
-  
-
-</article>
-
-
-
-</section>
     </div>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/technology.js"></script>
-
   </div>
+</div>
+
+</div>
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="https://avatars3.githubusercontent.com/u/13285397?s=460&v=4">
+    <p id="description"></p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/Baileyswu">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://weibo.com/Danliwoo">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="mailto:wulidan0530@live.com">
+        
+          M
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["flash"],"timer":true,"delay":1500000,"shuffle":true,"count":12};
+var unsplashConfig = {"gravity":"center"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+
+var backgroundColor = "34495E";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
 </body>
 </html>
+

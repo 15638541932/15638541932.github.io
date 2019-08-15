@@ -1,125 +1,351 @@
-<!DOCTYPE html>
-<html lang="en">
+
+
+
+
+
+
+
+<!doctype html>
+<html lang>
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="csy">
   
   
   
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>
-    centows7搭建ELK |
-    
-    Hexo</title>
   
-    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="description" content="centows7搭建ELK1.ELK是三款开源软件的缩写，即：ElasticSearch + Logstash + Kibana，这三个工具组合形成了一套实用、易用的监控架构，可抓取系统日志、apache日志、nginx日志、mysql日志等多种日志类型安装java环境yum -y install java查看是否安装成功    java -version2.1.部署Elasticsearc...">
   
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/technology.css">
+  <title>centows7搭建ELK [ Hexo ]</title>
   
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
   
-  <script src="/js/pace.min.js"></script>
+    <link rel="shortcut icon" href="/hollow.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
 </head>
-</html>
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <section class="outer">
-  <article id="post-centows7---ELK" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<div class="side-navigate hide-area">
   
-    <h1 class="article-title" itemprop="name">
-      centows7搭建ELK
-    </h1>
+    <div class="item prev">
+      <a href="/2019/06/25/xxsj/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        渗透-信息收集
+      </div>
+    </div>
   
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/06/22/centows7---ELK/" class="article-date">
-  <time datetime="2019-06-22T11:05:18.000Z" itemprop="datePublished">2019-06-22</time>
-</a>
+  
+    <div class="item next">
+      <a href="/2019/06/21/yl-HIDS/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        驭龙HIDS安装及测试
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
         
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/搭建服务/">搭建服务</a>
+        <a onclick="openUserCard()">
+          <img id="avatar" src="https://avatars3.githubusercontent.com/u/13285397?s=460&v=4">
+          <div id="homelink">Hexo</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">About</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/Baileyswu">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
   </div>
 
-      </div>
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  
+
+  <article id="post">
+    <h1>centows7搭建ELK</h1>
+    <p class="page-title-sub">
+      <span id="post-title-date">Created at 2019-06-22</span>
+      
+        <span id="post-title-updated">Updated at 2019-08-15</span>
+      
+      
+      <span id="post-title-categories">Category
+      
+      
+        
+        
+        <a href="/categories/搭建服务/">搭建服务</a>
+      
+      </span>
+      
+      
+      <span id="post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/tags/centows7搭建ELK/">centows7搭建ELK</a>
+      
+      </span>
+      
+    </p>
     
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <hr>
+    <hr>
 <h1 id="centows7搭建ELK"><a href="#centows7搭建ELK" class="headerlink" title="centows7搭建ELK"></a>centows7搭建ELK</h1><p>1.ELK是三款开源软件的缩写，即：ElasticSearch + Logstash + Kibana，这三个工具组合形成了一套实用、易用的监控架构，可抓取系统日志、apache日志、nginx日志、mysql日志等多种日志类型<br>安装java环境<br>yum -y install java<br>查看是否安装成功    java -version<br><a href="https://imgchr.com/i/mksJU0" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mksJU0.png" alt="mksJU0.png"></a><br>2.1.部署Elasticsearch<br>下载安装jre依赖<br>wget <a href="https://sec.ly.com/mirror/jre-8u161-linux-x64.rpm" target="_blank" rel="noopener">https://sec.ly.com/mirror/jre-8u161-linux-x64.rpm</a> &amp;&amp; yum -y localinstall jre-8u161-linux-x64.rpm<br>下载ES并解压<br>wget <a href="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.8.tar.gz" target="_blank" rel="noopener">https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.8.tar.gz</a> &amp;&amp;<br>tar -zxvf elasticsearch-5.6.8.tar.gz<br>mv elasticsearch-5.6.8 /data/server/elasticsearch<br>Elasticsearch不建议以root权限运行，新建一个非root权限用户，-p后跟自行设定的密码<br>groupadd elasticsearch &amp;&amp; useradd elasticsearch -g elasticsearch -p 123<br>修改文件夹及内部文件的所属用户及组为elasticsearch：elasticsearch<br>chown -R elasticsearch:elasticsearch /data/server/elasticsearch-5.6.8<br>编辑config / elasticsearch.yml添加<br><a href="https://imgchr.com/i/mks0KJ" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mks0KJ.png" alt="mks0KJ.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mkssV1" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkssV1.png" alt="mkssV1.png"></a><br>启动<br>su - elasticsearch<br>./data/server/elasticsearch/bin/elasticsearch<br>2.kibana 、logstash需要安装同样的版本<br>这两个包官网下载的，scp到/usr/local/src下<br>解压<br>tar -zxvf kibana-5.6.8-linux-x86_64.tar.gz<br>mv kibana-5.6.8 /data/server/kibana<br>tar -zxvf logstash-5.6.8.tar.gz<br>mv logstash-5.6.8 /data/server/logstash<br>配置kibana文件<br>vi /data/server/kibana/config/kibana.yml<br>把这些前面#去掉，改内容<br><a href="https://imgchr.com/i/mkySZn" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkySZn.png" alt="mkySZn.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mkymZR" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkymZR.png" alt="mkymZR.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mkyQJK" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkyQJK.png" alt="mkyQJK.png"></a><br>修改/etc/rsyslog.conf下文件<br><a href="https://imgchr.com/i/mkyteA" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkyteA.png" alt="mkyteA.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mkyUot" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkyUot.png" alt="mkyUot.png"></a><br>在/data/server/下创建log文件<br>创建touch syslog.conf文件<br>添加以下内容<br>input  {<br>        syslog {<br>        type =&gt; “rsyslog”<br>        port =&gt; 5200<br>        }<br>}<br>output {<br>        elasticsearch {<br>                hosts =&gt; [“192.168.110.191:9200”]<br>                index =&gt; “syslog-%{+YYYY.MM}”<br>                user =&gt; “elastic”<br>                password =&gt; “changeme”<br>        }<br>        stdout {codec =&gt; rubydebug}<br>}<br>&emsp;<br>&emsp;<br><a href="https://imgchr.com/i/mkyDSS" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkyDSS.png" alt="mkyDSS.png"></a><br>启动kibana<br>cd /data/server/kibana/bin<br>./kibana<br>启动logstash<br>cd /data/server/logstash/bin<br>./logstash -f /data/server/log/syslog.conf<br>访问192.168.110.191:5601</p>
 
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#centows7搭建ELK"><span class="toc-text">centows7搭建ELK</span></a></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/2019/06/25/xxsj/" class="prev">&larr; Prev post 渗透-信息收集</a>
+  
+
+  
+
+  
+    <a href="/2019/06/21/yl-HIDS/" class="next">Next post 驭龙HIDS安装及测试 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/22/centows7---ELK/" data-id="cjzcf4msd000h3ov6m101ot5b"
-         class="article-share-link">分享</a>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by csy using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centows7搭建ELK/">centows7搭建ELK</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-    
-  <nav class="article-nav">
-    
-      <a href="/2019/06/25/xxsj/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            渗透-信息收集
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2019/06/21/yl-HIDS/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">驭龙HIDS安装及测试</div>
-      </a>
-    
-  </nav>
-
-
-  
-
-  
-    
-  
-
-</article>
-
-
-
-</section>
     </div>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/technology.js"></script>
-
   </div>
+</div>
+
+</div>
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="https://avatars3.githubusercontent.com/u/13285397?s=460&v=4">
+    <p id="description"></p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/Baileyswu">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://weibo.com/Danliwoo">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="mailto:wulidan0530@live.com">
+        
+          M
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["flash"],"timer":true,"delay":1500000,"shuffle":true,"count":12};
+var unsplashConfig = {"gravity":"center"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+
+var backgroundColor = "34495E";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
 </body>
 </html>
+

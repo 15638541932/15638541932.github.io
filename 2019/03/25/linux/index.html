@@ -1,65 +1,156 @@
-<!DOCTYPE html>
-<html lang="en">
+
+
+
+
+
+
+
+<!doctype html>
+<html lang>
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="csy">
   
   
   
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>
-    根目录下主要目录 |
-    
-    Hexo</title>
   
-    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="description" content="根目录下主要目录bin -&gt; usr/bin   binary 二进制sbin -&gt; usr/sbin  管理员才可以执行其中的命令
+l： 链接文件存放可执行文件echo $PATH&emsp;/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/nautilus/.local/bin:/home/n...">
   
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/technology.css">
+  <title>根目录下主要目录 [ Hexo ]</title>
   
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
   
-  <script src="/js/pace.min.js"></script>
+    <link rel="shortcut icon" href="/hollow.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
 </head>
-</html>
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <section class="outer">
-  <article id="post-linux" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<div class="side-navigate hide-area">
   
-    <h1 class="article-title" itemprop="name">
-      根目录下主要目录
-    </h1>
+    <div class="item prev">
+      <a href="/2019/03/25/linux (2)/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        shell脚本
+      </div>
+    </div>
   
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/03/25/linux/" class="article-date">
-  <time datetime="2019-03-25T10:05:18.000Z" itemprop="datePublished">2019-03-25</time>
-</a>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
         
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux基础/">Linux基础</a>
+        <a onclick="openUserCard()">
+          <img id="avatar" src="https://avatars3.githubusercontent.com/u/13285397?s=460&v=4">
+          <div id="homelink">Hexo</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">About</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/Baileyswu">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
   </div>
 
-      </div>
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  
+
+  <article id="post">
+    <h1>根目录下主要目录</h1>
+    <p class="page-title-sub">
+      <span id="post-title-date">Created at 2019-03-25</span>
+      
+        <span id="post-title-updated">Updated at 2019-08-15</span>
+      
+      
+      <span id="post-title-categories">Category
+      
+      
+        
+        
+        <a href="/categories/Linux基础/">Linux基础</a>
+      
+      </span>
+      
+      
+      <span id="post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/tags/根目录下主要目录/">根目录下主要目录</a>
+      
+      </span>
+      
+    </p>
     
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <hr>
+    <hr>
 <h1 id="根目录下主要目录"><a href="#根目录下主要目录" class="headerlink" title="根目录下主要目录"></a>根目录下主要目录</h1><p>bin -&gt; usr/bin   binary 二进制<br>sbin -&gt; usr/sbin  管理员才可以执行其中的命令</p>
 <p>l： 链接文件<br>存放可执行文件<br>echo $PATH<br>&emsp;<br>/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/nautilus/.local/bin:/home/nautilus/bin<br>&emsp;<br>终端敲入命令的时候，操作系统去哪些目录去找这些可执行文件<br>&emsp;<br>环境变量 ：  以键值对形式存在<br>HISTSIZE=1000  history可以存储的条数<br>&emsp;<br>/boot ：  与操作系统内核启动相关的文件<br>    grub grub2<br>    vmlinuz-3.10.0-957.el7.x86_64<br>&emsp;<br>&emsp;<br>/dev：  device  存放设备文件的目录<br>&emsp;<br>    c ： character ： 字符设备文件<br>    b  ：  block   ： 块设备文件<br>&emsp;<br>/etc  ： 配置文件<br>&emsp;<br>cat /etc/passwd<br>nautilus:x:1000:1000:nautilus:/home/nautilus:/bin/bash<br>用户名：密码：uid（用户id）：gid（组id）：描述信息：家目录：shell类型<br>普通用户uid默认从1000开始<br>&emsp;<br>/etc/shadow : 密码经过加密处理<br>/etc/fstab  ： file system  分区相关<br>&emsp;<br>家目录：<br>    root  ： /root<br>    普通用户 ：  /home/用户名<br>        cd ~<br>        cd<br>&emsp;<br>lib -&gt; usr/lib<br>lib64 -&gt; usr/lib64<br>存放库文件 ：<br>    可执行程序运行的时候，调用的程序<br>    库也是可执行文件，但是没有程序启动的入口，需要被调用<br>&emsp;<br>    shared object ： 共享对象  .so<br>    windows :   .dll :动态链接库<br>&emsp;<br>media： 媒体<br>mnt ： mount  挂载<br>    u盘  CD 挂载相关<br>&emsp;<br>opt  ： options  ： 选项 可选的<br>        软件<br>&emsp;<br>proc  ： 进程相关的信息   process<br>    程序运行起来叫进程<br>    以数字命名的目录，数字是进程号<br>&emsp;<br>    top ： 动态查看进程信息<br>    ps  ： 静态<br>        ps aux  : 查看全部进程详细信息（BSD）<br>        ps -ef  ：  全部  （标准风格）<br>&emsp;<br>&emsp;<br>    top：<br>      PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+<br>&emsp;<br>      进程号  用户名   priority：优先级<br>      nice ： 调整优先级<br>      virt ： 虚拟内存<br>      res  ： 常驻内存<br>      cpu  mem ： 占用率<br>      Time+ ： 运行总时间<br>      Command  ： 运行的命令/程序<br>&emsp;<br>&emsp;<br>      时间片： timeslice<br>      100ms<br>&emsp;<br>      调度器： 决定下一个被调度的进程<br>      完全公平调度器<br>&emsp;<br>      priority ： 优先级<br>      进程抢占 ：<br>      nice  ： 让步<br>&emsp;<br>      进程类型 调度策略<br>&emsp;<br>      交互进程 ：<br>&emsp;<br>&emsp;<br>     pstree  ： 查看进程树<br>     每个进程都有一个父进程<br>     pid ： 进程id    process<br>     ppid ： 父进程id   parent<br>&emsp;<br>     systemd ： centos7  起始进程<br>&emsp;<br>     centos6  ：  init 起始进程<br>&emsp;<br>     free -m： 查看物理内存使用情况<br>     free -h：<br>     total        used        free      shared  buff/cache   available<br>&emsp;<br>     swap：  交换空间<br>         物理内存不够用的时候，会将不常用的内存内容复制到swap中<br>&emsp;<br>         不紧张的时候，再换回来<br>&emsp;<br>         swap大小： 物理内存1-2倍<br>&emsp;<br>    vmstat ： 虚拟内存情况<br>            virtual memory  statistics</p>
 <p>&emsp;<br>z7emsp;<br>    查看命令帮助文档： man    info<br>    man  ls<br>    info  vmstat<br>&emsp;<br>    –help<br>&emsp;</p>
@@ -71,64 +162,189 @@
 <pre><code>c  </code></pre><p>&emsp;<br>    java        python<br>    perl    ruby    shell  </p>
 <p>/var  ： 存放系统中经常改变的文件<br>        /var/log<br>&emsp;<br>        dmesg ： 查看启动信息</p>
 
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#根目录下主要目录"><span class="toc-text">根目录下主要目录</span></a></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/2019/03/25/linux (2)/" class="prev">&larr; Prev post shell脚本</a>
+  
+
+  
+
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/25/linux/" data-id="cjzcf4msl000t3ov6sdqah6i1"
-         class="article-share-link">分享</a>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by csy using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/根目录下主要目录/">根目录下主要目录</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-    
-  <nav class="article-nav">
-    
-      <a href="/2019/03/26/gml/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            文件查找类命令
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2019/03/25/linux (2)/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">shell脚本</div>
-      </a>
-    
-  </nav>
-
-
-  
-
-  
-    
-  
-
-</article>
-
-
-
-</section>
     </div>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/technology.js"></script>
-
   </div>
+</div>
+
+</div>
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="https://avatars3.githubusercontent.com/u/13285397?s=460&v=4">
+    <p id="description"></p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/Baileyswu">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://weibo.com/Danliwoo">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="mailto:wulidan0530@live.com">
+        
+          M
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["flash"],"timer":true,"delay":1500000,"shuffle":true,"count":12};
+var unsplashConfig = {"gravity":"center"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+
+var backgroundColor = "34495E";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
 </body>
 </html>
+

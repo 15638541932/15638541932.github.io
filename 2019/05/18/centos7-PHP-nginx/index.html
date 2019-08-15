@@ -1,65 +1,164 @@
-<!DOCTYPE html>
-<html lang="en">
+
+
+
+
+
+
+
+<!doctype html>
+<html lang>
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="csy">
   
   
   
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>
-    centos7中安装PHP和nginx |
-    
-    Hexo</title>
   
-    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="description" content="centos7中安装PHP和nginx在centos7中安装nginx，有许多依赖的环境gcc，gcc-c++安装，安装 nginx 需要先将官网下载的源码进行编译，编译依赖 gcc 环境，如果没有 gcc 环境，则需要安装：yum  -y  install  gcc  gcc-c++pcre，pcre-devel的安装，PCRE(Perl Compatible Regular Expres...">
   
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/technology.css">
+  <title>centos7中安装PHP和nginx [ Hexo ]</title>
   
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
   
-  <script src="/js/pace.min.js"></script>
+    <link rel="shortcut icon" href="/hollow.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
 </head>
-</html>
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <section class="outer">
-  <article id="post-centos7-PHP-nginx" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<div class="side-navigate hide-area">
   
-    <h1 class="article-title" itemprop="name">
-      centos7中安装PHP和nginx
-    </h1>
+    <div class="item prev">
+      <a href="/2019/05/19/dvwa.  sql/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        dvwa.  sql注入
+      </div>
+    </div>
   
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/05/18/centos7-PHP-nginx/" class="article-date">
-  <time datetime="2019-05-18T04:05:18.000Z" itemprop="datePublished">2019-05-18</time>
-</a>
+  
+    <div class="item next">
+      <a href="/2019/04/23/centos7-redis/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        在centos7中安装redis  HA（2个主2个从）
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
         
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/搭建服务/">搭建服务</a>
+        <a onclick="openUserCard()">
+          <img id="avatar" src="https://avatars3.githubusercontent.com/u/13285397?s=460&v=4">
+          <div id="homelink">Hexo</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">About</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/Baileyswu">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
   </div>
 
-      </div>
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  
+
+  <article id="post">
+    <h1>centos7中安装PHP和nginx</h1>
+    <p class="page-title-sub">
+      <span id="post-title-date">Created at 2019-05-18</span>
+      
+        <span id="post-title-updated">Updated at 2019-08-15</span>
+      
+      
+      <span id="post-title-categories">Category
+      
+      
+        
+        
+        <a href="/categories/搭建服务/">搭建服务</a>
+      
+      </span>
+      
+      
+      <span id="post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/tags/centos7中安装PHP和nginx/">centos7中安装PHP和nginx</a>
+      
+      </span>
+      
+    </p>
     
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <hr>
+    <hr>
 <h1 id="centos7中安装PHP和nginx"><a href="#centos7中安装PHP和nginx" class="headerlink" title="centos7中安装PHP和nginx"></a>centos7中安装PHP和nginx</h1><p>在centos7中安装nginx，有许多依赖的环境<br>gcc，gcc-c++安装，安装 nginx 需要先将官网下载的源码进行编译，编译依赖 gcc 环境，如果没有 gcc 环境，则需要安装：<br>yum  -y  install  gcc  gcc-c++<br>pcre，pcre-devel的安装，PCRE(Perl Compatible Regular Expressions) 是一个Perl库，包括 perl 兼容的正则表达式库。nginx 的 http 模块使用 pcre 来解析正则表达式，所以需要在 linux 上安装 pcre 库，pcre-devel 是使用 pcre 开发的一个二次开发库。nginx也需要此库。<br>yum  -y  install  pcre  pcre-devel<br>zlib，zlib-devel的安装，zlib库提供了很多种压缩和解压缩的方式，nginx使用zlib对http包的内容进行gzip，所以需要在linux上安装zlib库。<br>yum  -y  install  zlib  zlib-devel<br>openssl，OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。nginx不仅支持http协议，还支持https（即在ssl协议上传输http），所以需要在linux安装openssl库。<br>yum  -y install  openssl  openssl-devel<br>&emsp;<br>在centos7中源码安装nginx<br>1，在网上把nginx源码包复制链接，下载下来<br>wget  链接（在/usr/local/src/）<br>tar  -xzvf  nginx-1.12.2.tar.gz<br>&emsp;<br>2，建立nginx用户及用户组<br>useradd  nginx  -s  /sbin/nologin  -M<br>&emsp;<br>3，cd  /usr/local/src/nginx-1.12.2<br>mkdir  -p  /data/server  (用来装服务的目录)<br>&emsp;<br>&emsp;<br>./configure <br>  –prefix=/data/server/nginx <br>  –sbin-path=/data/server/nginx/sbin/nginx <br>  –conf-path=/etc/nginx/nginx.conf <br>  –error-log-path=/var/log/nginx/error.log <br>  –http-log-path=/var/log/nginx/access.log <br>  –pid-path=/var/run/nginx/nginx.pid  <br>  –lock-path=/var/lock/nginx.lock <br>  –user=nginx <br>  –group=nginx <br>  –with-http_ssl_module <br>  –with-http_flv_module <br>  –with-http_stub_status_module <br>  –with-http_gzip_static_module <br>  –http-client-body-temp-path=/var/tmp/nginx/client/ <br>  –http-proxy-temp-path=/var/tmp/nginx/proxy/ <br>  –http-fastcgi-temp-path=/var/tmp/nginx/fcgi/ <br>  –http-uwsgi-temp-path=/var/tmp/nginx/uwsgi <br>  –http-scgi-temp-path=/var/tmp/nginx/scgi <br>  –with-pcre<br>&emsp;<br>make<br>make  install<br>&emsp;<br>&emsp;<br>4，关闭防火墙，selinux<br>systemctl  stop  firewalld<br>setenforce  0</p>
 <p>5，启动nginx服务<br>/data/server/nginx/sbin/nginx<br>但这时并不能成功启动nginx，会报一下错误<br>[emerg] open() “/var/run/nginx/nginx.pid” failed (2: No such file or directory)<br>说的是没有这个文件或者目录<br>找到nginx的配置文件可  find  /  -name  nginx.conf查找到后对nginx的配置文件进行编辑<br>error_log logs/error.log;<br>error_log logs/error.log notice;<br>error_log logs/error.log info;<br>pid logs/nginx.pid;（把#删除）<br>这时还是重启nginx服务还是不会成功，说/data/server/nginx/logs/error.log文件不存在<br>mkdir  -p  /data/server/nginx/logs/<br>touch  /data/server/nginx/logs/error.log<br>&emsp;<br>&emsp;<br>6，查看nginx服务<br>ps  aux |grep nginx<br>netstat  -pantu |grep nginx/80<br>&emsp;<br>以上安装nginx即成功<br><a href="https://imgchr.com/i/mkIBsP" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkIBsP.png" alt="mkIBsP.png"></a><br>访问页面即出现如上图所示页面</p>
 <p>++++++++++++++++++++++++++++++++++</p>
@@ -68,64 +167,191 @@
     phpinfo();
 ?><br> &emsp;<br>8，关闭防火墙和SELINUX<br>systemctl  stop  firewalld<br>setenforce  0<br>&emsp;<br>9，打开浏览器，编辑自己IP/pan.php<br>即会出现下面的页面。<br><a href="https://imgchr.com/i/mkoWkD" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkoWkD.png" alt="mkoWkD.png"></a></p>
 
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#centos7中安装PHP和nginx"><span class="toc-text">centos7中安装PHP和nginx</span></a></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/2019/05/19/dvwa.  sql/" class="prev">&larr; Prev post dvwa.  sql注入</a>
+  
+
+  
+
+  
+    <a href="/2019/04/23/centos7-redis/" class="next">Next post 在centos7中安装redis  HA（2个主2个从） &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/18/centos7-PHP-nginx/" data-id="cjzcf4mrq00083ov6klkrgo96"
-         class="article-share-link">分享</a>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by csy using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos7中安装PHP和nginx/">centos7中安装PHP和nginx</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-    
-  <nav class="article-nav">
-    
-      <a href="/2019/05/19/dvwa.  sql/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            dvwa.  sql注入
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2019/04/23/centos7-redis/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">在centos7中安装redis  HA（2个主2个从）</div>
-      </a>
-    
-  </nav>
-
-
-  
-
-  
-    
-  
-
-</article>
-
-
-
-</section>
     </div>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/technology.js"></script>
-
   </div>
+</div>
+
+</div>
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="https://avatars3.githubusercontent.com/u/13285397?s=460&v=4">
+    <p id="description"></p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/Baileyswu">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://weibo.com/Danliwoo">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="mailto:wulidan0530@live.com">
+        
+          M
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["flash"],"timer":true,"delay":1500000,"shuffle":true,"count":12};
+var unsplashConfig = {"gravity":"center"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+
+var backgroundColor = "34495E";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
 </body>
 </html>
+

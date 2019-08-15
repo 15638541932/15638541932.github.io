@@ -1,126 +1,352 @@
-<!DOCTYPE html>
-<html lang="en">
+
+
+
+
+
+
+
+<!doctype html>
+<html lang>
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="csy">
   
   
   
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>
-    centos7中安装dhcp服务 |
-    
-    Hexo</title>
   
-    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="description" content="centos7中安装dhcp服务首先DHCP是动态主机设置协议，Dynamic Host Configuration Protocol，DHCP。DHCP就是给电脑分配IP地址，其中包括：自动分配，动态分配，手工分配。&emsp;1.安装DHCP服务首先要安装dhcp的包，直接yum install dhcp -y  //dhcp-comon dhcpclient dhcp&emsp;2.把...">
   
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/technology.css">
+  <title>centos7中安装dhcp服务 [ Hexo ]</title>
   
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
   
-  <script src="/js/pace.min.js"></script>
+    <link rel="shortcut icon" href="/hollow.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
 </head>
-</html>
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <section class="outer">
-  <article id="post-centos7-dhcp" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<div class="side-navigate hide-area">
   
-    <h1 class="article-title" itemprop="name">
-      centos7中安装dhcp服务
-    </h1>
+    <div class="item prev">
+      <a href="/2019/06/21/centos7 -tomcat8/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        centos7下安装tomcat8
+      </div>
+    </div>
   
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/06/14/centos7-dhcp/" class="article-date">
-  <time datetime="2019-06-14T02:05:18.000Z" itemprop="datePublished">2019-06-14</time>
-</a>
+  
+    <div class="item next">
+      <a href="/2019/05/27/linux-Wordpress/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        linux上搭建Wordpress及目录级别
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
         
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/搭建服务/">搭建服务</a>
+        <a onclick="openUserCard()">
+          <img id="avatar" src="https://avatars3.githubusercontent.com/u/13285397?s=460&v=4">
+          <div id="homelink">Hexo</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">About</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/Baileyswu">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
   </div>
 
-      </div>
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  
+
+  <article id="post">
+    <h1>centos7中安装dhcp服务</h1>
+    <p class="page-title-sub">
+      <span id="post-title-date">Created at 2019-06-14</span>
+      
+        <span id="post-title-updated">Updated at 2019-08-15</span>
+      
+      
+      <span id="post-title-categories">Category
+      
+      
+        
+        
+        <a href="/categories/搭建服务/">搭建服务</a>
+      
+      </span>
+      
+      
+      <span id="post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/tags/centos7中安装dhcp服务/">centos7中安装dhcp服务</a>
+      
+      </span>
+      
+    </p>
     
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <hr>
+    <hr>
 <h1 id="centos7中安装dhcp服务"><a href="#centos7中安装dhcp服务" class="headerlink" title="centos7中安装dhcp服务"></a>centos7中安装dhcp服务</h1><p>首先DHCP是动态主机设置协议，Dynamic Host Configuration Protocol，DHCP。DHCP就是给电脑分配IP地址，其中包括：自动分配，动态分配，手工分配。<br>&emsp;<br>1.安装DHCP服务首先要安装dhcp的包，<br>直接yum install dhcp -y  //dhcp-comon dhcpclient dhcp<br>&emsp;<br>2.把DHCP的配置文件复制到/etc下<br>cp -r /usr/share/doc/dhcp-4.2.5/dhcpd.conf.example /etc/dhcp/dhcpd.conf<br>&emsp;<br>3.现在我自己的IP地址是172.31.5.169。<br>vim  /etc/dhcp/dhcpd.conf   进入dhcp配置文件中<br><a href="https://imgchr.com/i/mkhZUH" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkhZUH.png" alt="mkhZUH.png"></a><br>&emsp;</p>
 <h1 id="DHCP-Server-Configuration-file"><a href="#DHCP-Server-Configuration-file" class="headerlink" title="DHCP Server Configuration file."></a>DHCP Server Configuration file.</h1><h1 id="see-usr-share-doc-dhcp-dhcpd-conf-example"><a href="#see-usr-share-doc-dhcp-dhcpd-conf-example" class="headerlink" title="see /usr/share/doc/dhcp*/dhcpd.conf.example"></a>see /usr/share/doc/dhcp*/dhcpd.conf.example</h1><h1 id="see-dhcpd-conf-5-man-page"><a href="#see-dhcpd-conf-5-man-page" class="headerlink" title="see dhcpd.conf(5) man page"></a>see dhcpd.conf(5) man page</h1><p>#<br>subnet 172.31.5.0 netmask 255.255.5.0{<br>range 172.31.5.0 172.31.5.100;<br>option routers 172.31.5.1;<br>option broadcast-address 172.31.5.1;<br>default-lease-time 600;<br>  max-lease-time 7200;<br>}<br>++++++++++++++++++++++++++++++++++++++++++++++++++++<br>特别注意：1，注意配置文件的格式，后面必须跟；<br>           2，并且不能忘记两个{    }<br>    3，根据自己的IP来修改配置文件，IP最后一位是0，其他三位必须和自己的IP一致。<br>修改完配置文件后，source  /etc/dhcp/dhcpd.conf<br>&emsp;<br>4.启动DHCP服务<br>service  dhcpd  start或者systemctl  start  dhcpd  启动服务<br>之后检查服务有没有开启netstat  -pantu |grep  dhcpd  或 ps  aux |grep dhcpd<br>可查看到dhcp服务开启的是67端口。<br>&emsp;<br>开始是，在启动gdhcp服务时，有错误。<br><a href="https://imgchr.com/i/mkhNPs" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkhNPs.png" alt="mkhNPs.png"></a><br>&emsp;<br>Job for dhcpd.service failed because the control process exited with error code. See “systemctl status dhcpd.service” and “journalctl -xe” for details.<br>【报错的原因是dhcp的配置文件的格式或者配置的IP等错误】</p>
 
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#centos7中安装dhcp服务"><span class="toc-text">centos7中安装dhcp服务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DHCP-Server-Configuration-file"><span class="toc-text">DHCP Server Configuration file.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#see-usr-share-doc-dhcp-dhcpd-conf-example"><span class="toc-text">see /usr/share/doc/dhcp*/dhcpd.conf.example</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#see-dhcpd-conf-5-man-page"><span class="toc-text">see dhcpd.conf(5) man page</span></a></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/2019/06/21/centos7 -tomcat8/" class="prev">&larr; Prev post centos7下安装tomcat8</a>
+  
+
+  
+
+  
+    <a href="/2019/05/27/linux-Wordpress/" class="next">Next post linux上搭建Wordpress及目录级别 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/14/centos7-dhcp/" data-id="cjzcf4mru000a3ov6hdtrhyoy"
-         class="article-share-link">分享</a>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by csy using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos7中安装dhcp服务/">centos7中安装dhcp服务</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-    
-  <nav class="article-nav">
-    
-      <a href="/2019/06/21/centos7 -tomcat8/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            centos7下安装tomcat8
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2019/05/27/linux-Wordpress/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">linux上搭建Wordpress及目录级别</div>
-      </a>
-    
-  </nav>
-
-
-  
-
-  
-    
-  
-
-</article>
-
-
-
-</section>
     </div>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/technology.js"></script>
-
   </div>
+</div>
+
+</div>
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="https://avatars3.githubusercontent.com/u/13285397?s=460&v=4">
+    <p id="description"></p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/Baileyswu">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://weibo.com/Danliwoo">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="mailto:wulidan0530@live.com">
+        
+          M
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["flash"],"timer":true,"delay":1500000,"shuffle":true,"count":12};
+var unsplashConfig = {"gravity":"center"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+
+var backgroundColor = "34495E";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
 </body>
 </html>
+

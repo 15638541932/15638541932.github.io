@@ -1,126 +1,352 @@
-<!DOCTYPE html>
-<html lang="en">
+
+
+
+
+
+
+
+<!doctype html>
+<html lang>
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="csy">
   
   
   
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>
-    驭龙HIDS安装及测试 |
-    
-    Hexo</title>
   
-    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="description" content="驭龙HIDS安装及测试https://github.com/ysrc/yulong-hids/blob/master/docs/install.md1.安装mongodb并启动mkdir /var/lib/mongodb/ &amp;&amp; mkdir /var/log/mongodb &amp;&amp; wget https://sec.ly.com/mirror/mongodb-l...">
   
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/technology.css">
+  <title>驭龙HIDS安装及测试 [ Hexo ]</title>
   
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
   
-  <script src="/js/pace.min.js"></script>
+    <link rel="shortcut icon" href="/hollow.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
 </head>
-</html>
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <section class="outer">
-  <article id="post-yl-HIDS" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<div class="side-navigate hide-area">
   
-    <h1 class="article-title" itemprop="name">
-      驭龙HIDS安装及测试
-    </h1>
+    <div class="item prev">
+      <a href="/2019/06/22/centows7---ELK/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        centows7搭建ELK
+      </div>
+    </div>
   
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/06/21/yl-HIDS/" class="article-date">
-  <time datetime="2019-06-21T07:05:18.000Z" itemprop="datePublished">2019-06-21</time>
-</a>
+  
+    <div class="item next">
+      <a href="/2019/06/21/centos7 -tomcat8/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        centos7下安装tomcat8
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
         
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/搭建服务/">搭建服务</a>
+        <a onclick="openUserCard()">
+          <img id="avatar" src="https://avatars3.githubusercontent.com/u/13285397?s=460&v=4">
+          <div id="homelink">Hexo</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">About</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/Baileyswu">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
   </div>
 
-      </div>
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  
+
+  <article id="post">
+    <h1>驭龙HIDS安装及测试</h1>
+    <p class="page-title-sub">
+      <span id="post-title-date">Created at 2019-06-21</span>
+      
+        <span id="post-title-updated">Updated at 2019-08-14</span>
+      
+      
+      <span id="post-title-categories">Category
+      
+      
+        
+        
+        <a href="/categories/搭建服务/">搭建服务</a>
+      
+      </span>
+      
+      
+      <span id="post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/tags/驭龙HIDS安装及测试/">驭龙HIDS安装及测试</a>
+      
+      </span>
+      
+    </p>
     
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <hr>
+    <hr>
 <h1 id="驭龙HIDS安装及测试"><a href="#驭龙HIDS安装及测试" class="headerlink" title="驭龙HIDS安装及测试"></a>驭龙HIDS安装及测试</h1><p><a href="https://github.com/ysrc/yulong-hids/blob/master/docs/install.md" target="_blank" rel="noopener">https://github.com/ysrc/yulong-hids/blob/master/docs/install.md</a><br>1.安装mongodb并启动<br>mkdir /var/lib/mongodb/ &amp;&amp; mkdir /var/log/mongodb &amp;&amp; wget <a href="https://sec.ly.com/mirror/mongodb-linux-x86_64-3.6.3.tgz" target="_blank" rel="noopener">https://sec.ly.com/mirror/mongodb-linux-x86_64-3.6.3.tgz</a> &amp;&amp; tar -xvzf mongodb-linux-x86_64-3.6.3.tgz &amp;&amp; mongodb-linux-x86_64-3.6.3/bin/mongod –dbpath /var/lib/mongodb/ –logpath /var/log/mongodb.log –fork –bind_ip 192.168.110.180<br>yum install -y mongodb-org(安装不成功)<br>vim /etc/yum.repos.d/mongodb-org-4.0.repo<br>添加下面内容，再执行yum<br>[mongodb-org-4.0]<br>name = MongoDB Repository<br>baseurl = <a href="https://repo.mongodb.org/yum/redhat/7/mongodb-org/4.0/x86_64/" target="_blank" rel="noopener">https://repo.mongodb.org/yum/redhat/7/mongodb-org/4.0/x86_64/</a><br>gpgcheck = 1<br>enabled = 1<br>gpgkey = <a href="https://www.mongodb.org/static/pgp/server-4.0.asc" target="_blank" rel="noopener">https://www.mongodb.org/static/pgp/server-4.0.asc</a><br>&emsp;<br><a href="https://imgchr.com/i/mk6I4P" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mk6I4P.png" alt="mk6I4P.png"></a><br>可以看到启动成功了！<br>2.安装Elasticsearch<br>下载jre依赖<br>wget <a href="https://sec.ly.com/mirror/jre-8u161-linux-x64.rpm" target="_blank" rel="noopener">https://sec.ly.com/mirror/jre-8u161-linux-x64.rpm</a> &amp;&amp; yum -y localinstall jre-8u161-linux-x64.rpm<br>下载解压Elasticsearch<br>wget <a href="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.8.tar.gz" target="_blank" rel="noopener">https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.8.tar.gz</a> &amp;&amp; tar -zxvf elasticsearch-5.6.8.tar.gz -C /data/server<br>lasticsearch 不建议以 root 权限运行，新建一个非 root 权限用户，-p 后跟自行设定的密码<br>groupadd elasticsearch &amp;&amp; useradd elasticsearch -g elasticsearch -p 123<br>修改文件夹及内部文件的所属用户及组为 elasticsearch:elasticsearch<br>chown -R elasticsearch:elasticsearch /data/server/elasticsearch<br>编辑 config/elasticsearch.yml 添加以下内容<br>bootstrap.system_call_filter: false<br>下面的#号去掉，添加自己IP<br><a href="https://imgchr.com/i/mk6bjg" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mk6bjg.png" alt="mk6bjg.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mkcCgU" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkcCgU.png" alt="mkcCgU.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mkcFu4" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkcFu4.png" alt="mkcFu4.png"></a><br>启动<br>su - elasticsearch -c ‘/data/server/elasticsearch/bin/elasticsearch -d’<br>curl请求下确认ES启动成功<br>curl -XGET -s “<a href="http://192.168.110.190:9200/_cluster/health?pretty&quot;" target="_blank" rel="noopener">http://192.168.110.190:9200/_cluster/health?pretty&quot;</a><br>3.安装golang<br><a href="https://github.com/ysrc/yulong-hids/blob/master/docs/build.md" target="_blank" rel="noopener">https://github.com/ysrc/yulong-hids/blob/master/docs/build.md</a><br>下载并解压<br>wget <a href="https://dl.google.com/go/go1.10.linux-amd64.tar.gz" target="_blank" rel="noopener">https://dl.google.com/go/go1.10.linux-amd64.tar.gz</a> &amp;&amp; tar -zxvf go1.10.linux-amd64.tar.gz -C /usr/local/<br>sudo vi /etc/profile<br>并添加下面的内容<br>export GOROOT=/usr/local/go<br>export GOBIN=$GOROOT/bin<br>export PATH=$PATH:$GOBIN<br>export GOPATH=$HOME/gopath<br>重新加载 profile 文件，source /etc/profile<br>cd /usr/local/go/src<br>git clone <a href="https://github.com/ysrc/yulong-hids/" target="_blank" rel="noopener">https://github.com/ysrc/yulong-hids/</a><br>编译agent<br>go build -o yulong-hids/bin/linux-64/agent –ldflags=”-w -s” yulong-hids/agent/agent.go</p>
 <p>编译daemon<br>go build -o yulong-hids/bin/linux-64/daemon –ldflags=”-w -s” yulong-hids/daemon/daemon.go<br>4.web配置<br>修改 web 的配置，改名为 app.conf<br>mv yulong-hids/web/conf/app-config-sample.conf yulong-hids/web/conf/app.conf<br>vi yulong-hids/web/conf/app.conf<br>管理密码 passwordhex 是密码的32位MD5值，生成一个自己的密码替换掉,然后修改以下内容。<br><a href="https://imgchr.com/i/mkcnC6" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkcnC6.png" alt="mkcnC6.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mkc65q" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkc65q.png" alt="mkc65q.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mkc4r4" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkc4r4.png" alt="mkc4r4.png"></a><br>启动web<br>cd yulong-hids/web/<br>./web<br><a href="https://imgchr.com/i/mkcjMD" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkcjMD.png" alt="mkcjMD.png"></a><br>启动成功后，访问80、443端口，登录<br>&emsp;<br>&emsp;<br>1.初始化数据库<br><a href="https://imgchr.com/i/mkgiJP" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkgiJP.png" alt="mkgiJP.png"></a><br>2.<a href="https://github.com/ysrc/yulong-hids/blob/master/docs/guide.md" target="_blank" rel="noopener">https://github.com/ysrc/yulong-hids/blob/master/docs/guide.md</a><br>复制内容<br><a href="https://imgchr.com/i/mkgnds" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkgnds.png" alt="mkgnds.png"></a><br>&emsp;<br>3.<a href="https://github.com/ysrc/yulong-hids/releases/tag/v0.4.3" target="_blank" rel="noopener">https://github.com/ysrc/yulong-hids/releases/tag/v0.4.3</a><br>下载yulong-hids-release-2018-04-02.zip包，导入进去<br><a href="https://imgchr.com/i/mkgNw9" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkgNw9.png" alt="mkgNw9.png"></a><br>&emsp;<br>4.直接生成<br><a href="https://imgchr.com/i/mkg2TA" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkg2TA.png" alt="mkg2TA.png"></a><br>&emsp;<br>进入如下页面<br><a href="https://imgchr.com/i/mkROzV" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkROzV.png" alt="mkROzV.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mkRvsU" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/14/mkRvsU.png" alt="mkRvsU.png"></a></p>
 
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#驭龙HIDS安装及测试"><span class="toc-text">驭龙HIDS安装及测试</span></a></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/2019/06/22/centows7---ELK/" class="prev">&larr; Prev post centows7搭建ELK</a>
+  
+
+  
+
+  
+    <a href="/2019/06/21/centos7 -tomcat8/" class="next">Next post centos7下安装tomcat8 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/21/yl-HIDS/" data-id="cjzcf4mt1001n3ov6fq6zhtgx"
-         class="article-share-link">分享</a>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by csy using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/驭龙HIDS安装及测试/">驭龙HIDS安装及测试</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-    
-  <nav class="article-nav">
-    
-      <a href="/2019/06/22/centows7---ELK/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            centows7搭建ELK
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2019/06/21/centos7 -tomcat8/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">centos7下安装tomcat8</div>
-      </a>
-    
-  </nav>
-
-
-  
-
-  
-    
-  
-
-</article>
-
-
-
-</section>
     </div>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/technology.js"></script>
-
   </div>
+</div>
+
+</div>
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="https://avatars3.githubusercontent.com/u/13285397?s=460&v=4">
+    <p id="description"></p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/Baileyswu">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://weibo.com/Danliwoo">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="mailto:wulidan0530@live.com">
+        
+          M
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["flash"],"timer":true,"delay":1500000,"shuffle":true,"count":12};
+var unsplashConfig = {"gravity":"center"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+
+var backgroundColor = "34495E";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
 </body>
 </html>
+

