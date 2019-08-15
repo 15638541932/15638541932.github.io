@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    nginx文件解析漏洞 |
+    
+    Hexo</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/technology.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <section class="outer">
+  <article id="post-nginx" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      nginx文件解析漏洞
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/07/01/nginx/" class="article-date">
+  <time datetime="2019-07-01T07:05:18.000Z" itemprop="datePublished">2019-07-01</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/漏洞渗透/">漏洞渗透</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <hr>
+<h1 id="nginx文件解析漏洞"><a href="#nginx文件解析漏洞" class="headerlink" title="nginx文件解析漏洞"></a>nginx文件解析漏洞</h1><p>版本信息：<br>nginx 1.x最新版,PHP 7.x最新版.<br>由此可知，此漏洞与nginx和PHP无关，因为用户的配置不当造成的解析漏洞。<br>1.访问<a href="http://192.168.199.217/uploadfiles/nginx.png" target="_blank" rel="noopener">http://192.168.199.217/uploadfiles/nginx.png</a><br><a href="https://imgchr.com/i/mARkmF" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mARkmF.png" alt="mARkmF.png"></a><br>在nginx.php后面加上/.php，发现被解析成了PHP文件：<a href="http://192.168.199.217/uploadfiles/nginx.png/.php" target="_blank" rel="noopener">http://192.168.199.217/uploadfiles/nginx.png/.php</a><br><a href="https://imgchr.com/i/mARuSx" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mARuSx.png" alt="mARuSx.png"></a><br>那么可以利用这个漏洞上传木马图片。<br>生成一个一句话木马和一个png结尾的图片<br>在windows生成一个木马图片<br><a href="https://imgchr.com/i/mARQOO" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mARQOO.png" alt="mARQOO.png"></a><br>然后上传，路径被爆了出来。<br><a href="https://imgchr.com/i/mARr7Q" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mARr7Q.png" alt="mARr7Q.png"></a><br>复制路径，查看是否上传成功，出现上传图片就上传成功<br><a href="https://imgchr.com/i/mAR4nU" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAR4nU.png" alt="mAR4nU.png"></a><br>然后在后面加上 .php 看木马是否解析，可以看到已经解析，然后用蚁剑连接。<br><a href="https://imgchr.com/i/mARq91" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mARq91.png" alt="mARq91.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mARxBD" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mARxBD.png" alt="mARxBD.png"></a><br>进入虚拟终端，看命令能不能正常执行。<br><a href="https://imgchr.com/i/mAWAjf" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAWAjf.png" alt="mAWAjf.png"></a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/01/nginx/" data-id="cjzc5dh3t000ljov6lkcz7lym"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx文件解析漏洞/">nginx文件解析漏洞</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/07/01/stzj/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            渗透测试报告总结
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/06/28/centos7-csvn/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">centos7中csvn的安装及脚本一键安装</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+    </div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/technology.js"></script>
+
+  </div>
+</body>
+</html>
