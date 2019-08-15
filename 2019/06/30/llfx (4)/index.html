@@ -16,9 +16,9 @@
   
   
   
-    <meta name="description" content="Appweb(CVE-2018-8715)漏洞复现1.访问IP用burp进行抓包。&emsp;2.通过抓包软件拦截，添加以下HTTP 头信息后，发送数据包，返回结果为200就是成功。Authorization: Digest username=joshua&emsp;3.获取HTTP 头信息中的session，如以下格式，返回码为200，出现以下页面就成功绕过身份验证。-http-sessi...">
+    <meta name="description" content="日常流量分析3首先在分析流量之前，先利用Wireshark进行一下统计包的流量的多少以及协议所占的比例&emsp;&emsp;&emsp;由上图可看出此流量包共有7295条流量，所占比例大的协议由DCE/RPC，TCP，HTTPS等&emsp;活动的日期/时间谁被感染了涉及什么恶意软件&emsp;&emsp;受感染用户的IP地址：利用科来的矩阵可看出如下图所示收发最多的IP即是受感染的IP地...">
   
-  <title>Appweb(CVE-2018-8715)漏洞复现 [ Hexo ]</title>
+  <title>日常流量分析3 [ Hexo ]</title>
   
   
     <link rel="shortcut icon" href="/hollow.ico">
@@ -38,21 +38,21 @@
 <div class="side-navigate hide-area">
   
     <div class="item prev">
-      <a href="/2019/07/04/msf-vsftpd/">
+      <a href="/2019/07/01/stzj/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
-        msf远程溢出(21,139,445端口)vsftpd漏洞
+        渗透测试报告总结
       </div>
     </div>
   
   
     <div class="item next">
-      <a href="/2019/07/02/llfx (5)/">
+      <a href="/2019/06/28/centos7-csvn/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
-        日常流量分析4
+        centos7中csvn的安装及脚本一键安装
       </div>
     </div>
   
@@ -129,9 +129,9 @@
   
 
   <article id="post">
-    <h1>Appweb(CVE-2018-8715)漏洞复现</h1>
+    <h1>日常流量分析3</h1>
     <p class="page-title-sub">
-      <span id="post-title-date">Created at 2019-07-03</span>
+      <span id="post-title-date">Created at 2019-06-30</span>
       
         <span id="post-title-updated">Updated at 2019-08-15</span>
       
@@ -141,7 +141,7 @@
       
         
         
-        <a href="/categories/漏洞渗透/">漏洞渗透</a>
+        <a href="/categories/流量分析/">流量分析</a>
       
       </span>
       
@@ -152,14 +152,14 @@
       
         
         
-        <a href="/tags/Appweb-CVE-2018-8715-漏洞复现/">Appweb(CVE-2018-8715)漏洞复现</a>
+        <a href="/tags/日常流量分析3/">日常流量分析3</a>
       
       </span>
       
     </p>
     
     <hr>
-<h1 id="Appweb-CVE-2018-8715-漏洞复现"><a href="#Appweb-CVE-2018-8715-漏洞复现" class="headerlink" title="Appweb(CVE-2018-8715)漏洞复现"></a>Appweb(CVE-2018-8715)漏洞复现</h1><p>1.访问IP用burp进行抓包。<br><a href="https://imgchr.com/i/mAh1mT" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAh1mT.png" alt="mAh1mT.png"></a><br>&emsp;<br>2.通过抓包软件拦截，添加以下HTTP 头信息后，发送数据包，返回结果为200就是成功。<br>Authorization: Digest username=joshua<br><a href="https://imgchr.com/i/mAh87F" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAh87F.png" alt="mAh87F.png"></a><br>&emsp;<br>3.获取HTTP 头信息中的session，如以下格式，返回码为200，出现以下页面就成功绕过身份验证。<br>-http-session-=58::http.session::49ad964885b60878bc1c90ad79f6cbc0<br><a href="https://imgchr.com/i/mAhBnK" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAhBnK.png" alt="mAhBnK.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mAh7NQ" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAh7NQ.png" alt="mAh7NQ.png"></a></p>
+<h1 id="日常流量分析3"><a href="#日常流量分析3" class="headerlink" title="日常流量分析3"></a>日常流量分析3</h1><p>首先在分析流量之前，先利用Wireshark进行一下统计包的流量的多少以及协议所占的比例<br><a href="https://imgchr.com/i/mEfhUe" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEfhUe.png" alt="mEfhUe.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mEfv5Q" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEfv5Q.png" alt="mEfv5Q.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mEhePJ" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEhePJ.png" alt="mEhePJ.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mEhUxI" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEhUxI.png" alt="mEhUxI.png"></a><br>由上图可看出此流量包共有7295条流量，所占比例大的协议由DCE/RPC，TCP，HTTPS等<br>&emsp;<br>活动的日期/时间<br>谁被感染了<br>涉及什么恶意软件<br>&emsp;<br>&emsp;<br>受感染用户的IP地址：<br>利用科来的矩阵可看出如下图所示<br><a href="https://imgchr.com/i/mEhHJJ" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEhHJJ.png" alt="mEhHJJ.png"></a><br>收发最多的IP即是受感染的IP地址，点击进去左边最多的汇集点进去。除此之外，在Wireshark中看到的每一条流量基本大部分是和下图IP一样的地址<br>可看到源地址的Ip地址，源地址的IP地址就是受感染的IP地址。<br><a href="https://imgchr.com/i/mE49Fe" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mE49Fe.png" alt="mE49Fe.png"></a><br>所有受感染的IP地址就是10.0.14.129<br>&emsp;<br>受感染用户的MAC地址：<br>由上面已知受感染的IP地址就是10.0.14.129<br>再次利用科来中的协议，找到DHCP协议。双击进去，就出现如下图所示页面<br><a href="https://imgchr.com/i/mE4WfH" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mE4WfH.png" alt="mE4WfH.png"></a><br>找到受感染IP地址即10.0.14.1与10.0.14.129对应的会话，双击，下面可打开看到源地址以及源地址的MAC地址<br><a href="https://imgchr.com/i/mE5JgA" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mE5JgA.png" alt="mE5JgA.png"></a><br>由上图对应的源地址和目标地址，可看出目标地址10.0.14.129对应的MAC地址就是00:1A:92:06:5C:7B<br>&emsp;<br>受感染用户的主机名：<br>利用Wireshark搜索kerberos.CNameString，找到受感染IP对应的流量，如下图<br><a href="https://imgchr.com/i/mEoc7V" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEoc7V.png" alt="mEoc7V.png"></a><br>所以受感染用户的主机名就是chicago-7fa3-pc$<br>&emsp;<br>受感染用户的帐户名称：<br>和上步的操作一样<br><a href="https://imgchr.com/i/mETiAf" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mETiAf.png" alt="mETiAf.png"></a><br>所以受感染用户的账户名就是faith.hoffman<br>&emsp;<br>活动的日期/时间<br>&emsp;<br>谁被感染了<br>&emsp;<br>涉及什么恶意软件</p>
 
   </article>
   <div class="random-toc-area">
@@ -167,20 +167,20 @@
   <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
   <div class="random-toc">
     <h2>Table of Content</h2>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Appweb-CVE-2018-8715-漏洞复现"><span class="toc-text">Appweb(CVE-2018-8715)漏洞复现</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#日常流量分析3"><span class="toc-text">日常流量分析3</span></a></li></ol>
   </div>
 </div>
 
   
 <nav id="pagination">
   
-    <a href="/2019/07/04/msf-vsftpd/" class="prev">&larr; Prev post msf远程溢出(21,139,445端口)vsftpd漏洞</a>
+    <a href="/2019/07/01/stzj/" class="prev">&larr; Prev post 渗透测试报告总结</a>
   
 
   
 
   
-    <a href="/2019/07/02/llfx (5)/" class="next">Next post 日常流量分析4 &rarr;</a>
+    <a href="/2019/06/28/centos7-csvn/" class="next">Next post centos7中csvn的安装及脚本一键安装 &rarr;</a>
   
 </nav>
 

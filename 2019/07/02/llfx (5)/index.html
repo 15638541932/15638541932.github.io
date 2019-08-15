@@ -16,9 +16,9 @@
   
   
   
-    <meta name="description" content="Appweb(CVE-2018-8715)漏洞复现1.访问IP用burp进行抓包。&emsp;2.通过抓包软件拦截，添加以下HTTP 头信息后，发送数据包，返回结果为200就是成功。Authorization: Digest username=joshua&emsp;3.获取HTTP 头信息中的session，如以下格式，返回码为200，出现以下页面就成功绕过身份验证。-http-sessi...">
+    <meta name="description" content="在分析之前首先利用Wireshark分析一下统计信息。&emsp;以UTC（GMT）表示的恶意活动的日期和时间。&emsp;由2知道受感染的IP地址，找到138的IP地址，点击进去，打开下面有个传输时间，对应的传输时间即是受感染的时间&emsp;受影响的Windows主机的IP地址。从最后可分析出受感染的IP地址是172.16.1.138&emsp;受影响的Windows主机的Mac地址。在...">
   
-  <title>Appweb(CVE-2018-8715)漏洞复现 [ Hexo ]</title>
+  <title>日常流量分析4 [ Hexo ]</title>
   
   
     <link rel="shortcut icon" href="/hollow.ico">
@@ -38,21 +38,21 @@
 <div class="side-navigate hide-area">
   
     <div class="item prev">
-      <a href="/2019/07/04/msf-vsftpd/">
+      <a href="/2019/07/03/appweb/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
-        msf远程溢出(21,139,445端口)vsftpd漏洞
+        Appweb(CVE-2018-8715)漏洞复现
       </div>
     </div>
   
   
     <div class="item next">
-      <a href="/2019/07/02/llfx (5)/">
+      <a href="/2019/07/01/AQ/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
-        日常流量分析4
+        ActiveMQ 任意文件写入漏洞（CVE-2016-3088）
       </div>
     </div>
   
@@ -129,9 +129,9 @@
   
 
   <article id="post">
-    <h1>Appweb(CVE-2018-8715)漏洞复现</h1>
+    <h1>日常流量分析4</h1>
     <p class="page-title-sub">
-      <span id="post-title-date">Created at 2019-07-03</span>
+      <span id="post-title-date">Created at 2019-07-02</span>
       
         <span id="post-title-updated">Updated at 2019-08-15</span>
       
@@ -141,7 +141,7 @@
       
         
         
-        <a href="/categories/漏洞渗透/">漏洞渗透</a>
+        <a href="/categories/流量分析/">流量分析</a>
       
       </span>
       
@@ -152,14 +152,14 @@
       
         
         
-        <a href="/tags/Appweb-CVE-2018-8715-漏洞复现/">Appweb(CVE-2018-8715)漏洞复现</a>
+        <a href="/tags/日常流量分析4/">日常流量分析4</a>
       
       </span>
       
     </p>
     
     <hr>
-<h1 id="Appweb-CVE-2018-8715-漏洞复现"><a href="#Appweb-CVE-2018-8715-漏洞复现" class="headerlink" title="Appweb(CVE-2018-8715)漏洞复现"></a>Appweb(CVE-2018-8715)漏洞复现</h1><p>1.访问IP用burp进行抓包。<br><a href="https://imgchr.com/i/mAh1mT" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAh1mT.png" alt="mAh1mT.png"></a><br>&emsp;<br>2.通过抓包软件拦截，添加以下HTTP 头信息后，发送数据包，返回结果为200就是成功。<br>Authorization: Digest username=joshua<br><a href="https://imgchr.com/i/mAh87F" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAh87F.png" alt="mAh87F.png"></a><br>&emsp;<br>3.获取HTTP 头信息中的session，如以下格式，返回码为200，出现以下页面就成功绕过身份验证。<br>-http-session-=58::http.session::49ad964885b60878bc1c90ad79f6cbc0<br><a href="https://imgchr.com/i/mAhBnK" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAhBnK.png" alt="mAhBnK.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mAh7NQ" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAh7NQ.png" alt="mAh7NQ.png"></a></p>
+<p>在分析之前首先利用Wireshark分析一下统计信息。<br><a href="https://imgchr.com/i/mVCevq" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVCevq.png" alt="mVCevq.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mVCKbT" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVCKbT.png" alt="mVCKbT.png"></a><br>以UTC（GMT）表示的恶意活动的日期和时间。<br>&emsp;<br><a href="https://imgchr.com/i/mVCUr6" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVCUr6.png" alt="mVCUr6.png"></a><br>由2知道受感染的IP地址，找到138的IP地址，点击进去，打开下面有个传输时间，对应的传输时间即是受感染的时间<br>&emsp;<br>受影响的Windows主机的IP地址。<br>从最后可分析出受感染的IP地址是172.16.1.138<br>&emsp;<br>受影响的Windows主机的Mac地址。<br>在科来中的诊断那项，由前面可知受感染的MAC地址是172.16.1.138，可直接选择对应的Mac地址<br><a href="https://imgchr.com/i/mVCrPH" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVCrPH.png" alt="mVCrPH.png"></a><br>故受感染的Windows主机的Mac地址是00:0B:CD:E0:71:53<br>&emsp;<br>&emsp;<br>受影响的Windows主机的主机名。<br>在Wireshark中搜索kerberos.CNameString，可看出Windows主机的主机名就是shatal-pc$<br><a href="https://imgchr.com/i/mVCfZ8" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVCfZ8.png" alt="mVCfZ8.png"></a><br>&emsp;<br>受影响的Windows主机上的用户帐户名称。<br>也是在Wireshark中搜索kerberos.CNameString<br>找到138的IP地址对应的，cname对应的Windows主机上的用户账户名称就是bruno.shaxtal<br><a href="https://imgchr.com/i/mVPAeK" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVPAeK.png" alt="mVPAeK.png"></a><br>&emsp;<br>&emsp;<br>发生了什么。<br>在Wireshark中搜索http看到了一个以.tiff结尾的文件，追踪了一下HTTP追踪流，得到如下图所示<br>可看到下面有GET了一个.zip的文件。<br><a href="https://imgchr.com/i/mVPlOP" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVPlOP.png" alt="mVPlOP.png"></a><br>在Wireshark中可看到导出文件中找到这个文件。<br><a href="https://imgchr.com/i/mVPtYQ" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVPtYQ.png" alt="mVPtYQ.png"></a><br>导出到电脑中拉到网站中，发现此文件有问题。<br><a href="https://imgchr.com/i/mVPwyq" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVPwyq.png" alt="mVPwyq.png"></a><br>然后也通过在Wireshark中搜索HTTP，找到了那个。zip的包，<br><a href="https://imgchr.com/i/mVP6kF" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVP6kF.png" alt="mVP6kF.png"></a><br>可以看到这个包的源地址是172.16.1.138，所以这个受感染的IP地址是172.16.1.138</p>
 
   </article>
   <div class="random-toc-area">
@@ -167,20 +167,20 @@
   <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
   <div class="random-toc">
     <h2>Table of Content</h2>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Appweb-CVE-2018-8715-漏洞复现"><span class="toc-text">Appweb(CVE-2018-8715)漏洞复现</span></a></li></ol>
+    
   </div>
 </div>
 
   
 <nav id="pagination">
   
-    <a href="/2019/07/04/msf-vsftpd/" class="prev">&larr; Prev post msf远程溢出(21,139,445端口)vsftpd漏洞</a>
+    <a href="/2019/07/03/appweb/" class="prev">&larr; Prev post Appweb(CVE-2018-8715)漏洞复现</a>
   
 
   
 
   
-    <a href="/2019/07/02/llfx (5)/" class="next">Next post 日常流量分析4 &rarr;</a>
+    <a href="/2019/07/01/AQ/" class="next">Next post ActiveMQ 任意文件写入漏洞（CVE-2016-3088） &rarr;</a>
   
 </nav>
 

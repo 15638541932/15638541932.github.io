@@ -16,9 +16,9 @@
   
   
   
-    <meta name="description" content="Appweb(CVE-2018-8715)漏洞复现1.访问IP用burp进行抓包。&emsp;2.通过抓包软件拦截，添加以下HTTP 头信息后，发送数据包，返回结果为200就是成功。Authorization: Digest username=joshua&emsp;3.获取HTTP 头信息中的session，如以下格式，返回码为200，出现以下页面就成功绕过身份验证。-http-sessi...">
+    <meta name="description" content="日常流量分析2首先在流量包分析之前，要统计一下包的大小，以及协议所占比例其中利用Wireshark中的统计功能&emsp;&emsp;再利用科来的协议查看协议所占比例可看出流量包共6349条流量，其中协议主要是TCP和HTTP以及HTTPS和LDAP等&emsp;&emsp;先分析出受感染的IP地址，在科来中的矩阵中可看到一般收发点最多的就是受感染的IP地址所以受感染的IP地址就是10.10...">
   
-  <title>Appweb(CVE-2018-8715)漏洞复现 [ Hexo ]</title>
+  <title>日常流量分析2 [ Hexo ]</title>
   
   
     <link rel="shortcut icon" href="/hollow.ico">
@@ -38,21 +38,21 @@
 <div class="side-navigate hide-area">
   
     <div class="item prev">
-      <a href="/2019/07/04/msf-vsftpd/">
+      <a href="/2019/06/20/llfx (2)/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
-        msf远程溢出(21,139,445端口)vsftpd漏洞
+        日常流量分析
       </div>
     </div>
   
   
     <div class="item next">
-      <a href="/2019/07/02/llfx (5)/">
+      <a href="/2019/06/14/centos7-dhcp/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
-        日常流量分析4
+        centos7中安装dhcp服务
       </div>
     </div>
   
@@ -129,9 +129,9 @@
   
 
   <article id="post">
-    <h1>Appweb(CVE-2018-8715)漏洞复现</h1>
+    <h1>日常流量分析2</h1>
     <p class="page-title-sub">
-      <span id="post-title-date">Created at 2019-07-03</span>
+      <span id="post-title-date">Created at 2019-06-20</span>
       
         <span id="post-title-updated">Updated at 2019-08-15</span>
       
@@ -141,7 +141,7 @@
       
         
         
-        <a href="/categories/漏洞渗透/">漏洞渗透</a>
+        <a href="/categories/流量分析/">流量分析</a>
       
       </span>
       
@@ -152,14 +152,14 @@
       
         
         
-        <a href="/tags/Appweb-CVE-2018-8715-漏洞复现/">Appweb(CVE-2018-8715)漏洞复现</a>
+        <a href="/tags/日常流量分析2/">日常流量分析2</a>
       
       </span>
       
     </p>
     
     <hr>
-<h1 id="Appweb-CVE-2018-8715-漏洞复现"><a href="#Appweb-CVE-2018-8715-漏洞复现" class="headerlink" title="Appweb(CVE-2018-8715)漏洞复现"></a>Appweb(CVE-2018-8715)漏洞复现</h1><p>1.访问IP用burp进行抓包。<br><a href="https://imgchr.com/i/mAh1mT" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAh1mT.png" alt="mAh1mT.png"></a><br>&emsp;<br>2.通过抓包软件拦截，添加以下HTTP 头信息后，发送数据包，返回结果为200就是成功。<br>Authorization: Digest username=joshua<br><a href="https://imgchr.com/i/mAh87F" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAh87F.png" alt="mAh87F.png"></a><br>&emsp;<br>3.获取HTTP 头信息中的session，如以下格式，返回码为200，出现以下页面就成功绕过身份验证。<br>-http-session-=58::http.session::49ad964885b60878bc1c90ad79f6cbc0<br><a href="https://imgchr.com/i/mAhBnK" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAhBnK.png" alt="mAhBnK.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mAh7NQ" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAh7NQ.png" alt="mAh7NQ.png"></a></p>
+<h1 id="日常流量分析2"><a href="#日常流量分析2" class="headerlink" title="日常流量分析2"></a>日常流量分析2</h1><p>首先在流量包分析之前，要统计一下包的大小，以及协议所占比例<br>其中利用Wireshark中的统计功能<br><a href="https://imgchr.com/i/mEyQzT" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEyQzT.png" alt="mEyQzT.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mEyJeJ" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEyJeJ.png" alt="mEyJeJ.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mEyDyD" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEyDyD.png" alt="mEyDyD.png"></a><br>再利用科来的协议查看协议所占比例<br><a href="https://imgchr.com/i/mEyWfP" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEyWfP.png" alt="mEyWfP.png"></a><br>可看出流量包共6349条流量，其中协议主要是TCP和HTTP以及HTTPS和LDAP等<br>&emsp;<br>&emsp;<br>先分析出受感染的IP地址，在科来中的矩阵中可看到<br><a href="https://imgchr.com/i/mEyHTs" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEyHTs.png" alt="mEyHTs.png"></a><br>一般收发点最多的就是受感染的IP地址<br><a href="https://imgchr.com/i/mEyzXF" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEyzXF.png" alt="mEyzXF.png"></a><br>所以受感染的IP地址就是10.100.9.107<br>&emsp;<br>&emsp;<br>1、活动的日期和时间（格林威治标准时间或UTC）<br>由5可知感染的流量的具体编号，感染的编号为679<br><a href="https://imgchr.com/i/mE6K7d" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mE6K7d.png" alt="mE6K7d.png"></a><br>受感染的时间即为上图红色区域所示。<br>&emsp;<br>&emsp;<br>2、受感染的Windows计算机的帐户名称或用户名<br>从前面已知受感染的IP地址就是10.100.9.107<br>在Wireshark中搜索kerberos.CNameString找到相应受感染的IP地址对应的流量。<br><a href="https://imgchr.com/i/mE6buD" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mE6buD.png" alt="mE6buD.png"></a><br>所以可知受感染的账户名是headless-pc$<br>&emsp;<br>&emsp;<br>3、受感染的Windows计算机的主机名<br>搜索用户名也是同上，在Wireshark中搜索kerberos.CNameString，找到搜感染的IP地址对应的，不过要多找几个<br><a href="https://imgchr.com/i/mEcgRP" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEcgRP.png" alt="mEcgRP.png"></a><br>所以受感染的用户名是ichabod.crane<br>&emsp;<br>&emsp;<br>4、受感染的Windows计算机的MAC地址<br>在Wireshark中搜索tcp，打开受感染IP地址所对应的流量，并看清受感染IP地址是源地址和目标地址。<br><a href="https://imgchr.com/i/mEcqzV" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEcqzV.png" alt="mEcqzV.png"></a><br>我选择的流量受感染IP地址107是目标地址<br>所以受感染的MAC地址是00:50:8b:2a:96:0a<br>&emsp;<br>&emsp;<br>5、SHA256文件哈希来自pcap的任何恶意软件<br>这是什么类型的感染<br>在科来中的协议中找到HTTP协议，<br><a href="https://imgchr.com/i/mEgiz6" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEgiz6.png" alt="mEgiz6.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mEgMWt" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEgMWt.png" alt="mEgMWt.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mEgOfI" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEgOfI.png" alt="mEgOfI.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mEgzX8" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEgzX8.png" alt="mEgzX8.png"></a><br>可看到以上的IP地址和受感染的IP地址有来往。<br>在Wireshark中搜索http.request.method == “GET”<br><a href="https://imgchr.com/i/mE2uBF" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mE2uBF.png" alt="mE2uBF.png"></a><br>追踪一下HTTP流，可查看到<br><a href="https://imgchr.com/i/mE21hR" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mE21hR.png" alt="mE21hR.png"></a><br>DOS其实是是磁盘操作系统的缩写，是个人计算机上的一类操作系统。使用DOS模式可以执行很多程序。<br>而这条流量则在DOS模式，其实非常危险且这个请求的文件非常大，导出到桌面，然后到<a href="https://www.virustotal.com/gui/home/upload" target="_blank" rel="noopener">https://www.virustotal.com/gui/home/upload</a><br>把导出文件拖到此网站上一进行检测，得出下面结果<br><a href="https://imgchr.com/i/mE2YjK" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mE2YjK.png" alt="mE2YjK.png"></a><br>可得出哈希值是396223eeec49493a52dd9d8ba5348a332bf064483a358db79d8bb8d22e6eb62c</p>
 
   </article>
   <div class="random-toc-area">
@@ -167,20 +167,20 @@
   <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
   <div class="random-toc">
     <h2>Table of Content</h2>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Appweb-CVE-2018-8715-漏洞复现"><span class="toc-text">Appweb(CVE-2018-8715)漏洞复现</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#日常流量分析2"><span class="toc-text">日常流量分析2</span></a></li></ol>
   </div>
 </div>
 
   
 <nav id="pagination">
   
-    <a href="/2019/07/04/msf-vsftpd/" class="prev">&larr; Prev post msf远程溢出(21,139,445端口)vsftpd漏洞</a>
+    <a href="/2019/06/20/llfx (2)/" class="prev">&larr; Prev post 日常流量分析</a>
   
 
   
 
   
-    <a href="/2019/07/02/llfx (5)/" class="next">Next post 日常流量分析4 &rarr;</a>
+    <a href="/2019/06/14/centos7-dhcp/" class="next">Next post centos7中安装dhcp服务 &rarr;</a>
   
 </nav>
 
