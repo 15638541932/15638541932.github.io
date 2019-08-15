@@ -1,8 +1,6 @@
 
 
 
-  
-
 
 
 
@@ -18,9 +16,33 @@
   
   
   
-    <meta name="description" content>
+    <meta name="description" content="1.shell脚本 传三个参数 如何比较大小
+./test.sh  33 23 67
+
+max=0
+$1
+$2
+$3
+
+if  $1 &gt; max
+    max = $1
+
+if $2 &gt; max
+    max = $2 
+
+
+if  ()
+
+elif ()
+
+else 
+
+
+#!/bin/bashMAX=0
+if [ $1 -gt $MAX ]; thenMAX=$1fi
+i...">
   
-  <title>Tag: centos7中安装dokuwiki [ Hexo ]</title>
+  <title>shell脚本 [ Hexo ]</title>
   
   
     <link rel="shortcut icon" href="/hollow.ico">
@@ -39,6 +61,24 @@
 <body>
 <div class="side-navigate hide-area">
   
+    <div class="item prev">
+      <a href="/2019/04/23/centos7-redis/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        在centos7中安装redis  HA（2个主2个从）
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/2019/04/04/linux (3)/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        正则表达式
+      </div>
+    </div>
   
 </div>
 <div id="outer-container" class="hide-area">
@@ -71,7 +111,7 @@
           </li>
         
           
-            <li class="active">
+            <li>
           
             <a href="/tags">Tags</a>
             
@@ -110,233 +150,172 @@
     <div id="content-inner">
       
       
-  <div id="tag">
-    <h1>centos7中安装dokuwiki</h1>
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-          
-        
-      
-      
-      <div class="post-title-item">
   
-  <a href="/2019/05/20/centos7-dokuwiki/">
-  
-    centos7中安装dokuwiki
-  
-  </a>
-  <p class="page-title-sub">
-    <span id="post-title-date">5-20</span>
-    
-    <span id="post-title-categories">Category
-    
-    
+
+  <article id="post">
+    <h1>shell脚本</h1>
+    <p class="page-title-sub">
+      <span id="post-title-date">Created at 2019-04-04</span>
+      
+        <span id="post-title-updated">Updated at 2019-08-15</span>
       
       
-      <a href="/categories/搭建服务/">搭建服务</a>
-    
-    </span>
-    
-    
-    <span id="post-title-tags">
-    Tag
-    
-    
-      
-      
-      <a href="/tags/centos7中安装dokuwiki/">centos7中安装dokuwiki</a>
-    
-    </span>
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-      
-    
+      <span id="post-title-categories">Category
       
       
         
+        
+        <a href="/categories/linux基础/">linux基础</a>
+      
+      </span>
       
       
-    
+      <span id="post-title-tags">
+      Tag
       
       
         
-      
-      
-    
-      
-      
         
+        <a href="/tags/shell脚本/">shell脚本</a>
       
+      </span>
       
+    </p>
     
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
+    <hr>
+<p>1.shell脚本 传三个参数 如何比较大小</p>
+<pre><code>./test.sh  33 23 67
+
+max=0
+$1
+$2
+$3
+
+if  $1 &gt; max
+    max = $1
+
+if $2 &gt; max
+    max = $2 
+
+
+if  ()
+
+elif ()
+
+else 
+
+
+#!/bin/bash</code></pre><p>MAX=0</p>
+<p>if [ $1 -gt $MAX ]; then<br>MAX=$1<br>fi</p>
+<p>if [ $2 -gt $MAX ]; then<br>MAX=$2<br>fi</p>
+<p>if [ $3 -gt $MAX ]; then<br>MAX=$3<br>fi</p>
+<p>echo “the max num is $MAX”</p>
+<p>echo   -e   “hello\nworld”  : 转义可用</p>
+<p>echo  -n  “”      :  不打印换行 </p>
+<p>$RANDOM</p>
+<p>问题：<br>    打印10个随机数，<br>    a,b,c,    ,g</p>
+<pre><code>拿出最大值 </code></pre><p>#!/bin/bash</p>
+<p>MAX=0<br>MIN=0</p>
+<p>for i in {1..10}; do<br>a=$RANDOM</p>
+<p>if [ $i -eq 1 ]; then<br>MIN=$a<br>fi</p>
+<p>if [ $i -le 9 ]; then<br>echo -n “$a,”<br>else<br>echo $a<br>fi</p>
+<p>if [ $a -lt $MIN ]; then<br>MIN=$a<br>fi</p>
+<p>if [ $a -gt $MAX ]; then<br>MAX=$a<br>fi</p>
+<p>done</p>
+<p>echo “max number is $MAX”<br>echo “min number is $MIN”</p>
+<ol start="2">
+<li>case</li>
+</ol>
+<p>编程语言 ：  面向过程    c<br>            面向对象   java  python </p>
+<pre><code>面向过程： 按照计算机的思路  
+        一步一步去做事 
+
+取指执行： 拿指令  去执行  
+
+寄存器 ： 当前要执行的指令 
+
+面向对象： 按照人 理解世界 的思路 
+    类    对象： 类的实例  
+
+
+水果 ：    苹果   香蕉  
+
+属性 
+
+
+
+继承： 
+
+职业 ： 
+
+教师 
+开发
+运维 
+
+
+面向过程 : 流程控制 
+
+判断  ： if  
+
+    单分支 
+    双分支
+    多分支  
+
+循环  ： for 
+        while
+        until 
+
+多分支判断：   
+    case   
+
+case SWITCH in
+value1)
+    echo &quot;&quot;
+    ;;
+value2)
+    echo &quot;&quot;
+    ;;
+*)
+    echo &quot;&quot; 
+    ;;
+esac </code></pre><p>++++++++++++++++++++++++++++++++++++++</p>
+<p>#!/bin/bash</p>
+<p>case $1 in<br>[0-9])<br>        echo “$1 is a digit.”<br>        ;;<br>[[:lower:]])<br>        echo “$1 is a lower.”<br>        ;;<br>[[:upper:]])<br>        echo “$1 is an upper.”<br>        ;;<br>*)<br>        echo “special character.”<br>        ;;<br>esac</p>
+<p>#!/bin/bash</p>
+<p>case $1 in<br>start)<br>        echo “staring service…” ;;<br>stop)<br>        echo “stopping service…” ;;<br>restart)<br>        echo “restarting service…” ;;<br>*)<br>        echo “Usage: $0 (start|stop|restart)”;;<br>esac</p>
+<p>++++++++++++++++++++++++++++</p>
+<p>添加用户 useradd     </p>
+<p>-v   ：   显示 添加用户成功<br>        不用-v  不显示<br>+++++++++++++++++++++++++++++++++++</p>
+<p>#!/bin/bash</p>
+<p>DEBUG=0<br>case $1 in<br>-v|–verbose)<br>        DEBUG=1 ;;<br>esac<br>useradd tom<br>if [ $DEBUG -eq 1 ]; then<br>        echo “Finished add user tom.”<br>fi</p>
+
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
     
   </div>
+</div>
 
   
+<nav id="pagination">
+  
+    <a href="/2019/04/23/centos7-redis/" class="prev">&larr; Prev post 在centos7中安装redis  HA（2个主2个从）</a>
+  
+
+  
+
+  
+    <a href="/2019/04/04/linux (3)/" class="next">Next post 正则表达式 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
 
       
       
