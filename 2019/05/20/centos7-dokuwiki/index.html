@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    centos7中安装dokuwiki |
+    
+    Hexo</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/technology.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <section class="outer">
+  <article id="post-centos7-dokuwiki" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      centos7中安装dokuwiki
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/05/20/centos7-dokuwiki/" class="article-date">
+  <time datetime="2019-05-20T07:05:18.000Z" itemprop="datePublished">2019-05-20</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/搭建服务/">搭建服务</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <hr>
+<h1 id="centos7中安装dokuwiki"><a href="#centos7中安装dokuwiki" class="headerlink" title="centos7中安装dokuwiki"></a>centos7中安装dokuwiki</h1><p>1.首先安装dokuwiki需要的环境是php环境，另外需要下载gcc ,gcc-c++，httpd<br>yum -y install php gcc gcc-c++（它们之间都存在依赖关系）<br>&emsp;<br>2.下载dokuwiki的源码包，先在/usr/local/src下，<br>wget <a href="https://download.dokuwiki.org/out/dokuwiki-8a269cc015a64b40e4c918699f1e1142.tgz" target="_blank" rel="noopener">https://download.dokuwiki.org/out/dokuwiki-8a269cc015a64b40e4c918699f1e1142.tgz</a><br>tar -xzvf dokuwiki<br>mv  /usr/local/src/dokuwiki  /var/www/html/wiki<br>因为/var/www/html是apache的默认上传目录，所以把wiki放在此目录下。<br>&emsp;<br>3.给wiki权限<br>httpd自动默认生成了一个apache用户，给wiki一个apache用户的权限<br>chown  -R  apache:apache  /var/www/html/wiki<br>&emsp;<br>4.启动httpd服务<br>service  httpd  start或者systemctl  start  start<br>&emsp;<br>5.在这里前面由于下载的PHP的版本较低，使用yum更新失败，下面进行配置yum源<br>清除下载过的PHP：yum  -y  remove  php*<br>yum -y install php72w php72w-cli php72w-fpm php72w-common php72w-devel<br>yum -y install php72w php72w-cli php72w-fpm php72w-common php72w-devel php72w-embedded php72w-gd php72w-mbstring php72w-mysqlnd php72w-opcache php72w-pdo php72w-xml<br>之后php -v查看版本即可<br>&emsp;<br>6.关闭防火墙和SElinx<br>systemctl stop  firewalld<br>《1》setenforce  0(临时关闭)<br>《2》修改配置文件且重启虚拟机<br>修改/etc/selinx/config<br>将其中的SELINX=enforcing改成SELINX=disabled即可<br>&emsp;<br>7.访问网页<br><a href="http://172.31.1.249/wiki/install.php" target="_blank" rel="noopener">http://172.31.1.249/wiki/install.php</a><br>其中改为自己的IP地址即可<br>&emsp;<br><a href="https://imgchr.com/i/mAMdER" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mAMdER.png" alt="mAMdER.png"></a><br>&emsp;<br>出现这个页面修改配置即可。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/20/centos7-dokuwiki/" data-id="cjzc04rsn000hb0v65f3943b8"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos7中安装dokuwiki/">centos7中安装dokuwiki</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/05/27/linux-Wordpress/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            linux上搭建Wordpress及目录级别
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/05/20/ngx_lua——waf/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">搭建ngx_lua_waf</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+    </div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/technology.js"></script>
+
+  </div>
+</body>
+</html>
