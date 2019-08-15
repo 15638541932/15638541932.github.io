@@ -16,9 +16,9 @@
   
   
   
-    <meta name="description" content="日常流量分析3首先在分析流量之前，先利用Wireshark进行一下统计包的流量的多少以及协议所占的比例&emsp;&emsp;&emsp;由上图可看出此流量包共有7295条流量，所占比例大的协议由DCE/RPC，TCP，HTTPS等&emsp;活动的日期/时间谁被感染了涉及什么恶意软件&emsp;&emsp;受感染用户的IP地址：利用科来的矩阵可看出如下图所示收发最多的IP即是受感染的IP地...">
+    <meta name="description" content="一、UISGCON-traffic-analysis-task-pcap-1-of-2.pcapLAN SEGMENT属性：&emsp;IP范围：10.1.75.0/24（10.1.75.0到10.1.75.255）网关IP：10.1.75.1广播IP：10.1.75.255域控制器（DC）：PixelShine-DC，10.1.75.4域名：pixelshine.net&emsp;在分析问...">
   
-  <title>日常流量分析3 [ Hexo ]</title>
+  <title>日常流量分析6 [ Hexo ]</title>
   
   
     <link rel="shortcut icon" href="/hollow.ico">
@@ -38,21 +38,21 @@
 <div class="side-navigate hide-area">
   
     <div class="item prev">
-      <a href="/2019/07/01/nginx/">
+      <a href="/2019/07/04/msf-vsftpd/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
-        nginx文件解析漏洞
+        msf远程溢出(21,139,445端口)vsftpd漏洞
       </div>
     </div>
   
   
     <div class="item next">
-      <a href="/2019/06/28/centos7-csvn/">
+      <a href="/2019/07/03/appweb/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
-        centos7中csvn的安装及脚本一键安装
+        Appweb(CVE-2018-8715)漏洞复现
       </div>
     </div>
   
@@ -129,9 +129,9 @@
   
 
   <article id="post">
-    <h1>日常流量分析3</h1>
+    <h1>日常流量分析6</h1>
     <p class="page-title-sub">
-      <span id="post-title-date">Created at 2019-06-30</span>
+      <span id="post-title-date">Created at 2019-07-04</span>
       
         <span id="post-title-updated">Updated at 2019-08-15</span>
       
@@ -152,14 +152,14 @@
       
         
         
-        <a href="/tags/日常流量分析3/">日常流量分析3</a>
+        <a href="/tags/日常流量分析6/">日常流量分析6</a>
       
       </span>
       
     </p>
     
     <hr>
-<h1 id="日常流量分析3"><a href="#日常流量分析3" class="headerlink" title="日常流量分析3"></a>日常流量分析3</h1><p>首先在分析流量之前，先利用Wireshark进行一下统计包的流量的多少以及协议所占的比例<br><a href="https://imgchr.com/i/mEfhUe" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEfhUe.png" alt="mEfhUe.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mEfv5Q" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEfv5Q.png" alt="mEfv5Q.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mEhePJ" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEhePJ.png" alt="mEhePJ.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mEhUxI" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEhUxI.png" alt="mEhUxI.png"></a><br>由上图可看出此流量包共有7295条流量，所占比例大的协议由DCE/RPC，TCP，HTTPS等<br>&emsp;<br>活动的日期/时间<br>谁被感染了<br>涉及什么恶意软件<br>&emsp;<br>&emsp;<br>受感染用户的IP地址：<br>利用科来的矩阵可看出如下图所示<br><a href="https://imgchr.com/i/mEhHJJ" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEhHJJ.png" alt="mEhHJJ.png"></a><br>收发最多的IP即是受感染的IP地址，点击进去左边最多的汇集点进去。除此之外，在Wireshark中看到的每一条流量基本大部分是和下图IP一样的地址<br>可看到源地址的Ip地址，源地址的IP地址就是受感染的IP地址。<br><a href="https://imgchr.com/i/mE49Fe" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mE49Fe.png" alt="mE49Fe.png"></a><br>所有受感染的IP地址就是10.0.14.129<br>&emsp;<br>受感染用户的MAC地址：<br>由上面已知受感染的IP地址就是10.0.14.129<br>再次利用科来中的协议，找到DHCP协议。双击进去，就出现如下图所示页面<br><a href="https://imgchr.com/i/mE4WfH" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mE4WfH.png" alt="mE4WfH.png"></a><br>找到受感染IP地址即10.0.14.1与10.0.14.129对应的会话，双击，下面可打开看到源地址以及源地址的MAC地址<br><a href="https://imgchr.com/i/mE5JgA" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mE5JgA.png" alt="mE5JgA.png"></a><br>由上图对应的源地址和目标地址，可看出目标地址10.0.14.129对应的MAC地址就是00:1A:92:06:5C:7B<br>&emsp;<br>受感染用户的主机名：<br>利用Wireshark搜索kerberos.CNameString，找到受感染IP对应的流量，如下图<br><a href="https://imgchr.com/i/mEoc7V" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEoc7V.png" alt="mEoc7V.png"></a><br>所以受感染用户的主机名就是chicago-7fa3-pc$<br>&emsp;<br>受感染用户的帐户名称：<br>和上步的操作一样<br><a href="https://imgchr.com/i/mETiAf" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mETiAf.png" alt="mETiAf.png"></a><br>所以受感染用户的账户名就是faith.hoffman<br>&emsp;<br>活动的日期/时间<br>&emsp;<br>谁被感染了<br>&emsp;<br>涉及什么恶意软件</p>
+<p>一、UISGCON-traffic-analysis-task-pcap-1-of-2.pcap<br>LAN SEGMENT属性：<br>&emsp;<br>IP范围：10.1.75.0/24（10.1.75.0到10.1.75.255）<br>网关IP：10.1.75.1<br>广播IP：10.1.75.255<br>域控制器（DC）：PixelShine-DC，10.1.75.4<br>域名：pixelshine.net<br>&emsp;<br>在分析问题之前先利用Wireshark统计一下，以下几项，方便分析问题。<br><a href="https://imgchr.com/i/mVeFat" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVeFat.png" alt="mVeFat.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mVenMQ" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVenMQ.png" alt="mVenMQ.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mVeurj" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVeurj.png" alt="mVeurj.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mVeQZn" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVeQZn.png" alt="mVeQZn.png"></a><br>1、说明这种感染的时间和日期。<br>&emsp;<br>2、确定受感染的Windows客户端的IP地址。<br>在Wireshark中看到tcp会话中基本上都是10.1.75.4和10.1.75.167。<br><a href="https://imgchr.com/i/mVeGGT" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVeGGT.png" alt="mVeGGT.png"></a><br>被感染的IP地址是10.1.75.4<br>&emsp;<br>&emsp;<br>3、确定受感染的Windows客户端的主机名。<br>在Wireshark中搜索栏中搜索kerberos.CNameString ，如下图可视，打开cname可看出Windows客户端的主机名<br>如图所示<br><a href="https://imgchr.com/i/mVewZR" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVewZR.png" alt="mVewZR.png"></a><br>Windows客户端的主机名就是RIGSBY-WIN-PC$<br>&emsp;<br>&emsp;<br>4、确定受感染Windows客户端的MAC地址。<br>在第一个问题中已知受感染的主机的IP地址，可通过科来的诊断这块，查看出受感染的Ip地址对应的MAC地址。<br>如图所示<br><a href="https://imgchr.com/i/mVegQe" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVegQe.png" alt="mVegQe.png"></a><br>搜感染的Mac地址是84:2B:2B:D3:55:73<br>&emsp;<br>&emsp;<br>5、确定受感染Windows客户端上使用的Windows用户帐户名。<br>也是采用第3步的做法，多搜索几个，出现如下图所示页面<br><a href="https://imgchr.com/i/mVmPlF" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVmPlF.png" alt="mVmPlF.png"></a><br>Windows用户帐户名就是judson.rigsby<br>&emsp;<br>6、确定受害者下载的Word文档的SHA256哈希值。<br>在Wireshark中搜索http协议，可看到下图页面<br><a href="https://imgchr.com/i/mVmeFx" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVmeFx.png" alt="mVmeFx.png"></a><br>可发现图片中蓝色的那行是word文档格式的，其他的都是图片或者其他等<br>追踪一下这条的http流，追踪结果如下图可视<br><a href="https://imgchr.com/i/mVmKSO" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVmKSO.png" alt="mVmKSO.png"></a><br>可清晰的看出filename=”FILE-88654515940798.doc”，故这个就是word文档的文件名。<br>在Wireshark中找到导出<br><a href="https://imgchr.com/i/mVm3md" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVm3md.png" alt="mVm3md.png"></a><br>选择导出对象，选择http格式，可看到下面图片，找到word文档，并导出为.doc结尾的文件名<br><a href="https://imgchr.com/i/mVmYkt" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mVmYkt.png" alt="mVmYkt.png"></a><br>13、确定受感染Windows客户端的公共IP地址。把文件保存到桌面，点击右键属性查看哈希值。<br>这个word的文档的哈希值就是1112203340b2d66f15b09046af6e776af6604343c1e733fe419fdf86f851caa3<br>&emsp;<br>7、确定发送到受感染Windows客户端的第一个恶意软件二进制文件的SHA256哈希值。<br>&emsp;<br>8、确定10.1.75.4处的域控制器（DC）被感染的时间。<br>&emsp;<br>9、确定发送到受感染Windows客户端的第二个恶意软件二进制文件的SHA256哈希值（与radiance.png和table.png检索的文件相同）。<br>&emsp;<br>10、可以使用Wireshark从SMB流量中检索的可执行文件的两个文件哈希是什么？<br>&emsp;<br>11、确定Windows客户端感染的两类恶意软件。<br>&emsp;<br>12、确定DC感染的一个恶意软件系列。</p>
 
   </article>
   <div class="random-toc-area">
@@ -167,20 +167,20 @@
   <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
   <div class="random-toc">
     <h2>Table of Content</h2>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#日常流量分析3"><span class="toc-text">日常流量分析3</span></a></li></ol>
+    
   </div>
 </div>
 
   
 <nav id="pagination">
   
-    <a href="/2019/07/01/nginx/" class="prev">&larr; Prev post nginx文件解析漏洞</a>
+    <a href="/2019/07/04/msf-vsftpd/" class="prev">&larr; Prev post msf远程溢出(21,139,445端口)vsftpd漏洞</a>
   
 
   
 
   
-    <a href="/2019/06/28/centos7-csvn/" class="next">Next post centos7中csvn的安装及脚本一键安装 &rarr;</a>
+    <a href="/2019/07/03/appweb/" class="next">Next post Appweb(CVE-2018-8715)漏洞复现 &rarr;</a>
   
 </nav>
 
