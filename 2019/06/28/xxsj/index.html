@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    渗透-信息收集 |
+    
+    Hexo</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/technology.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <section class="outer">
+  <article id="post-xxsj" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      渗透-信息收集
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/06/28/xxsj/" class="article-date">
+  <time datetime="2019-06-28T10:05:18.000Z" itemprop="datePublished">2019-06-28</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/漏洞渗透/">漏洞渗透</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <hr>
+<h1 id="渗透-信息收集"><a href="#渗透-信息收集" class="headerlink" title="渗透-信息收集"></a>渗透-信息收集</h1><p>1.收集那些信息<br>a.目标系统的信息系统的相关资料<br>域名    、网络拓扑  、操作系统   、应用软件<br>相关脆弱性<br>b.目标系统的组织相关资料<br>组织架构及相关资料<br>地理位置细节<br>电话号码、邮件等联系方式<br>近期重大事件<br>员工简历<br>2.Googlehacking<br>intext:寻找正文中含有关键字网页<br>intitle:寻找标题中含有关键字网页<br>inurl:返回URL中含有关键字网页<br>site:指定访问的站点<br>filetype:指定访问文件类型<br>related:页面布局相似页面<br>3.whois<br>Whois是一个标准服务，可以用来查询域名是否被注册以及注册的详细资料<br>Whois 可以查询到的信息<br>域名所有者<br>域名及IP地址对应信息<br>联系方式<br>域名到期日期<br>域名注册日期<br>域名所使用的 DNS Servers<br>4.子域名收集<br>字典爆破：<br>Layer子域名挖掘机<br>SubDomainsBrute<br>在github上进行克隆下载<br>ttps://github.com/lijiejie/subDomainsBrute<br>可直接在kali上对SubDomainsBrute进行克隆即可<br>&emsp;<br>kali使用扫面qq<br>git clone <a href="https://github.com/lijiejie/subDomainsBrute.git" target="_blank" rel="noopener">https://github.com/lijiejie/subDomainsBrute.git</a><br>cd subDomainsBrute/<br>chmod +x subDomainsBrute.py<br>./subDomainsBrute<br>./subDomainsBrute.py  qq.com -o ppp.txt<br>cat ppp.txt查看(导出文件必须以txt结尾)<br>Wydomain<br><a href="https://github.com/ring04h/wydomain.git" target="_blank" rel="noopener">https://github.com/ring04h/wydomain.git</a><br>Wydomain中的字典<br>Wydomain用法<br>&emsp;<br>库依赖安装:pip install -r requirements.txt<br>git clone <a href="https://github.com/ring04h/wydomain.git" target="_blank" rel="noopener">https://github.com/ring04h/wydomain.git</a><br>chmod +x wydomain.git<br>$ python dnsburte.py -d aliyun.com -f dnspod.csv -o aliyun.log<br>子域名字典穷举结果保存在result / aliyun.com目录下的dnsburte.json文件<br>-d：域名<br>-o：输出的文件<br>-f：使用的字典<br>wfuzz(Wfuzz支持Python 3)<br><a href="https://github.com/xmendez/wfuzz" target="_blank" rel="noopener">https://github.com/xmendez/wfuzz</a><br>要安装WFuzz:pip install wfuzz<br>git clone <a href="https://github.com/xmendez/wfuzz" target="_blank" rel="noopener">https://github.com/xmendez/wfuzz</a><br>使用：<br>wfuzz -w wordlist/general/common.txt –hc 404 <a href="http://testphp.vulnweb.com/FUZZ" target="_blank" rel="noopener">http://testphp.vulnweb.com/FUZZ</a><br>Wfuzz编码器/解码器：<br>wfencode -e md5 test<br>&emsp;<br>&emsp;<br>搜索引擎：<br>site:xxx.com<br>Sublist3r（Sublist3r是一个python工具，旨在使用OSINT枚举网站的子域。它可以帮助渗透测试人员和漏洞猎人收集并收集他们所针对的域的子域。）<br>安装：git clone <a href="https://github.com/aboul3la/Sublist3r.git" target="_blank" rel="noopener">https://github.com/aboul3la/Sublist3r.git</a><br>建议安装python2.7<br>依赖关系：<br>Sublist3r依赖于,requests,dnspython,argparse,python<br>在Windows上安装：python27\python.exe -m pip install -r requirements.txt<br>在Linux上安装:sudo pip install -r requirements.txt<br>用法：python sublist3r.py -d yahoo.py -b -t 50 -p 80,443,21,22<br>&emsp;<br>&emsp;<br>第三方聚合应用枚举：<br>直接输域名就可以<br>DNSdumpster(<a href="https://dnsdumpster.com/" target="_blank" rel="noopener">https://dnsdumpster.com/</a>)<br>5.子域名收集<br>证书透明度公开日志枚举<br><a href="https://transparencyreport.google.com/https/certificates" target="_blank" rel="noopener">https://transparencyreport.google.com/https/certificates</a><br><a href="https://crt.sh/" target="_blank" rel="noopener">https://crt.sh/</a><br><a href="https://censys.io/" target="_blank" rel="noopener">https://censys.io/</a><br>在线查询网站<br><a href="http://tool.chinaz.com/subdomain/" target="_blank" rel="noopener">http://tool.chinaz.com/subdomain/</a><br><a href="http://www.yumingco.com/sub/" target="_blank" rel="noopener">http://www.yumingco.com/sub/</a><br><a href="https://securitytrails.com/list/apex_domain/qq.com" target="_blank" rel="noopener">https://securitytrails.com/list/apex_domain/qq.com</a><br><a href="https://findsubdomains.com/" target="_blank" rel="noopener">https://findsubdomains.com/</a><br><a href="https://opendata.rapid7.com/" target="_blank" rel="noopener">https://opendata.rapid7.com/</a><br>第三方网站<br><a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a><br><a href="https://virustotal.com" target="_blank" rel="noopener">https://virustotal.com</a><br><a href="https://www.shodan.io" target="_blank" rel="noopener">https://www.shodan.io</a><br><a href="http://ce.baidu.com/index/getRelatedSites?site_address=qq.com" target="_blank" rel="noopener">http://ce.baidu.com/index/getRelatedSites?site_address=qq.com</a><br>X云<br>集成工具<br><a href="https://github.com/yanxiu0614/subdomain3/" target="_blank" rel="noopener">https://github.com/yanxiu0614/subdomain3/</a><br><a href="https://github.com/FeeiCN/ESD" target="_blank" rel="noopener">https://github.com/FeeiCN/ESD</a><br>6.端口扫描——端口信息收集<br>原理<br>通过端口扫描确定主机开放的端口，不同的端口对应运行着的不同的网络服务<br>扫描方式<br>全扫描<br>半打开扫描<br>隐秘扫描<br>漏洞扫描<br>在线查询<br><a href="http://tool.chinaz.com/port/" target="_blank" rel="noopener">http://tool.chinaz.com/port/</a><br><a href="https://tool.lu/portscan/index.html" target="_blank" rel="noopener">https://tool.lu/portscan/index.html</a><br><a href="http://coolaf.com/tool/port" target="_blank" rel="noopener">http://coolaf.com/tool/port</a><br>&emsp;<br>工具<br>Nmap<br>Masscan<br>Python+masscan+Nmap<br>nmap<br>主机发现 (Host Discovery)<br>Nmap –sn<br>扫描协议 (Port Scanning)<br>TCP SYN 扫描(-sS)<br>TCP connent 扫描(-sT)<br>TCP FIN/Xmas/NULL 扫描(-sN/sF/sX)<br>简单扫描(nmap ip)<br>nmap ip<br>nmap -A ip<br>nmap -T4 -A -v ip<br>端口扫描(Nmap会默认以TCP SYN方式扫描目标端口，扫描目标主机的80-445端口的开放情况<br>以半连接的TCP SYN方式扫描目标主机的80端口，以UDP方式扫描目标主机的445端口)<br>nmap  -p  80-445 ip<br>nmap  -sS   -sU  -p  T:80,U:445 ip<br>nmap -sS -sU –top-ports ip<br>版本侦测<br>nmap  -sV ip<br>操作系统侦测<br>nmap  -O ip<br>Masscan<br>端口扫描<br>Masscan 10.11.0.0/16 -p443<br>Masscan 10.11.0.0/16 -p80,443<br>Masscan 10.11.0.0/16 -p22-25<br>&emsp;<br>&emsp;<br>网站敏感目录和文件收集（主要还是字典。wwwscan 、御剑 、 dirbuster、cansina 备份压缩文件）<br>扫描网站目录结构，看看是否可以遍历目录，或者敏感文件泄漏。<br>phpinfo：会把你配置的各种信息暴露出来<br>后台目录：弱口令，万能密码，爆破<br>安装包：获取数据库信息，甚至是网站源码<br>上传目录：截断、上传图片马等<br>mysql管理接口：弱口令、爆破，万能密码，然后脱裤，甚至是拿到shell<br>安装页面 ：可以二次安装进而绕过<br>编辑器：fck、ke、等<br>robots.txt</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/28/xxsj/" data-id="cjzcb24vr0012i4v684z8p03i"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/渗透-信息收集/">渗透-信息收集</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/07/01/stzj/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            渗透测试报告总结
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/06/28/centos7-csvn/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">centos7中csvn的安装及脚本一键安装</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+    </div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/technology.js"></script>
+
+  </div>
+</body>
+</html>

